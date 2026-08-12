@@ -1,0 +1,21 @@
+{
+  "id": "{{category-prefix}}-001",
+  "category": "{{plot-architecture|character-arcs|narration-information|scene-pacing|prose-style|voice-tone-dialogue}}",
+  "candidate_kind": "{{pattern|technique|profile-feature}}",
+  "title": "{{用可观察机制命名，不用作者名}}",
+  "scope": "{{出现在哪类场景、人物、POV 或结构区段}}",
+  "claim": "{{可被证据支持或反驳的结论}}",
+  "observable_markers": ["{{marker 1}}"],
+  "conditions": ["{{condition 1}}"],
+  "effects": ["{{reader/text effect 1}}"],
+  "mechanism": "{{为什么这些标记会在这些条件下产生效果}}",
+  "execution": ["{{可迁移动作 1}}"],
+  "intensity_controls": ["{{可调参数 1}}"],
+  "failure_modes": ["{{过量或误用症状 1}}"],
+  "evidence_ids": ["ev-{{category}}-001"],
+  "counterevidence_ids": [],
+  "attribution": "{{work-design|edition-language|translator-language|measured-statistic|interpretation}}",
+  "status": "candidate",
+  "validation": {}
+}
+

@@ -1,0 +1,15 @@
+{
+  "id": "ev-{{category}}-001",
+  "book_id": "{{book-slug}}",
+  "source_sha256": "{{NORMALIZED_TEXT_SHA256}}",
+  "locator": "ch01.s01.p001",
+  "chunk_id": "chunk-001",
+  "structural_region": "opening",
+  "text_mode": "narration",
+  "relation": "supports",
+  "role": "{{setup|choice|tone-marker|other}}",
+  "verification_excerpt": "{{仅保留核验结论所必需的极短片段}}",
+  "excerpt_hash": "{{EXCERPT_SHA256}}",
+  "holdout": false,
+  "notes": "{{NOTES}}"
+}

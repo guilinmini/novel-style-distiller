@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/novel-style-distiller/skill-metadata.schema.json",
+  "title": "Distilled skill metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "name",
+    "kind",
+    "category",
+    "source",
+    "candidate_ids",
+    "evidence_ids",
+    "holdout_evidence_ids",
+    "confidence",
+    "relations",
+    "originality_constraints",
+    "test_status",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "name": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "kind": {"enum": ["source-profile", "transferable-technique"]},
+    "category": {
+      "enum": ["plot-architecture", "character-arcs", "narration-information", "scene-pacing", "prose-style", "voice-tone-dialogue"]
+    },
+    "source": {
+      "type": "object",
+      "required": ["book_id", "title", "author", "edition", "source_sha256"],
+      "properties": {
+        "book_id": {"type": "string"},
+        "title": {"type": "string"},
+        "author": {"type": "string"},
+        "edition": {"type": "string"},
+        "translator": {"type": ["string", "null"]},
+        "source_sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}
+      }
+    },
+    "candidate_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "holdout_evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["skill", "relation", "reason"],
+        "properties": {
+          "skill": {"type": "string"},
+          "relation": {"enum": ["depends-on", "pairs-with", "modulates", "conflicts-with", "applies-after"]},
+          "reason": {"type": "string"}
+        }
+      }
+    },
+    "originality_constraints": {
+      "type": "object",
+      "required": ["forbid_source_characters", "forbid_source_worldbuilding", "forbid_plot_beat_mapping", "overlap_check_required"],
+      "properties": {
+        "forbid_source_characters": {"const": true},
+        "forbid_source_worldbuilding": {"const": true},
+        "forbid_plot_beat_mapping": {"const": true},
+        "overlap_check_required": {"const": true}
+      }
+    },
+    "test_status": {"enum": ["pending", "passed", "failed"]},
+    "created_at": {"type": "string", "minLength": 1}
+  }
+}
+

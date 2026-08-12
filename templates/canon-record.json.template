@@ -1,0 +1,14 @@
+{
+  "id": "canon-001",
+  "record_type": "fact",
+  "severity": "critical",
+  "statement": "{{可验证的剧情、人物、关系或知识状态}}",
+  "valid_from": "ch01.s01",
+  "valid_to": "ch10.s99",
+  "subject_ids": ["{{character-or-thread-id}}"],
+  "source_locators": ["ch01.s01.p001"],
+  "supporting_fact_ids": [],
+  "counterevidence_ids": [],
+  "notes": "{{NOTES}}"
+}
+

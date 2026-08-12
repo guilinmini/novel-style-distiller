@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "book_id": "{{book-slug}}",
+  "source_sha256": "{{NORMALIZED_TEXT_SHA256}}",
+  "locator_scheme": "volume.chapter.scene.paragraph",
+  "holdout_policy": {
+    "target_ratio": 0.2,
+    "stratified_by": ["structural_region", "text_mode"],
+    "frozen_before_extraction": true
+  },
+  "chunks": [
+    {
+      "chunk_id": "chunk-001",
+      "start_locator": "ch01.s01.p001",
+      "end_locator": "ch01.s04.p999",
+      "structural_region": "opening",
+      "text_modes": ["narration", "dialogue"],
+      "sha256": "{{CHUNK_SHA256}}",
+      "previous_chunk": null,
+      "next_chunk": "chunk-002",
+      "overlap_locators": [],
+      "holdout": false,
+      "extractor_status": {
+        "plot-architecture": "pending",
+        "character-arcs": "pending",
+        "narration-information": "pending",
+        "scene-pacing": "pending",
+        "prose-style": "pending",
+        "voice-tone-dialogue": "pending"
+      }
+    }
+  ]
+}

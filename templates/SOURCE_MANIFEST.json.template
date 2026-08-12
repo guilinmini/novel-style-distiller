@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "book_id": "{{book-slug}}",
+  "title": "{{BOOK_TITLE}}",
+  "author": "{{AUTHOR}}",
+  "edition": "{{EDITION}}",
+  "publication_year": "{{YEAR}}",
+  "original_language": "{{ORIGINAL_LANGUAGE}}",
+  "text_language": "{{TEXT_LANGUAGE}}",
+  "translator": null,
+  "source_path": "{{LOCAL_SOURCE_PATH}}",
+  "source_sha256": "{{SHA256}}",
+  "source_format": "{{txt|md|epub|pdf|other}}",
+  "normalized_text_path": "{{LOCAL_NORMALIZED_TXT_OR_MD_PATH}}",
+  "normalized_text_sha256": "{{NORMALIZED_TEXT_SHA256}}",
+  "normalized_text_format": "{{txt|md}}",
+  "completeness": "{{complete|partial|unknown}}",
+  "missing_ranges": [],
+  "text_quality": {
+    "status": "{{clean|ocr-reviewed|ocr-unreviewed|damaged}}",
+    "known_issues": [],
+    "locator_reliability": "{{high|medium|low}}"
+  },
+  "rights": {
+    "user_confirmed_lawful_access": false,
+    "redistribution_permission": "{{yes|no|unknown}}",
+    "notes": "{{NOTES}}"
+  },
+  "analysis_scope": "this work and edition only",
+  "created_at": "{{ISO_8601}}"
+}

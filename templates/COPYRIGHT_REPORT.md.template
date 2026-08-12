@@ -1,0 +1,47 @@
+# {{BOOK_TITLE}} — Copyright and Originality Report
+
+> 本报告记录项目内部质量护栏，不构成法律意见。
+
+## 来源
+
+- Title / Author: {{BOOK_TITLE}} / {{AUTHOR}}
+- Edition / Translator: {{EDITION}} / {{TRANSLATOR_OR_NONE}}
+- Source SHA-256: `{{SHA256}}`
+- User confirmed lawful local access: {{yes/no}}
+- Redistribution permission: {{yes/no/unknown}}
+
+## 源文件隔离
+
+- [ ] 输出目录不包含源小说
+- [ ] 安装目录不包含源小说
+- [ ] Git 暂存区不包含源小说或临时全文
+
+## 引用审计
+
+| Artifact | 引用数量 | 累计字符/词 | 最长单段 | 定位完整 | 人工复核 |
+|---|---:|---:|---:|---:|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{yes/no}} | {{pass/fail}} |
+
+说明：内部引用预算不是法律安全线；公开发布前仍需确认具体权利与语境。
+
+## 生成样稿重合扫描
+
+| Draft | 中文最长连续重合 | 通用词连续重合 | 规范化字符连续重合 | Shingle 比例 | 专名泄露 | 结果 |
+|---|---:|---:|---:|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{none/list}} | {{PASS/FAIL}} |
+
+## 人工原创性复核
+
+- [ ] 未复用原作人物、世界观、地名或专有设定
+- [ ] 未逐点换名复制情节骨架
+- [ ] 未连续复刻三个辨识度高的情节节拍
+- [ ] 未复用独特比喻、标志性句式或台词
+- [ ] 作者姓名没有作为生成指令或风格捷径
+- [ ] 输出只迁移可观察机制
+
+## 发布决定
+
+- **Decision**: {{APPROVED / BLOCKED}}
+- **Reviewer**: {{...}}
+- **Date**: {{ISO_8601}}
+- **Open issues**: {{...}}

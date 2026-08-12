@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/novel-style-distiller/candidate.schema.json",
+  "title": "Distillation candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "category",
+    "candidate_kind",
+    "title",
+    "scope",
+    "claim",
+    "observable_markers",
+    "conditions",
+    "effects",
+    "mechanism",
+    "execution",
+    "intensity_controls",
+    "failure_modes",
+    "evidence_ids",
+    "counterevidence_ids",
+    "attribution",
+    "status"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z]{2,5}-[0-9]{3,}$"},
+    "category": {
+      "enum": [
+        "plot-architecture",
+        "character-arcs",
+        "narration-information",
+        "scene-pacing",
+        "prose-style",
+        "voice-tone-dialogue"
+      ]
+    },
+    "candidate_kind": {"enum": ["pattern", "technique", "profile-feature"]},
+    "title": {"type": "string", "minLength": 3},
+    "scope": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1},
+    "observable_markers": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "conditions": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "effects": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "mechanism": {"type": "string", "minLength": 1},
+    "execution": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "intensity_controls": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "failure_modes": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "counterevidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "attribution": {"enum": ["work-design", "edition-language", "translator-language", "measured-statistic", "interpretation"]},
+    "status": {"enum": ["candidate", "verified", "rejected"]},
+    "validation": {"type": "object"}
+  }
+}
+

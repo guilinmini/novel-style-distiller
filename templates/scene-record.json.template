@@ -1,0 +1,30 @@
+{
+  "scene_id": "ch01.s01",
+  "start_locator": "ch01.s01.p001",
+  "end_locator": "ch01.s01.p999",
+  "narrative_position": 1,
+  "story_time": "{{absolute, relative, flashback, or unknown}}",
+  "pov": {
+    "person": "{{first|second|third}}",
+    "focalizer": "{{character-id-or-narrator}}",
+    "tense": "{{past|present|mixed}}",
+    "allowed_interiority": ["{{character-id}}"]
+  },
+  "location": "{{LOCATION}}",
+  "present_character_ids": ["{{character-id}}"],
+  "entry_state": "{{...}}",
+  "scene_goal": "{{...}}",
+  "obstacle": "{{...}}",
+  "turn": "{{...}}",
+  "choice": "{{...}}",
+  "cost": "{{...}}",
+  "exit_state": "{{...}}",
+  "information_changes": ["{{...}}"],
+  "opened_thread_ids": [],
+  "advanced_thread_ids": [],
+  "closed_thread_ids": [],
+  "tension": {"entry": 0, "peak": 0, "exit": 0},
+  "tone": "{{...}}",
+  "evidence_ids": ["ev-scene-001"]
+}
+

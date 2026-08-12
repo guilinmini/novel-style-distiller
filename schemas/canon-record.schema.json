@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/novel-style-distiller/canon-record.schema.json",
+  "title": "Canon ledger record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "record_type", "severity", "statement", "source_locators"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^canon-[a-z0-9-]+$"},
+    "record_type": {"enum": ["fact", "interpretation", "hypothesis"]},
+    "severity": {"enum": ["critical", "major", "minor"]},
+    "statement": {"type": "string", "minLength": 1},
+    "valid_from": {"type": ["string", "null"]},
+    "valid_to": {"type": ["string", "null"]},
+    "subject_ids": {"type": "array", "items": {"type": "string"}},
+    "source_locators": {"type": "array", "items": {"type": "string"}},
+    "supporting_fact_ids": {"type": "array", "items": {"type": "string"}},
+    "counterevidence_ids": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "string"}
+  }
+}
+

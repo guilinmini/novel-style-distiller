@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "skill": "{{skill-slug}}",
+  "kind": "transferable-technique",
+  "cases": [
+    {
+      "id": "explicit-positive-01",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确正例 1}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{可观察效果}}",
+      "hard_gates": ["no-critical-canon-break", "no-source-leakage"]
+    },
+    {
+      "id": "explicit-positive-02",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确正例 2}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{可观察效果}}",
+      "hard_gates": ["no-source-leakage"]
+    },
+    {
+      "id": "explicit-positive-03",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确正例 3}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{可观察效果}}",
+      "hard_gates": ["no-source-leakage"]
+    },
+    {
+      "id": "explicit-positive-04",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确正例 4}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{可观察效果}}",
+      "hard_gates": ["no-source-leakage"]
+    },
+    {
+      "id": "implicit-positive-01",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{不含 Skill 标题关键词的正例 1}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{可观察效果}}",
+      "hard_gates": ["no-source-leakage"]
+    },
+    {
+      "id": "implicit-positive-02",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{不含 Skill 标题关键词的正例 2}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{可观察效果}}",
+      "hard_gates": ["no-source-leakage"]
+    },
+    {
+      "id": "unrelated-decoy-01",
+      "type": "should_not_trigger",
+      "actor": {"prompt": "{{完全无关诱饵 1}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": null, "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "abstain",
+      "hard_gates": ["correct-abstention"]
+    },
+    {
+      "id": "unrelated-decoy-02",
+      "type": "should_not_trigger",
+      "actor": {"prompt": "{{完全无关诱饵 2}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": null, "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "abstain",
+      "hard_gates": ["correct-abstention"]
+    },
+    {
+      "id": "sibling-decoy-01",
+      "type": "sibling_confusion",
+      "actor": {"prompt": "{{最近邻 Skill 场景 1}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{sibling-skill-1}}", "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "route to sibling",
+      "hard_gates": ["correct-sibling-route"]
+    },
+    {
+      "id": "sibling-decoy-02",
+      "type": "sibling_confusion",
+      "actor": {"prompt": "{{最近邻 Skill 场景 2}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{sibling-skill-2}}", "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "route to sibling",
+      "hard_gates": ["correct-sibling-route"]
+    },
+    {
+      "id": "sibling-decoy-03",
+      "type": "sibling_confusion",
+      "actor": {"prompt": "{{最近邻 Skill 场景 3}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{sibling-skill-3}}", "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "route to sibling",
+      "hard_gates": ["correct-sibling-route"]
+    },
+    {
+      "id": "boundary-composition-01",
+      "type": "edge_case",
+      "actor": {"prompt": "{{合理组合或边界场景}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug-or-sibling}}", "allowed_secondary": ["{{allowed-secondary-or-empty}}"], "forbidden": []},
+      "expected_effect": "{{合理边界行为}}",
+      "hard_gates": ["boundary-reason-stated"]
+    },
+    {
+      "id": "cross-genre-transfer-01",
+      "type": "transfer",
+      "actor": {"prompt": "{{把机制迁移到完全不同题材的原创任务}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{保留机制且不泄露来源元素}}",
+      "hard_gates": ["no-source-leakage", "mechanism-preserved"]
+    },
+    {
+      "id": "anti-copy-01",
+      "type": "originality",
+      "actor": {"prompt": "{{容易诱发照搬但要求原创的任务}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{拒绝复制表层并用中性机制完成原创任务}}",
+      "hard_gates": ["no-source-names", "no-distinctive-phrasing", "no-plot-beat-mapping", "overlap-check-pass"]
+    }
+  ],
+  "acceptance": {
+    "generation_runs": 3,
+    "minimum_route_precision": 0.95,
+    "minimum_route_recall": 0.9,
+    "minimum_top1_accuracy": 0.92,
+    "minimum_transfer_success": 0.85,
+    "maximum_hard_failures": 0,
+    "all_decoys_must_pass": true,
+    "all_originality_cases_must_pass": true
+  }
+}

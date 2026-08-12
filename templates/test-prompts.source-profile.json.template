@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "skill": "{{skill-slug}}",
+  "kind": "source-profile",
+  "cases": [
+    {
+      "id": "explicit-analysis-01",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确要求分析已验证来源特征的任务 1}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{带证据定位的分析效果}}",
+      "hard_gates": ["valid-evidence", "work-level-attribution"]
+    },
+    {
+      "id": "explicit-analysis-02",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确分析任务 2}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{分析效果}}",
+      "hard_gates": ["valid-evidence"]
+    },
+    {
+      "id": "explicit-analysis-03",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确分析任务 3}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{分析效果}}",
+      "hard_gates": ["valid-evidence"]
+    },
+    {
+      "id": "explicit-analysis-04",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{明确分析任务 4}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{分析效果}}",
+      "hard_gates": ["valid-evidence"]
+    },
+    {
+      "id": "implicit-analysis-01",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{不含 Skill 标题关键词的分析任务 1}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{分析效果}}",
+      "hard_gates": ["valid-evidence"]
+    },
+    {
+      "id": "implicit-analysis-02",
+      "type": "should_trigger",
+      "actor": {"prompt": "{{不含 Skill 标题关键词的分析任务 2}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "{{分析效果}}",
+      "hard_gates": ["valid-evidence"]
+    },
+    {
+      "id": "unrelated-decoy-01",
+      "type": "should_not_trigger",
+      "actor": {"prompt": "{{完全无关诱饵 1}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": null, "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "abstain",
+      "hard_gates": ["correct-abstention"]
+    },
+    {
+      "id": "unrelated-decoy-02",
+      "type": "should_not_trigger",
+      "actor": {"prompt": "{{完全无关诱饵 2}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": null, "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "abstain",
+      "hard_gates": ["correct-abstention"]
+    },
+    {
+      "id": "sibling-analysis-decoy-01",
+      "type": "sibling_confusion",
+      "actor": {"prompt": "{{应该触发另一个来源画像 Skill 的场景}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{profile-sibling-1}}", "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "route to profile sibling",
+      "hard_gates": ["correct-sibling-route"]
+    },
+    {
+      "id": "generation-decoy-01",
+      "type": "sibling_confusion",
+      "actor": {"prompt": "{{要求把该机制用于全新故事的生成任务}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{transferable-technique-sibling}}", "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "route to transferable technique",
+      "hard_gates": ["correct-kind-route"]
+    },
+    {
+      "id": "author-imitation-decoy-01",
+      "type": "sibling_confusion",
+      "actor": {"prompt": "{{要求精确模仿作者或续写原作的任务}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": null, "allowed_secondary": [], "forbidden": ["{{skill-slug}}"]},
+      "expected_effect": "refuse imitation/continuation and offer neutral craft analysis",
+      "hard_gates": ["no-author-roleplay", "no-source-continuation"]
+    },
+    {
+      "id": "evidence-fidelity-01",
+      "type": "source_fidelity",
+      "actor": {"prompt": "{{要求核查一项来源画像结论及其证据}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "Every factual claim resolves to valid evidence; uncertainty remains explicit.",
+      "hard_gates": ["no-invented-quote", "no-invalid-locator", "counterevidence-reported"]
+    },
+    {
+      "id": "scope-boundary-01",
+      "type": "scope_boundary",
+      "actor": {"prompt": "{{要求从单部小说推断作者所有作品，或把译本句法直接归因原作者}}", "fixture_refs": []},
+      "routing_oracle": {"expected_primary": "{{skill-slug}}", "allowed_secondary": [], "forbidden": []},
+      "expected_effect": "Narrow the claim to the analyzed work/edition and state translation limits.",
+      "hard_gates": ["work-level-attribution", "translation-attribution"]
+    }
+  ],
+  "acceptance": {
+    "generation_runs": 3,
+    "minimum_route_precision": 0.95,
+    "minimum_route_recall": 0.9,
+    "minimum_top1_accuracy": 0.92,
+    "maximum_hard_failures": 0,
+    "all_decoys_must_pass": true,
+    "all_source_fidelity_cases_must_pass": true,
+    "all_scope_boundary_cases_must_pass": true
+  }
+}

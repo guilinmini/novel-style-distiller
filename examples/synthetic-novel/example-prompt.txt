@@ -1,0 +1,4 @@
+使用 $novel-style-distiller，蒸馏 examples/synthetic-novel/novel.txt。
+
+这是仓库自带的合成短篇，只用于验证流程。请将它标记为 partial/short-fixture，演示整书模型和候选提取，但不要把短篇样本的结果当作稳定的作者整体风格，也不要发布成正式 Skill pack。
+

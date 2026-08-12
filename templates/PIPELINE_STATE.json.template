@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "book_id": "{{book-slug}}",
+  "source_sha256": "{{NORMALIZED_TEXT_SHA256}}",
+  "status": "in_progress",
+  "current_stage": "intake",
+  "completed_artifacts": [],
+  "coverage": {
+    "non_holdout_chunks": 0,
+    "completed_chunk_extractor_pairs": 0,
+    "required_chunk_extractor_pairs": 0,
+    "failed_pairs": []
+  },
+  "candidates": {
+    "extracted": 0,
+    "verified": 0,
+    "rejected": 0
+  },
+  "skills": [],
+  "user_confirmations": [],
+  "next_action": "{{NEXT_ACTION}}",
+  "updated_at": "{{ISO_8601}}"
+}

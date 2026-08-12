@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/novel-style-distiller/scene-record.schema.json",
+  "title": "Scene ledger record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scene_id",
+    "start_locator",
+    "end_locator",
+    "narrative_position",
+    "story_time",
+    "pov",
+    "present_character_ids",
+    "entry_state",
+    "scene_goal",
+    "obstacle",
+    "turn",
+    "choice",
+    "cost",
+    "exit_state",
+    "information_changes",
+    "opened_thread_ids",
+    "advanced_thread_ids",
+    "closed_thread_ids",
+    "tension",
+    "evidence_ids"
+  ],
+  "properties": {
+    "scene_id": {"type": "string", "minLength": 1},
+    "start_locator": {"type": "string", "minLength": 1},
+    "end_locator": {"type": "string", "minLength": 1},
+    "narrative_position": {"type": "integer", "minimum": 1},
+    "story_time": {"type": "string"},
+    "pov": {
+      "type": "object",
+      "required": ["person", "focalizer", "tense", "allowed_interiority"],
+      "properties": {
+        "person": {"enum": ["first", "second", "third", "mixed"]},
+        "focalizer": {"type": "string"},
+        "tense": {"enum": ["past", "present", "mixed"]},
+        "allowed_interiority": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "location": {"type": "string"},
+    "present_character_ids": {"type": "array", "items": {"type": "string"}},
+    "entry_state": {"type": "string"},
+    "scene_goal": {"type": "string"},
+    "obstacle": {"type": "string"},
+    "turn": {"type": "string"},
+    "choice": {"type": "string"},
+    "cost": {"type": "string"},
+    "exit_state": {"type": "string"},
+    "information_changes": {"type": "array", "items": {"type": "string"}},
+    "opened_thread_ids": {"type": "array", "items": {"type": "string"}},
+    "advanced_thread_ids": {"type": "array", "items": {"type": "string"}},
+    "closed_thread_ids": {"type": "array", "items": {"type": "string"}},
+    "tension": {
+      "type": "object",
+      "required": ["entry", "peak", "exit"],
+      "properties": {
+        "entry": {"type": "number", "minimum": 0, "maximum": 1},
+        "peak": {"type": "number", "minimum": 0, "maximum": 1},
+        "exit": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "tone": {"type": "string"},
+    "evidence_ids": {"type": "array", "items": {"type": "string"}}
+  }
+}
+

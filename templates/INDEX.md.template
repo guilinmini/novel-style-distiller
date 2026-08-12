@@ -1,0 +1,60 @@
+# {{BOOK_TITLE}} — Distilled Skill Index
+
+> 当前作品/版本共生成 **{{N}}** 个通过测试的 Skills。来源原文不包含在本目录中。
+
+## 基本信息
+
+- 作者：{{AUTHOR}}
+- 版本：{{EDITION}}
+- 文本语言/译者：{{TEXT_LANGUAGE}} / {{TRANSLATOR_OR_NONE}}
+- 整书模型：[NOVEL_OVERVIEW.md](./NOVEL_OVERVIEW.md)
+- 剧情图：[PLOT_MAP.md](./PLOT_MAP.md)
+- 人物弧光：[CHARACTER_ARCS.md](./CHARACTER_ARCS.md)
+- 文风画像：[STYLE_PROFILE.md](./STYLE_PROFILE.md)
+- 声音画像：[VOICE_PROFILE.md](./VOICE_PROFILE.md)
+- 创作技法报告：[CRAFT_REPORT.md](./CRAFT_REPORT.md)
+- 版权审计：[COPYRIGHT_REPORT.md](./COPYRIGHT_REPORT.md)
+
+## Source-profile Skills
+
+| Skill | 用途 | 不适用 | 测试 |
+|---|---|---|---|
+| [`{{skill-slug}}`](./skills/{{skill-slug}}/SKILL.md) | {{...}} | {{...}} | {{PASS}} |
+
+## Transferable-technique Skills
+
+### 剧情与人物
+
+| Skill | 目标效果 | 关键触发 | 测试 |
+|---|---|---|---|
+| [`{{skill-slug}}`](./skills/{{skill-slug}}/SKILL.md) | {{...}} | {{...}} | {{PASS}} |
+
+### 叙事、场景与节奏
+
+{{同上}}
+
+### 文风、语气与对白
+
+{{同上}}
+
+## 关系图
+
+```mermaid
+graph LR
+    A[skill-a] -->|depends-on| B[skill-b]
+    A -.->|pairs-with| C[skill-c]
+    C -->|modulates| B
+```
+
+## 推荐组合
+
+| 创作问题 | Primary | Secondary | 顺序 | 冲突提醒 |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## 审计轨迹
+
+- 通过候选：[verified.jsonl](./verified.jsonl)
+- 淘汰候选：[rejected.jsonl](./rejected.jsonl)
+- 流水线状态：[PIPELINE_STATE.json](./PIPELINE_STATE.json)
+

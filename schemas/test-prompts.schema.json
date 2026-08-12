@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/novel-style-distiller/test-prompts.schema.json",
+  "title": "Distilled skill tests",
+  "type": "object",
+  "required": ["schema_version", "skill", "kind", "cases", "acceptance"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "skill": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "kind": {"enum": ["source-profile", "transferable-technique"]},
+    "cases": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "actor", "routing_oracle", "expected_effect", "hard_gates"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"enum": ["should_trigger", "should_not_trigger", "sibling_confusion", "edge_case", "transfer", "originality", "source_fidelity", "scope_boundary"]},
+          "actor": {
+            "type": "object",
+            "required": ["prompt", "fixture_refs"],
+            "properties": {
+              "prompt": {"type": "string", "minLength": 1},
+              "fixture_refs": {"type": "array", "items": {"type": "string"}}
+            }
+          },
+          "routing_oracle": {
+            "type": "object",
+            "required": ["expected_primary", "allowed_secondary", "forbidden"],
+            "properties": {
+              "expected_primary": {"type": ["string", "null"]},
+              "allowed_secondary": {"type": "array", "items": {"type": "string"}},
+              "forbidden": {"type": "array", "items": {"type": "string"}}
+            }
+          },
+          "expected_effect": {"type": "string"},
+          "hard_gates": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "required": ["generation_runs", "minimum_route_precision", "minimum_route_recall", "minimum_top1_accuracy", "maximum_hard_failures", "all_decoys_must_pass"],
+      "properties": {
+        "generation_runs": {"type": "integer", "minimum": 3},
+        "minimum_route_precision": {"type": "number", "minimum": 0, "maximum": 1},
+        "minimum_route_recall": {"type": "number", "minimum": 0, "maximum": 1},
+        "minimum_top1_accuracy": {"type": "number", "minimum": 0, "maximum": 1},
+        "minimum_transfer_success": {"type": "number", "minimum": 0, "maximum": 1},
+        "maximum_hard_failures": {"const": 0},
+        "all_decoys_must_pass": {"const": true},
+        "all_originality_cases_must_pass": {"const": true},
+        "all_source_fidelity_cases_must_pass": {"const": true},
+        "all_scope_boundary_cases_must_pass": {"const": true}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"kind": {"const": "transferable-technique"}}},
+      "then": {
+        "properties": {
+          "acceptance": {
+            "required": ["minimum_transfer_success", "all_originality_cases_must_pass"]
+          },
+          "cases": {
+            "allOf": [
+              {
+                "contains": {"properties": {"type": {"const": "transfer"}}},
+                "minContains": 1
+              },
+              {
+                "contains": {"properties": {"type": {"const": "originality"}}},
+                "minContains": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"kind": {"const": "source-profile"}}},
+      "then": {
+        "properties": {
+          "acceptance": {
+            "required": ["all_source_fidelity_cases_must_pass", "all_scope_boundary_cases_must_pass"]
+          },
+          "cases": {
+            "allOf": [
+              {
+                "contains": {"properties": {"type": {"const": "source_fidelity"}}},
+                "minContains": 1
+              },
+              {
+                "contains": {"properties": {"type": {"const": "scope_boundary"}}},
+                "minContains": 1
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

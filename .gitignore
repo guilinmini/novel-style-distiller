@@ -1,0 +1,22 @@
+# User-provided source novels
+sources/
+books/
+*.epub
+*.mobi
+*.azw
+*.azw3
+*.pdf
+
+# Per-book build artifacts
+distillations/
+runs/
+
+# Local caches and environments
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+

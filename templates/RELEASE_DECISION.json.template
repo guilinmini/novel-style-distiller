@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "book_id": "{{book-slug}}",
+  "normalized_text_sha256": "{{NORMALIZED_TEXT_SHA256}}",
+  "copyright_report": "COPYRIGHT_REPORT.md",
+  "approved": false,
+  "blockers": ["{{Remove every blocker before changing approved to true}}"],
+  "generated_artifacts": [
+    {
+      "path": "{{relative draft path}}",
+      "overlap_result_path": "{{relative overlap JSON path}}",
+      "passed": false
+    }
+  ],
+  "reviewer": "{{REVIEWER}}",
+  "reviewed_at": "{{ISO_8601}}"
+}
+

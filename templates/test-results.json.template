@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "skill": "{{skill-slug}}",
+  "kind": "{{source-profile|transferable-technique}}",
+  "method": "{{independent-blind-agent|main-agent-fallback}}",
+  "minimum_runs_per_case": 3,
+  "case_results": [
+    {
+      "case_id": "{{case-id}}",
+      "runs": 3,
+      "passed": true,
+      "median_score": 1.0,
+      "hard_failures": [],
+      "notes": "{{NOTES}}"
+    }
+  ],
+  "metrics": {
+    "route_precision": 1.0,
+    "route_recall": 1.0,
+    "top1_accuracy": 1.0,
+    "transfer_success": null,
+    "source_fidelity_pass_rate": null,
+    "scope_boundary_pass_rate": null
+  },
+  "gates": {
+    "all_decoys_passed": true,
+    "all_sibling_confusion_passed": true,
+    "all_originality_cases_passed": null,
+    "all_source_fidelity_cases_passed": null,
+    "all_scope_boundary_cases_passed": null
+  },
+  "hard_failures": [],
+  "passed": true,
+  "evaluated_at": "{{ISO_8601}}"
+}
+

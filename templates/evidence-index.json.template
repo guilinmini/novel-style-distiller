@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "skill": "{{skill-slug}}",
+  "source_sha256": "{{NORMALIZED_TEXT_SHA256}}",
+  "records": [
+    {
+      "evidence_id": "{{evidence-id}}",
+      "locator": "ch01.s01.p001",
+      "chunk_id": "chunk-001",
+      "structural_region": "opening",
+      "relation": "{{supports|qualifies|contradicts}}",
+      "role": "{{evidence role}}",
+      "paraphrase": "{{不含可替代原文表达的简短证据释义}}",
+      "excerpt_hash": "{{EXCERPT_SHA256}}",
+      "holdout": false
+    }
+  ]
+}
+
