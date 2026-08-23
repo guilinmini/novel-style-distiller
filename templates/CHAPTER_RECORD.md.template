@@ -1,0 +1,74 @@
+# {{PROJECT_TITLE}} — {{CHAPTER_ID}} Record
+
+## Identity and acceptance
+
+- Chapter file: `{{PATH}}`
+- Status: `{{DRAFT|ACCEPTED|SUPERSEDED}}`
+- Revision: {{...}}
+- Accepted by: {{explicit user message / implicit next-chapter request / not accepted}}
+- Accepted at: {{ISO_8601_OR_NONE}}
+- Style pack: `{{PACK_ID}}@{{SEMVER}}`
+- Contract hash: `{{SHA256_OR_NOT_RECORDED}}`
+
+## Causal summary
+
+{{A short summary of goals, choices, turns, and consequences—not a prose recap.}}
+
+## Canon deltas
+
+### Facts and character state
+
+| ID | Before | After | Evidence in chapter |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{scene/section}} |
+
+### Knowledge and relationships
+
+| Character/relation ID | Learned/revealed/changed | Reader status |
+|---|---|---|
+| {{...}} | {{fact/change}} | {{...}} |
+
+### Objects, resources, and constraints
+
+| ID | Change | New owner/location/state |
+|---|---|---|
+| {{...}} | {{...}} | {{...}} |
+
+## Thread deltas
+
+| Thread ID | Action | New status | Next obligation/window |
+|---|---|---|---|
+| {{...}} | {{created/advanced/reframed/paid/deferred/abandoned}} | {{...}} | {{...}} |
+
+## Timeline deltas
+
+| Event ID | Story time | Cause/effect | Reader status |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Style review
+
+- Scene modes used: {{...}}
+- Always-on invariant check: {{PASS/FAIL and note}}
+- Drift symptoms found/fixed: {{...}}
+- Mechanical repetition check: {{PASS/FAIL and note}}
+- Source leakage check: {{PASS/FAIL and note}}
+
+## Continuity review
+
+- POV and knowledge: {{PASS/FAIL and note}}
+- Time/location/objects/injuries/resources: {{PASS/FAIL and note}}
+- Bible and accepted-history conflicts: {{none or details}}
+
+## Handoff to next chapter
+
+- Immediate pressure: {{...}}
+- Open decision: {{...}}
+- Required context: {{IDs and paths}}
+- Tail reference: `{{chapter path and optional marker}}`
+
+## Revision history
+
+| Revision | Status | What changed | Canon impact | Revalidated |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{none/details}} | {{...}} |

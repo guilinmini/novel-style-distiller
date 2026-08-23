@@ -1,0 +1,59 @@
+# {{PROJECT_TITLE}} — Current State
+
+> Compact, high-signal canon for preparing the next chapter. Accepted facts only.
+
+## Checkpoint
+
+- Accepted through: {{chapter ID or `none`}}
+- Next planned chapter: {{chapter ID}}
+- Story date/time: {{...}}
+- Active location(s): {{...}}
+- State updated from: {{chapter record or initialization}}
+- Updated at: {{ISO_8601}}
+
+## Immediate situation
+
+- Current pressure: {{...}}
+- Irreversible latest result: {{...}}
+- Next likely decision/obstacle: {{...}}
+- Resources gained/lost: {{...}}
+
+## Active characters
+
+| Character ID | Location/status | Immediate goal | Physical/emotional condition | Knows | Believes wrongly / does not know |
+|---|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{fact IDs}} | {{fact IDs}} |
+
+## Active relationships
+
+| Relation ID | Current state | Latest change | Unspoken pressure |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Reader knowledge
+
+- Confirmed to reader: {{fact IDs}}
+- Hinted but unconfirmed: {{fact/thread IDs}}
+- Still hidden author truth: {{fact IDs}}
+
+## Objects and constraints in play
+
+| ID | Current owner/location/state | Constraint or consequence |
+|---|---|---|
+| {{...}} | {{...}} | {{...}} |
+
+## Near-term open threads
+
+| Thread ID | Current pressure | Due window | Next permitted move |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Previous chapter handoff
+
+- Summary: {{short causal summary}}
+- Final position: {{where characters and conflict were left}}
+- Tail reference: `{{chapter path and optional section marker}}`
+
+## Do not carry forward
+
+- {{Resolved details moved to chapter record/timeline and no longer needed in working context.}}

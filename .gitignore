@@ -9,6 +9,7 @@ books/
 
 # Per-book build artifacts
 distillations/
+novel-projects/
 runs/
 
 # Local files

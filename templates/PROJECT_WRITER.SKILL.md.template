@@ -1,0 +1,81 @@
+---
+name: {{PROJECT_SLUG}}-writer
+description: >-
+  Write, continue, or revise chapters of {{PROJECT_TITLE}} using its locked style contract, outline, and persistent canon state. Use when the user asks to 写本项目第N章、下一章、续写、改写章节、定稿或检查本书文风连续性. Do not use for another novel, source-book analysis, general summaries, or imitation of a named author.
+---
+
+# {{PROJECT_TITLE}} Writer
+
+This is the runtime writing Skill for project `{{PROJECT_SLUG}}`. Resolve the project root as three directories above this `SKILL.md` and verify that its `NOVEL_PROJECT.md` has project ID `{{PROJECT_SLUG}}`. If the host relocates loaded Skills, search from the current working directory upward for that exact project ID. Do not operate on a different project with the same title.
+
+## Required loading order
+
+Before every chapter draft, continuation, or revision, read:
+
+1. `NOVEL_PROJECT.md`
+2. `style/PACK_MANIFEST.md`
+3. `style/WRITING_STYLE_CONTRACT.md`
+4. the target chapter blueprint, or its row in `outline/MASTER_OUTLINE.md`
+5. `state/CURRENT_STATE.md`
+6. relevant entries from `bible/STORY_BIBLE.md`
+7. relevant and due entries from `state/PLOT_THREADS.md` and `state/TIMELINE.md`
+8. the previous chapter record, summary, and only the tail needed for continuity
+
+The style contract is mandatory. Stop and report the exact missing or mismatched file if its pack ID/version differs from `NOVEL_PROJECT.md`.
+
+Never read a source novel, `distillations/*/audit/`, source evidence, or source profiles while writing this project. Do not infer style rules from an author or book name.
+
+## Chapter loop
+
+Always run:
+
+```text
+PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
+```
+
+### PREPARE
+
+Confirm start time, location, POV, present characters, knowledge boundaries, previous irreversible results, due threads, chapter goal, and selected style modes. Report contradictions instead of silently choosing a fact.
+
+### PLAN
+
+Create or update `outline/chapters/<chapter-id>.md` as a draft blueprint. Define the chapter's observable state change and scene cards. A planning file is not canon.
+
+### DRAFT
+
+Apply all always-on style invariants. Modulate only scene-level controls with the contract's action, dialogue, introspection, transition, or climax modes. Canon, causality, character knowledge, POV, timeline, and the user's request outrank local ornament.
+
+### REVIEW
+
+Check task completion, continuity, knowledge, POV, timeline, style drift, mechanical repetition, and source leakage. Fix every hard failure before delivery.
+
+### DELIVER
+
+Deliver a readable chapter and a brief note naming the main scene modes and advanced threads. Mark it `DRAFT / NOT COMMITTED`. Do not update canon state yet.
+
+### ACCEPT / COMMIT
+
+`COMMIT` here means writing accepted story canon and state, not running Git commit or push. Perform version-control operations only when the user separately requests them.
+
+Commit canon only after explicit user acceptance, or when the user asks for the next chapter without revising the delivered draft. Then, in order:
+
+1. save/mark the chapter as accepted;
+2. write `state/chapter-records/<chapter-id>.md`;
+3. update `state/TIMELINE.md`;
+4. update `state/PLOT_THREADS.md`;
+5. update `state/CURRENT_STATE.md`;
+6. update chapter status in the outline;
+7. update progress in `NOVEL_PROJECT.md`.
+
+Keep stable IDs and record only the accepted deltas. Verify the files agree before starting another chapter.
+
+## Revision rule
+
+Revising an unaccepted draft does not advance the chapter or change canon. Before changing an accepted chapter, classify the edit as prose-only or canon-changing. For canon changes, show affected later chapters and state files, obtain confirmation, then propagate the revision in chapter order and preserve a supersession record.
+
+## Quality boundary
+
+- Use entirely original characters, setting, relationships, events, language, and imagery.
+- Never continue, rename, or reconstruct the source novel behind the style pack.
+- Stable style means contract consistency across varied scenes, not the same cadence in every paragraph.
+- Do not let style override clarity, character specificity, story movement, or established truth.

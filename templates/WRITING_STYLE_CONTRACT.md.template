@@ -1,0 +1,142 @@
+# Writing Style Contract
+
+> Pack: `{{PACK_ID}}` · Version: `{{SEMVER}}` · Runtime only
+
+This contract describes observable writing behavior for fully original fiction. It contains no source identity, quotations, locators, characters, setting, or plot mapping.
+
+## Contract identity
+
+- Primary language: {{...}}
+- Suitable narrative range: {{...}}
+- Core reader experience: {{...}}
+- Non-goals: {{...}}
+
+## Always-on invariants
+
+These rules apply to every chapter and every scene unless the user explicitly changes the project contract.
+
+| Dimension | Required behavior | Observable check | Hard violation |
+|---|---|---|---|
+| POV and access | {{...}} | {{...}} | {{...}} |
+| Tense | {{...}} | {{...}} | {{...}} |
+| Narrative distance | {{...}} | {{...}} | {{...}} |
+| Narrator stance/temperature | {{...}} | {{...}} | {{...}} |
+| Information permissions | {{...}} | {{...}} | {{...}} |
+| Diction register | {{...}} | {{...}} | {{...}} |
+
+## Rule tiers
+
+### Must
+
+- {{Rule that should be observable throughout the work.}}
+
+### Usually
+
+- {{Default pattern that may yield to scene function.}}
+
+### Sometimes
+
+- {{Accent used only under stated conditions.}}
+
+### Avoid
+
+- {{Failure pattern or incompatible surface habit.}}
+
+## Prose controls
+
+### Diction
+
+- Concrete/abstract balance: {{...}}
+- Verb and modifier tendency: {{...}}
+- Register and idiom: {{...}}
+- Terms or habits to avoid: {{...}}
+
+### Syntax, rhythm, and paragraphs
+
+- Baseline sentence distribution: {{...}}
+- Clause and punctuation behavior: {{...}}
+- Paragraph density and white space: {{...}}
+- Conditions for fragments or one-line paragraphs: {{...}}
+- Anti-repetition rule: {{...}}
+
+### Dialogue
+
+- Dialogue-to-narration balance: {{...}}
+- Subtext and explicitness: {{...}}
+- Attribution and action beats: {{...}}
+- Character-voice separation: {{...}}
+
+### Emotion and interiority
+
+- Emotion naming: {{...}}
+- Action/body/object externalization: {{...}}
+- Interior access and duration: {{...}}
+- Restraint/escalation behavior: {{...}}
+
+### Imagery and sensory attention
+
+- Preferred sensory ordering: {{...}}
+- Image domains: {{neutral, non-source-specific domains}}
+- Metaphor density and novelty: {{...}}
+- Motif repetition limit: {{...}}
+
+### Information and pacing
+
+- Exposition delivery: {{...}}
+- Reveal/withhold behavior: {{...}}
+- Scene versus summary ratio: {{...}}
+- Transition and ellipsis behavior: {{...}}
+
+## Scene modes
+
+Always-on invariants remain active. A scene mode changes only the listed controls.
+
+| Mode | Use when | Increase | Reduce | Required exit condition | Overuse symptom |
+|---|---|---|---|---|---|
+| `action` | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+| `dialogue` | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+| `introspection` | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+| `transition` | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+| `climax` | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Strength controls
+
+| Control | Low | Medium | High | Never exceed |
+|---|---|---|---|---|
+| Narrative compression | {{...}} | {{...}} | {{...}} | {{...}} |
+| Interior depth | {{...}} | {{...}} | {{...}} | {{...}} |
+| Dialogue subtext | {{...}} | {{...}} | {{...}} | {{...}} |
+| Image density | {{...}} | {{...}} | {{...}} | {{...}} |
+| Rhythmic contrast | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Priority and conflict resolution
+
+Story canon, character knowledge, POV, timeline, and the user's chapter request outrank local stylistic preference. When two style rules conflict: {{priority rule and tie-breaker}}.
+
+## Drift symptoms and repairs
+
+| Symptom | Likely drift | Repair |
+|---|---|---|
+| {{Every paragraph has the same cadence.}} | {{...}} | {{...}} |
+| {{Characters share one dialogue voice.}} | {{...}} | {{...}} |
+| {{Explanation replaces enacted change.}} | {{...}} | {{...}} |
+| {{Surface ornament overwhelms scene goal.}} | {{...}} | {{...}} |
+
+## Chapter preflight
+
+- [ ] Confirm POV, tense, narrative access, and narrator temperature.
+- [ ] Select scene modes and strength settings from chapter function.
+- [ ] Identify one or two style risks specific to this chapter.
+- [ ] Confirm no source audit or source text is loaded.
+
+## Chapter postflight
+
+- [ ] Always-on invariants remain intact.
+- [ ] Scene modes vary by function without mechanical repetition.
+- [ ] Dialogue voices remain character-specific.
+- [ ] Style did not override canon, causality, POV, or clarity.
+- [ ] No source identity, proper noun, distinctive phrasing, setting, or plot sequence leaked.
+
+## Source-isolation declaration
+
+The rules above are neutralized mechanisms for original fiction. Do not infer missing rules from an author name, book title, source text, audit profile, or model memory.

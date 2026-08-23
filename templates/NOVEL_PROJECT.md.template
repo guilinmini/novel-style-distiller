@@ -1,0 +1,66 @@
+# {{PROJECT_TITLE}}
+
+## Project identity
+
+- Project ID: `{{PROJECT_SLUG}}`
+- Status: `{{PLANNING|DRAFTING|REVISING|COMPLETE}}`
+- Language: {{...}}
+- Genre / audience: {{...}}
+- Target length: {{...}}
+- POV / tense: {{...}}
+- Created at: {{ISO_8601}}
+- Updated at: {{ISO_8601}}
+
+## Creative brief
+
+- User theme: {{...}}
+- Premise: {{...}}
+- Central dramatic question: {{...}}
+- Thematic tension: {{...}}
+- Reader promise: {{...}}
+- Ending direction: {{...}}
+- Explicit user constraints: {{...}}
+
+## Locked style pack
+
+- Pack ID: `{{PACK_ID}}`
+- Version: `{{SEMVER}}`
+- Contract hash: `{{SHA256_OR_NOT_RECORDED}}`
+- Local manifest: [style/PACK_MANIFEST.md](style/PACK_MANIFEST.md)
+- Local contract: [style/WRITING_STYLE_CONTRACT.md](style/WRITING_STYLE_CONTRACT.md)
+- Upgrade policy: explicit review and regression only; never silently follow upstream changes
+
+## Progress
+
+- Current stage: {{...}}
+- Accepted through: {{chapter ID or `none`}}
+- Active draft: {{chapter ID or `none`}}
+- Next planned chapter: {{chapter ID}}
+- Canon state: [state/CURRENT_STATE.md](state/CURRENT_STATE.md)
+
+## Project files
+
+- Story Bible: [bible/STORY_BIBLE.md](bible/STORY_BIBLE.md)
+- Master outline: [outline/MASTER_OUTLINE.md](outline/MASTER_OUTLINE.md)
+- Chapter blueprints: `outline/chapters/`
+- Plot threads: [state/PLOT_THREADS.md](state/PLOT_THREADS.md)
+- Timeline: [state/TIMELINE.md](state/TIMELINE.md)
+- Accepted chapters: `chapters/`
+- Chapter records: `state/chapter-records/`
+- Runtime writer: [project writer Skill](.agents/skills/{{PROJECT_SLUG}}-writer/SKILL.md)
+
+## Assumptions pending confirmation
+
+| ID | Assumption | Why it was needed | Impact if changed | Status |
+|---|---|---|---|---|
+| assumption-001 | {{...}} | {{...}} | {{...}} | {{open/accepted/rejected}} |
+
+## Acceptance policy
+
+A delivered chapter remains a draft until the user accepts it. Asking for the next chapter without requesting revisions counts as implicit acceptance of the immediately preceding draft. Revisions do not advance the chapter number.
+
+## Change log
+
+| Date | Change | User decision / reason |
+|---|---|---|
+| {{ISO_8601}} | Project initialized | {{...}} |

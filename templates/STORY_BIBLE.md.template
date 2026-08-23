@@ -1,0 +1,75 @@
+# {{PROJECT_TITLE}} — Story Bible
+
+> Stable project truth. Plans belong in the outline; chapter-specific deltas belong in chapter records.
+
+## Premise and promise
+
+- Premise: {{...}}
+- Theme as a tension, not a slogan: {{...}}
+- Genre promise: {{...}}
+- Emotional promise: {{...}}
+- Ending constraints: {{...}}
+
+## Hard world rules
+
+| Rule ID | Rule | Consequence | Exceptions | First established |
+|---|---|---|---|---|
+| world-001 | {{...}} | {{...}} | {{none or explicit}} | {{planning/chapter ID}} |
+
+## Characters
+
+### `{{CHARACTER_ID}}` — {{NAME}}
+
+- Story role: {{...}}
+- External desire / immediate need: {{...}}
+- Fear / wound / false belief: {{...}}
+- Resources and limits: {{...}}
+- Moral line and likely cost: {{...}}
+- Baseline behavior under pressure: {{...}}
+- Dialogue identity: {{vocabulary, directness, rhythm, avoidance pattern}}
+- Stable physical facts: {{...}}
+- Arc start / intended transformation: {{...}}
+- Knows at project start: {{fact IDs}}
+- Does not know: {{fact IDs}}
+- Secrets held: {{secret IDs}}
+- Forbidden contradictions: {{...}}
+
+## Relationships
+
+| Relation ID | Parties | Public relation | Private tension | Power balance | Arc direction |
+|---|---|---|---|---|---|
+| rel-001 | {{IDs}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Locations
+
+| Location ID | Function | Stable facts | Access/limits | Sensory identity |
+|---|---|---|---|---|
+| loc-001 | {{...}} | {{...}} | {{...}} | {{original, project-specific}} |
+
+## Factions and institutions
+
+| ID | Goal | Resources | Rules | Relationships |
+|---|---|---|---|---|
+| faction-001 | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Important objects and resources
+
+| ID | Owner/location at start | Capability | Limitation | Narrative function |
+|---|---|---|---|---|
+| object-001 | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Secrets and knowledge permissions
+
+| Fact ID | Author truth | Characters who know | Reader status at start | Reveal constraints |
+|---|---|---|---|---|
+| fact-001 | {{...}} | {{IDs/none}} | {{hidden/known/misunderstood}} | {{...}} |
+
+## Terminology
+
+| Term | Meaning | Allowed variants | Avoid |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Originality declaration
+
+All characters, relationships, settings, institutions, objects, secrets, and plot facts in this Bible must arise from the user's theme and this project. Do not map them one-to-one to any source novel used to derive the style contract.

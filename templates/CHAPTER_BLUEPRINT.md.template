@@ -1,0 +1,56 @@
+# {{PROJECT_TITLE}} — {{CHAPTER_ID}} Blueprint
+
+## Identity
+
+- Working title: {{...}}
+- Status: `{{PLANNED|DRAFTING|DRAFT_DELIVERED|ACCEPTED|REVISION}}`
+- POV / tense: {{...}}
+- Style pack: `{{PACK_ID}}@{{SEMVER}}`
+- Target length: {{...}}
+
+## Inherited state
+
+- Story time / location: {{...}}
+- POV character state and knowledge: {{...}}
+- Other present characters: {{...}}
+- Previous irreversible result: {{...}}
+- Due/high-priority threads: {{IDs}}
+
+## Chapter contract
+
+- Chapter function: {{...}}
+- Immediate goal: {{...}}
+- Main obstacle: {{...}}
+- Stakes / cost: {{...}}
+- Start state → end state: {{...}}
+- Required facts/threads: {{...}}
+- Forbidden reveals/actions: {{...}}
+- Exit hook or closure: {{...}}
+
+## Scene cards
+
+### Scene `{{SCENE_ID}}`
+
+- Location / time: {{...}}
+- POV: {{...}}
+- Character goal: {{...}}
+- Obstacle: {{...}}
+- Turn / irreversible beat: {{...}}
+- Information released / withheld: {{...}}
+- Emotional or genre reward: {{...}}
+- Exit condition: {{...}}
+- Style mode and strength: `{{action|dialogue|introspection|transition|climax}}`, {{low/medium/high controls}}
+
+## Continuity risks
+
+| Risk | Files/facts to check | Prevention |
+|---|---|---|
+| {{...}} | {{...}} | {{...}} |
+
+## Acceptance criteria
+
+- [ ] The chapter creates the planned state change.
+- [ ] Character knowledge, POV, timeline, objects, injuries, and relationships remain consistent.
+- [ ] Required threads move without premature payoff of forbidden threads.
+- [ ] Always-on style rules and selected scene modes are observable without mechanical repetition.
+- [ ] No source identity, language, setting, character, or plot sequence leaks into the chapter.

@@ -1,0 +1,23 @@
+# {{PROJECT_TITLE}} — Plot Threads
+
+## Active thread ledger
+
+| Thread ID | Type | Promise/question | Priority | Status | Setup | Last touched | Due/payoff window | Payoff condition | Related IDs |
+|---|---|---|---|---|---|---|---|---|---|
+| thread-001 | {{main/subplot/mystery/relationship/foreshadow}} | {{...}} | {{high/medium/low}} | {{open/escalating/ready/paid/deferred/abandoned}} | {{chapter or plan}} | {{chapter}} | {{...}} | {{...}} | {{...}} |
+
+## Reader promises
+
+| Promise ID | Created by | Expected kind of reward | Latest acceptable window | Status |
+|---|---|---|---|---|
+| promise-001 | {{thread/chapter}} | {{answer/choice/reversal/emotional payoff}} | {{...}} | {{...}} |
+
+## Overdue or collision risks
+
+- {{Thread ID}}: {{why it is overdue, crowded, contradictory, or too predictable}}
+
+## Update log
+
+| Chapter | Thread ID | Change | Reader-facing effect | Next obligation |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{created/advanced/reframed/paid/deferred/abandoned}} | {{...}} | {{...}} |

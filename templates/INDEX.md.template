@@ -14,6 +14,7 @@
 - 声音画像：[VOICE_PROFILE.md](./VOICE_PROFILE.md)
 - 创作技法报告：[CRAFT_REPORT.md](./CRAFT_REPORT.md)
 - 版权审计：[COPYRIGHT_REPORT.md](./COPYRIGHT_REPORT.md)
+- 运行时风格包：[PACK_MANIFEST.md](../runtime-style-pack/PACK_MANIFEST.md)
 
 ## Source-profile Skills
 
@@ -58,3 +59,6 @@ graph LR
 - 淘汰候选：[rejected.jsonl](./rejected.jsonl)
 - 流水线状态：[PIPELINE_STATE.json](./PIPELINE_STATE.json)
 
+## 运行时边界
+
+原创项目只复制 `../runtime-style-pack/`。本审计目录、来源画像、证据账本和 source-profile Skills 不是写章依赖。

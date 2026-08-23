@@ -1,0 +1,9 @@
+使用 $novel-style-distiller，采用
+distillations/synthetic-fixture/runtime-style-pack/，根据下面的主题建立一部
+完全原创的短篇连载项目，输出到 novel-projects/tide-clock/：
+
+一座只在退潮时显露的钟楼中，年轻修表师必须在七次潮汐之内找出
+一封寄给未来自己的信为什么少了一页。
+
+请创建 Story Bible、总纲、第一章蓝图、初始状态和项目专属 writer Skill。
+不要借用合成来源样本的人物、场景、专名或事件。

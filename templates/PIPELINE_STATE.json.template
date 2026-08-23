@@ -17,6 +17,13 @@
     "rejected": 0
   },
   "skills": [],
+  "runtime_pack": {
+    "status": "not_built",
+    "pack_id": null,
+    "version": null,
+    "contract_sha256": null,
+    "source_isolation": "not_run"
+  },
   "user_confirmations": [],
   "next_action": "{{NEXT_ACTION}}",
   "updated_at": "{{ISO_8601}}"

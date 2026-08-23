@@ -1,0 +1,47 @@
+# Runtime Style Pack Manifest
+
+## Identity
+
+- Pack ID: `{{PACK_ID}}`
+- Version: `{{SEMVER}}`
+- Status: `{{EXPERIMENTAL|VALIDATED|BLOCKED}}`
+- Built at: `{{ISO_8601}}`
+- Contract: `WRITING_STYLE_CONTRACT.md`
+- Contract hash: `{{SHA256_OR_NOT_RECORDED}}`
+- Contract language: `{{LANGUAGE}}`
+
+## Intended use
+
+- Supported use: original novel planning, drafting, continuation, revision, and style-drift review
+- Tested genres/scenes: {{...}}
+- Known limits: {{...}}
+- Incompatible use: source-novel continuation, author role-play, passage imitation, or reuse of source story elements
+
+## Runtime allowlist
+
+Only these paths belong to this pack:
+
+- `PACK_MANIFEST.md`
+- `WRITING_STYLE_CONTRACT.md`
+- `techniques/{{skill-slug}}/SKILL.md` {{or `none`}}
+
+## Validation
+
+| Gate | Result | Notes |
+|---|---|---|
+| Contract execution | {{PASS/FAIL/NOT_RUN}} | {{...}} |
+| Cross-genre transfer | {{PASS/FAIL/NOT_RUN}} | {{...}} |
+| Scene-mode variation | {{PASS/FAIL/NOT_RUN}} | {{...}} |
+| Three-chapter drift | {{PASS/FAIL/NOT_RUN}} | {{...}} |
+| Source-isolation scan | {{PASS/FAIL/NOT_RUN}} | {{...}} |
+| Human review | {{PASS/FAIL/NOT_RUN}} | {{...}} |
+
+## Source-isolation declaration
+
+This runtime pack contains no source text, evidence excerpts, source locators, author or book identity, source-specific proper nouns, character/world mappings, or recoverable plot outline. The private audit that justified this contract is not a runtime dependency.
+
+## Portability and change control
+
+- Projects must copy and lock this pack rather than link to a mutable upstream directory.
+- Any contract change requires a version increment and a drift/source-isolation regression check.
+- `BLOCKED` packs must not be used to create or write a production novel project.

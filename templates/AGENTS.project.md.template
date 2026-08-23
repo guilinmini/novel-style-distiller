@@ -1,0 +1,13 @@
+# Project writing instructions
+
+<!-- novel-style-distiller:start -->
+
+For every request to plan, write, continue, revise, accept, or review a chapter of **{{PROJECT_TITLE}}**, use `${{PROJECT_SLUG}}-writer` from `.agents/skills/{{PROJECT_SLUG}}-writer/SKILL.md`.
+
+- Treat `NOVEL_PROJECT.md`, accepted chapters, and files under `bible/`, `outline/`, and `state/` as the project's durable memory.
+- Load `style/WRITING_STYLE_CONTRACT.md` for every chapter task.
+- Do not load source novels or distillation audit files while writing this project.
+- Do not update canon until a chapter is accepted according to the project policy.
+- Preserve all instructions outside this marked block when updating it.
+
+<!-- novel-style-distiller:end -->

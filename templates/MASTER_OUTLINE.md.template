@@ -1,0 +1,47 @@
+# {{PROJECT_TITLE}} — Master Outline
+
+> This is the current plan, not a record of events that have already happened. Accepted chapters and state files define canon.
+
+## End state and central arc
+
+- Opening imbalance: {{...}}
+- Irreversible central change: {{...}}
+- Climactic choice: {{...}}
+- Intended ending state: {{...}}
+- Thematic consequence: {{...}}
+
+## Act / volume architecture
+
+| Unit ID | Function | Entry state | Escalation | Irreversible turn | Exit state | Target chapters |
+|---|---|---|---|---|---|---|
+| act-1 | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Character arcs
+
+| Character ID | Starting belief | Pressure sequence | Key choices | Cost | Intended end state |
+|---|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Thread schedule
+
+| Thread ID | Setup window | Escalation window | Turn/reframe | Payoff window | Dependency |
+|---|---|---|---|---|---|
+| thread-001 | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Chapter ledger
+
+| Chapter ID | Working title | Function | POV | Planned change | Threads | Status |
+|---|---|---|---|---|---|---|
+| ch-001 | {{...}} | {{...}} | {{...}} | {{...}} | {{IDs}} | {{planned/draft/accepted/revise}} |
+
+## Scope-change protocol
+
+- Local scene changes may update the chapter blueprint without changing this outline.
+- Changes to the ending, central arc, act turns, major character arc, or thread payoff require explicit user confirmation.
+- After an approved scope change, update affected chapter blueprints and state dependencies; do not rewrite accepted history silently.
+
+## Revision log
+
+| Version/date | Changed units | Reason | User confirmation | Required follow-up |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |

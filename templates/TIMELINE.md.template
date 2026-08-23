@@ -1,0 +1,17 @@
+# {{PROJECT_TITLE}} — Canon Timeline
+
+> Accepted events only. Planned events remain in the outline.
+
+| Event ID | Story time | Chapter | Location | Participants | Cause | Event/effect | Reader status | Canon status |
+|---|---|---|---|---|---|---|---|---|
+| evt-001 | {{...}} | {{ch-001}} | {{location ID}} | {{character IDs}} | {{event/fact IDs}} | {{...}} | {{known/hidden/misunderstood}} | {{active/superseded}} |
+
+## Temporal constraints
+
+- {{Travel time, deadline, age, season, duration, or sequencing constraint.}}
+
+## Revision log
+
+| Date | Event IDs | Change | Reason | Affected chapters |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |

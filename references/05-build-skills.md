@@ -75,3 +75,16 @@ frontmatter 只保留 `name` 和 `description`。`description` 必须同时写�
 - 把原作事件简单换名当作示例；
 - 把分析画像与创作技法混成同一个触发器；
 - 用作者姓名、书名或角色名提高生成 Skill 的触发率。
+
+## 编译运行时风格契约
+
+画像和原子 Skill 属于审计层，不能直接全部塞进长篇写作上下文。验证完成后，按 [08-style-pack-and-project-setup.md](08-style-pack-and-project-setup.md) 将通过项编译为 `runtime-style-pack/`：
+
+1. 把来源描述改写为无来源身份的可执行参数；
+2. 区分 always-on 常量、场景模式与偶发装饰；
+3. 合并重复或冲突规则，给出优先级和强度旋钮；
+4. 删除证据定位、引文、来源专名和情节映射；
+5. 生成 `WRITING_STYLE_CONTRACT.md` 与 `PACK_MANIFEST.md`；
+6. 只有确有独立路由价值的技法才复制进 `techniques/`。
+
+运行时契约是原创小说每章必须加载的稳定接口；来源画像仍留在 `audit/`，只用于复核和重编译。

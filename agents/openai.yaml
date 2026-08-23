@@ -1,4 +1,4 @@
 interface:
   display_name: "Novel Style Distiller"
-  short_description: "Distill novels into evidence-backed writing skills"
-  default_prompt: "Use $novel-style-distiller to turn this complete novel into an evidence-backed skill pack for original fiction writing."
+  short_description: "Distill a style, start a novel, and keep chapters consistent"
+  default_prompt: "Use $novel-style-distiller to distill this complete novel into a reusable style contract, then start an original novel from my theme."
