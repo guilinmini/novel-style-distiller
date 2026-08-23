@@ -15,9 +15,12 @@ Long novels cannot safely rely on a single growing summary or the conversation w
 | relational/information state | trust, leverage, secrets, knowledge | relationship and knowledge ledgers |
 | chronological state | accepted events and constraints | timeline and continuity ledger |
 | promise state | open questions, setups and payoffs | plot-thread ledger |
+| reward/retention state | progression, suppression debt, hooks, emotion rhythm | reward and serial-rhythm ledgers |
 | episodic memory | accepted per-chapter changes | `state/chapter-records/` |
+| structured checkpoint | 15-field post-chapter snapshot and typed deltas | `<chapter-id>.changes.json` |
 | compressed history | act/volume causal summaries | `state/summaries/` |
 | decision memory | user decisions and material assumptions | decision log |
+| orchestration memory | batch authorization, progress and resume point | `state/batches/` |
 | temporary context | selected inputs for one chapter | `state/context/` |
 
 ## Required project memory layout
@@ -32,13 +35,23 @@ state/
 ├── TIMELINE.md
 ├── CONTINUITY_LEDGER.md
 ├── DECISION_LOG.md
+├── REWARD_LEDGER.md
+├── SERIAL_RHYTHM.md
+├── BATCH_INDEX.md
+├── ACTIVE_BATCH.md              # only while/after a batch exists
 ├── characters/<character-id>.md
 ├── entities/<entity-id>.md
 ├── chapter-records/<chapter-id>.md
+├── chapter-records/<chapter-id>.changes.json
 ├── summaries/<scope-id>.md
 ├── context/<chapter-id>.md
-└── revisions/<revision-id>.md
+├── revisions/<revision-id>.md
+└── batches/<batch-id>/
+    ├── BATCH_JOB.md
+    └── BATCH_PLAN.md
 ```
+
+The project also keeps `schemas/chapter-changes.schema.json`. Markdown remains the human-readable canon interface; structured changes make per-chapter writeback checkable and resumable.
 
 Use stable lowercase IDs. Renaming a display name must not create a new entity ID.
 
@@ -61,7 +74,7 @@ Always include:
 
 - locked style contract/version;
 - current chapter goal and hard constraints;
-- `MEMORY_INDEX.md` and `CURRENT_STATE.md`;
+- `MEMORY_INDEX.md`, `CURRENT_STATE.md`, `REWARD_LEDGER.md`, and `SERIAL_RHYTHM.md`;
 - previous accepted chapter record and necessary tail reference;
 - POV character state and knowledge;
 - due/high-priority threads;
@@ -81,14 +94,16 @@ Do not include complete old chapters, the full audit, all entity files, or every
 After acceptance, update in causal order:
 
 1. accepted chapter and chapter record;
-2. timeline events;
-3. character and entity state;
-4. knowledge and relationship changes;
-5. plot threads and reader promises;
-6. continuity constraints/conflicts;
-7. compact `CURRENT_STATE.md`;
-8. outline status and project progress;
-9. `MEMORY_INDEX.md` freshness and routes.
+2. the structured `.changes.json` snapshot and typed deltas;
+3. timeline events;
+4. character and entity state;
+5. knowledge and relationship changes;
+6. plot threads, reader promises, rewards, and progression;
+7. continuity constraints/conflicts and rolling serial rhythm;
+8. compact `CURRENT_STATE.md`;
+9. outline status and project progress;
+10. `MEMORY_INDEX.md` freshness and routes;
+11. the active batch checkpoint, when applicable.
 
 All changed facts should be traceable to a chapter/event ID. Rebuild the next context pack after writeback; never patch an old pack and assume it is current.
 
@@ -131,6 +146,8 @@ Prose-only revisions do not alter state. Canon revisions update every affected l
 - Current locations, injuries, objects, resources, and deadlines agree across files.
 - Accepted prose and chapter records agree on every critical change.
 - Open promises have last-touched and due windows.
+- Reward debt, delivered progression, hook promises, and recent rhythm are retrievable without rereading prose.
 - Current state contains only next-chapter-relevant information.
 - Old causal dependencies remain retrievable through summaries and records.
 - Temporary context packs are labeled non-canon and rebuilt when inputs change.
+- Every accepted chapter has a schema-conforming structured snapshot; batch progress never advances past incomplete writeback.

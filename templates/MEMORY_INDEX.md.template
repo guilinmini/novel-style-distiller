@@ -30,10 +30,13 @@ explicit user decisions
 | Where is a character and what do they want? | `characters/<character-id>.md` | Story Bible, relationships | {{...}} |
 | Who knows a fact? | `KNOWLEDGE_LEDGER.md` | timeline, chapter records | {{...}} |
 | What promises remain open? | `PLOT_THREADS.md` | outline, arc summaries | {{...}} |
+| What reward/progression is due? | `REWARD_LEDGER.md` | Bible, outline, chapter records | {{...}} |
+| Which hooks/emotion patterns are active or repetitive? | `SERIAL_RHYTHM.md` | plot threads, chapter records | {{...}} |
 | When did an event occur? | `TIMELINE.md` | chapter record | {{...}} |
 | What continuity constraints are active? | `CONTINUITY_LEDGER.md` | Bible, entity files | {{...}} |
 | Why was a project-level choice made? | `DECISION_LOG.md` | project and outline logs | {{...}} |
 | What happened in an older arc/volume? | `summaries/<scope-id>.md` | chapter records | {{...}} |
+| Is a batch running and where should it resume? | `ACTIVE_BATCH.md` | `BATCH_INDEX.md`, `batches/<batch-id>/` | {{...}} |
 
 ## Entity files
 
@@ -44,7 +47,7 @@ explicit user decisions
 
 ## Active context selection
 
-For the next chapter, always load the style contract, chapter blueprint, this index, `CURRENT_STATE.md`, and the previous chapter record. Then follow this index to load only relevant character, entity, knowledge, thread, timeline, and summary entries.
+For the next chapter, always load the style contract, chapter blueprint, this index, `CURRENT_STATE.md`, `REWARD_LEDGER.md`, `SERIAL_RHYTHM.md`, and the previous chapter record. Then follow this index to load only relevant character, entity, knowledge, thread, timeline, batch, and summary entries.
 
 ## Compaction log
 

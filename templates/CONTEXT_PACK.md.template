@@ -22,6 +22,8 @@
 - Planned state change: {{...}}
 - Immediate goal, opposition, cost: {{...}}
 - Required and due threads: {{thread IDs}}
+- Due reward/hook obligations: {{reward/hook IDs and payoff windows}}
+- Recent serial patterns to vary: {{reward family, hook family, emotion/cadence patterns}}
 - Exit function: {{...}}
 
 ## Active character memory
@@ -46,6 +48,12 @@
 ## Craft modules loaded
 
 - {{knowledge path}} — {{why it is relevant}}
+
+## Batch identity
+
+- Batch job: {{batch ID and path, or none}}
+- Batch position: {{completed/requested and current checkpoint interval}}
+- Authorized commit mode: {{single chapter / AUTO_COMMIT / REVIEW_CHECKPOINTS}}
 
 ## Consistency questions to resolve before drafting
 

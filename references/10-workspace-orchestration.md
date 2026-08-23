@@ -11,6 +11,7 @@ The user should be able to:
 3. wait for a validated runtime style pack;
 4. state an original novel theme;
 5. start planning or writing through normal conversation.
+6. say “批量写接下来 20 章” and resume safely after an interrupted host session.
 
 Do not require the user to install the root Skill, create directories, copy templates, or manage state files.
 
@@ -69,6 +70,10 @@ When the user supplies a theme:
 
 If no project is active and exactly one complete project exists, it may be activated automatically after verifying its project ID. Otherwise ask which project to use.
 
+## Batch request
+
+When the user asks for multiple chapters in one request, read [12-batch-writing.md](12-batch-writing.md). Create the durable batch job through `novelctl.sh`, fill its plan, and run the project writer's sequential loop. The user's bounded batch request authorizes automatic per-chapter canon commits unless they explicitly request review checkpoints. Never run dependent chapter drafts in parallel.
+
 ## Status and recovery
 
 Use:
@@ -79,6 +84,8 @@ sh scripts/novelctl.sh doctor
 ```
 
 `status` reports active pointers. `doctor` checks the workbench entry files and the active project's minimum configuration. A passing doctor does not prove prose quality; it proves the expected memory and style interfaces exist.
+
+If an active batch exists, `status` also reports its pointer. Use `batch-status` and `batch-resume` to recover its exact next chapter; do not scan chapter filenames and guess.
 
 Recovery order:
 

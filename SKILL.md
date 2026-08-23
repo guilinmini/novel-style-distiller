@@ -1,11 +1,11 @@
 ---
 name: novel-style-distiller
-description: Distill a complete novel from a user-provided path, configure a source-isolated long-form fiction workspace, create an original novel from a theme, and write, continue, or revise chapters with the locked style contract and layered story memory. Use for 蒸馏小说、配置小说项目、按主题开长篇、写下一章或续写当前原创项目. Do not use for simple summaries, nonfiction, author role-play, source-novel continuation, passage imitation, or reproduction of source characters, worldbuilding, phrasing, or plot.
+description: Distill a complete novel from a user-provided path, configure a source-isolated Chinese serial web-fiction workspace, create an original 网文爽文 from a theme, and write or batch-write chapters with a locked style contract, reward/hook system, and layered story memory. Use for 蒸馏小说、按主题开网文、写下一章、批量写N章、续写或修订当前原创项目. Do not use for simple summaries, nonfiction, author role-play, source-novel continuation, passage imitation, or reproduction of source characters, worldbuilding, phrasing, or plot.
 ---
 
 # Novel Style Distiller
 
-把完整小说中可观察的写作机制蒸馏成与来源隔离的风格契约，再用该契约建立并持续创作一部全新的长篇小说。
+把完整小说中可观察的写作机制蒸馏成与来源隔离的风格契约，再用该契约建立并持续创作一部全新的中文连载网文爽文。单章和批量写作都必须使用同一份风格契约、爽点/钩子系统与持久记忆。
 
 本 Skill 同时负责三个连续阶段：
 
@@ -15,7 +15,7 @@ description: Distill a complete novel from a user-provided path, configure a sou
   → 可移植 runtime-style-pack
   → B. 根据原创主题建书
   → 项目专属 writer Skill + 长篇状态文件
-  → C. 逐章写作、验收与状态回写
+  → C. 单章或批量写作、验收与状态回写
 ```
 
 ## 克隆仓库后的零配置入口
@@ -37,7 +37,7 @@ description: Distill a complete novel from a user-provided path, configure a sou
 |---|---|---|
 | A：蒸馏来源小说 | 蒸馏、分析整本小说、提炼文风/语气/写法 | `distillations/<source-slug>/audit/` 与 `runtime-style-pack/` |
 | B：创建原创小说 | 给主题开书、按风格包建项目、初始化长篇 | `novel-projects/<project-slug>/` 与项目专属 writer Skill |
-| C：写章或修订 | 写第 N 章、下一章、续写、重写本章 | 章节草稿；验收后回写项目状态 |
+| C：写章、批量写或修订 | 写第 N 章、下一章、批量写 N 章、续写、重写本章 | 单章草稿或可恢复串行批次；逐章回写状态 |
 
 如果用户一次要求多个阶段，按 A → B → C 顺序执行。已有有效产物时从相应阶段继续，不重复蒸馏。
 
@@ -46,7 +46,7 @@ description: Distill a complete novel from a user-provided path, configure a sou
 1. **来源与运行时隔离**：证据、引文、书名、作者名和原作专名只留在 `audit/`；章节写作只能加载 `runtime-style-pack/` 和原创项目文件。
 2. **风格契约必载**：模式 C 的每次写章、续写或修订，都先读取项目锁定的 `WRITING_STYLE_CONTRACT.md`。缺失、版本不符或无法定位时停止生成并报告问题。
 3. **分层文件记忆是事实源**：不要依赖聊天记忆维护长篇连续性。Story Bible、实体状态、知识账本、关系账本、时间线、剧情线程、章节记录和压缩摘要各自承担不同记忆职责。
-4. **验收后才回写**：先交付草稿，不立即把新内容写成 canon。用户明确接受，或在收到草稿后直接要求“下一章”，才提交本章并更新状态。
+4. **受控回写**：单章模式先交付草稿，用户验收后才写入 canon。用户明确要求有界批量写作时，该请求可授权批次范围内逐章 `AUTO_COMMIT`，但每章仍必须独立审查、生成变更记录并完成原子回写。
 5. **机制而非复刻**：提炼视角、距离、节奏、句法分布、信息控制、情绪呈现和对白机制；不迁移原作人物、世界、专名、独特措辞或情节骨架。
 6. **作品级归因**：一部小说只支持对该作品、版本和所提供文本的判断，不能代表作者全部创作。译本的具体措辞、句法和节奏要记录译者归因。
 7. **不发布来源正文**：不得把用户提供的小说、OCR 中间文件或可替代原作的密集摘录提交到 Git、安装目录或 runtime pack。
@@ -126,7 +126,7 @@ distillations/<source-slug>/
 
 在克隆仓库工作台中，正式包通过后运行 `sh scripts/novelctl.sh activate-pack <runtime-style-pack-path>`，使下一次主题请求能直接找到它。
 
-## 模式 B：从主题创建原创长篇
+## 模式 B：从主题创建原创网文长篇
 
 读取 [references/08-style-pack-and-project-setup.md](references/08-style-pack-and-project-setup.md) 与 [references/11-long-form-memory-system.md](references/11-long-form-memory-system.md)，然后：
 
@@ -134,11 +134,11 @@ distillations/<source-slug>/
 
 1. 优先读取 `.novel/ACTIVE_PACK.md`；不存在时，若只有一个合格 runtime pack 则自动选择，多个合格包才让用户选择。不要自动混合多个来源包。
 2. 校验 `PACK_MANIFEST.md`、风格契约、版本和来源隔离声明。
-3. 根据用户主题提出最少必要假设，创建完全原创的 premise、人物、世界规则、核心冲突、结局方向与主线大纲。
+3. 根据用户主题提出最少必要假设，创建完全原创的 premise、人物、世界规则、核心冲突、结局方向与主线大纲；同时明确目标读者、核心爽感、主角引擎、成长维度、黄金三章承诺和第一个完整回报周期。
 4. 将 runtime pack 复制到项目 `style/` 并锁定 pack ID、版本和可用时的内容哈希；之后不要让上游包的变化静默改变本书。
-5. 建立 Story Bible、总纲、章节蓝图、记忆索引、人物/实体状态、关系与知识账本、剧情线程、时间线、连续性账本、决策日志、章节记录、阶段摘要和临时 context pack 目录。
+5. 建立 Story Bible、总纲、章节蓝图、记忆索引、人物/实体状态、关系与知识账本、剧情线程、时间线、连续性账本、爽点/成长账本、连载节奏账本、决策日志、章节记录、结构化变更、批次状态、阶段摘要和临时 context pack 目录。
 6. 从模板生成 `.agents/skills/<project-slug>-writer/SKILL.md`。其描述必须明确项目名和写章触发词，使后续自然语言请求能路由到本项目。
-7. 将仓库 `knowledge/` 复制为项目 `craft/` 快照；项目 writer 只按 `craft/INDEX.md` 选择与当前任务相关的模块。
+7. 将仓库 `knowledge/` 复制为项目 `craft/` 快照；网文定位、爽点、钩子和自然文风为核心模块，其他技法按 `craft/INDEX.md` 的任务路由加载。
 8. 仅在标记边界内创建或合并项目 `AGENTS.md` 指令；保留文件中所有无关内容。
 9. 在工作台中运行 `activate-project` 与 `doctor`，再向用户展示建书摘要、关键假设、风格包版本和建议的第一章目标。除非用户要求，否则建书阶段不直接写完整第一章。
 
@@ -167,19 +167,25 @@ novel-projects/<project-slug>/
 │   ├── TIMELINE.md
 │   ├── CONTINUITY_LEDGER.md
 │   ├── DECISION_LOG.md
+│   ├── REWARD_LEDGER.md
+│   ├── SERIAL_RHYTHM.md
+│   ├── BATCH_INDEX.md
+│   ├── ACTIVE_BATCH.md           # 有批次时
 │   ├── characters/
 │   ├── entities/
-│   ├── chapter-records/
+│   ├── chapter-records/          # .md + .changes.json
 │   ├── summaries/
 │   ├── context/
-│   └── revisions/
+│   ├── revisions/
+│   └── batches/
+├── schemas/chapter-changes.schema.json
 ├── chapters/
 └── .agents/skills/<project-slug>-writer/SKILL.md
 ```
 
-## 模式 C：持续写章、续写或修订
+## 模式 C：单章、批量续写或修订
 
-读取 [references/09-chapter-writing-and-state.md](references/09-chapter-writing-and-state.md) 与 [references/11-long-form-memory-system.md](references/11-long-form-memory-system.md)。优先执行项目专属 writer Skill；它是本书的运行时入口。
+读取 [references/09-chapter-writing-and-state.md](references/09-chapter-writing-and-state.md) 与 [references/11-long-form-memory-system.md](references/11-long-form-memory-system.md)。批量写时再读取 [references/12-batch-writing.md](references/12-batch-writing.md)。优先执行项目专属 writer Skill；它是本书的运行时入口。
 
 ### C1. 定位项目
 
@@ -193,16 +199,30 @@ novel-projects/<project-slug>/
 PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 ```
 
-- `PREPARE`：先读风格契约，再通过记忆索引选择当前状态、人物/实体、知识、关系、线程、时间线、上一章记录和相关阶段摘要；生成非 canon 的章节 context pack，并按 `craft/INDEX.md` 选择必要技法。
-- `PLAN`：创建或收窄章节蓝图，明确本章变化、场景转折、信息释放、连续性风险和所用场景风格模式。
+- `PREPARE`：先读风格契约，再通过记忆索引选择当前状态、人物/实体、知识、关系、线程、时间线、爽点账本、连载节奏、上一章记录与变更快照；生成非 canon 的章节 context pack，并按 `craft/INDEX.md` 选择必要技法。
+- `PLAN`：创建或收窄章节蓝图，明确本章变化、当下回报、压制/兑现债务、读者情绪运动、钩子与兑现窗口、场景转折、连续性风险和所用场景风格模式。
 - `DRAFT`：保持 always-on 风格常量，并按 action、dialogue、introspection、transition、climax 等场景模式调节强度。
-- `REVIEW`：检查事实连续性、人物知识边界、时间线、POV、风格漂移、机械重复、来源专名和可识别情节泄漏。
-- `DELIVER`：交付草稿和简短审查说明，但不把草稿写成已验收 canon。
-- `ACCEPT / COMMIT`：用户接受后保存正文和章节记录，按因果顺序原子化回写时间线、人物/实体、知识、关系、剧情线程、连续性、当前状态和记忆索引。
+- `REVIEW`：检查事实连续性、人物知识边界、时间线、POV、风格漂移、本章回报、钩子债务、情绪对比、近期模式重复、可观察的 AI 腔症状、来源专名和可识别情节泄漏。
+- `DELIVER`：单章模式交付草稿等待验收；批次模式把通过审查的章节作为当前事务的待提交结果，不跳过之后的逐章回写。
+- `ACCEPT / COMMIT`：用户接受或批次授权生效后，保存正文、章节记录和 `.changes.json` 15 维事实快照/变更集，再按因果顺序原子化回写时间线、人物/实体、知识、关系、剧情线程、爽点/成长、连载节奏、连续性、当前状态和记忆索引。
 
 用户收到草稿后直接要求“下一章”，视为对上一章的隐式验收，先提交上一章再准备下一章。用户要求修订当前或更早章节时，不推进章节号；若修订改变既有事实，先列出受影响文件并进行一致性回写。
 
 这里的 `COMMIT` 只表示写入小说 canon 和项目状态，不表示执行 Git commit 或 push；版本控制操作必须由用户另行要求。
+
+### C3. 批量写作
+
+用户要求“批量写接下来 N 章”时：
+
+1. 创建可恢复批次，明确数量、起点、自动提交/分组审阅模式和检查点间隔；
+2. 先完成整个批次的功能级调度，只将未来 3–8 章展开为详细蓝图；
+3. 严格串行执行“读取最新 canon → 写一章 → 审查 → 回写 → 批次 checkpoint”；
+4. 不得并行起草有前后依赖的章节，不得累积多章后一次性回写状态；
+5. 每个检查点比较钩子、爽点类型/强度、情绪波形、章首章尾和文风重复，必要时只重排未提交章节；
+6. 若中断，从 `BATCH_JOB.md` 的 `Next chapter` 恢复，不从聊天猜测进度；
+7. 风格包错配、无法解决的 canon 矛盾、重试后仍未通过硬门、结构方向变更或回写不完整时立即暂停。
+
+`AUTO_COMMIT` 不需要章间人工确认；`REVIEW_CHECKPOINTS` 在配置的分组边界暂停。两者都必须逐章通过质量门和持久化检查。
 
 ## 质量红线
 
@@ -214,3 +234,5 @@ PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 - 不因追求文风而破坏人物目标、事实、POV、时间线或本章任务。
 - 不在草稿未验收时提前修改 canon 状态。
 - 不用同一套表面特征机械覆盖所有场景；风格稳定不等于节奏单一。
+- 不把章尾悬念当作本章回报；每章既要有当下价值，也要产生未来压力。
+- 不在批次中机械重复同一爽点、钩子、情绪曲线、章首、章尾或人物反应模式。

@@ -1,6 +1,6 @@
 # 运行时风格包与原创项目初始化
 
-本参考负责两件事：把已验证的来源分析编译成写作时可安全加载的风格包，以及用该风格包建立一部原创长篇。两步之间必须存在明确的隔离门。
+本参考负责两件事：把已验证的来源分析编译成写作时可安全加载的风格包，以及用该风格包建立一部原创中文连载网文。两步之间必须存在明确的隔离门。
 
 ## 一、编译 runtime-style-pack
 
@@ -65,7 +65,7 @@ runtime-style-pack/
 
 任一项失败，返回审计区修订，不能靠警告文字放行。
 
-## 二、用主题初始化原创长篇
+## 二、用主题初始化原创网文长篇
 
 ### 最小输入
 
@@ -75,18 +75,19 @@ runtime-style-pack/
 - 一个通过校验的 runtime pack；
 - 项目名称或可生成的工作名。
 
-题材、目标篇幅、受众、POV、语言、结局倾向等缺失时，先作保守假设并记录在 `NOVEL_PROJECT.md`。只有会根本改变用户意图的选择才暂停询问。
+本项目默认产品形态为中文连载网文爽文。细分题材、目标篇幅、平台/读者、单章长度、POV、结局倾向等缺失时，先作保守假设并记录在 `NOVEL_PROJECT.md`。只有会根本改变用户意图的选择才暂停询问。
 
 ### 原创设计顺序
 
 按以下顺序设计，避免从来源小说倒推换名版本：
 
-1. 从用户主题提炼命题、情感承诺和核心矛盾；
-2. 创建独立于来源的世界规则与限制；
-3. 设计角色的欲望、恐惧、错误信念、资源和代价；
-4. 确定不可逆的主线变化与结局方向；
-5. 安排分幕或分卷压力曲线、关键选择与支线兑现窗口；
-6. 最后把风格契约映射为呈现方式，不让风格包决定故事事实。
+1. 从用户主题提炼核心读者幻想、可重复回报、情感承诺和核心矛盾；
+2. 设计主角引擎、有效使用限制、对抗力与可观察成长维度；
+3. 创建独立于来源的世界规则与限制；
+4. 设计角色的欲望、恐惧、错误信念、资源和代价；
+5. 确定不可逆的主线变化与结局方向；
+6. 先安排黄金三章的压力、能动性、引擎证明和第一个完整回报，再安排分卷压力/爽点/情绪曲线与兑现窗口；
+7. 最后把风格契约映射为呈现方式，不让风格包决定故事事实。
 
 用 `templates/STORY_BIBLE.md.template` 和 `templates/MASTER_OUTLINE.md.template` 保存结果。大纲是可控计划，不是已经发生的 canon；只有已验收正文及其状态回写构成已发生事实。
 
@@ -116,7 +117,11 @@ runtime-style-pack/
 - `state/TIMELINE.md`：已发生事件及其因果；
 - `state/CONTINUITY_LEDGER.md`：时间、地点、身体、物件、规则和 POV 约束；
 - `state/DECISION_LOG.md`：用户决定、重要假设和范围变更；
-- `state/chapter-records/`：每章验收后的增量变更。
+- `state/REWARD_LEDGER.md`：爽点、成长阈值、压制/兑现债务和回报后果；
+- `state/SERIAL_RHYTHM.md`：近期钩子、回报、情绪波形和重复预警；
+- `state/BATCH_INDEX.md` 与 `state/batches/`：批量写作授权、进度、事件和恢复点；
+- `state/chapter-records/`：每章验收后的 Markdown 记录与 `.changes.json` 结构化变更；
+- `schemas/chapter-changes.schema.json`：章节事实快照和变更词表契约。
 - `state/summaries/`：分幕、分卷或远期历史的因果压缩；
 - `state/context/`：每章临时 context pack，不构成 canon；
 - `state/revisions/`：已验收章节的修订影响记录。
@@ -125,7 +130,7 @@ runtime-style-pack/
 
 ### 部署通用长篇技法
 
-把仓库 `knowledge/` 复制为项目 `craft/` 快照。它提供结构、人物、场景、节奏、POV、对白、伏笔、连续性和风格集成方法，但不含来源小说信息。
+把仓库 `knowledge/` 复制为项目 `craft/` 快照。它默认提供网文定位与黄金三章、13 类功能钩子、爽点/成长、读者情绪波形、自然文风诊断，以及结构、人物、场景、POV、对白、伏笔、连续性和风格集成方法，但不含来源小说信息。
 
 - 项目 writer 先读 `craft/INDEX.md`，只加载与当前问题有关的模块；
 - 通用技法的优先级低于用户要求、canon、POV、章节任务和锁定风格契约；
@@ -175,7 +180,8 @@ runtime-style-pack/
 4. 第一章蓝图能够从主题与主线推出；
 5. 项目 writer Skill 的正例能触发，摘要/来源分析等诱饵不触发；
 6. 项目目录不含来源小说或审计证据；
-7. `MEMORY_INDEX.md` 能路由到人物、知识、关系、线程、时间线、连续性和摘要文件；
-8. `craft/INDEX.md` 存在，项目 writer 不会默认加载全部技法；
-9. 在仓库工作台中运行 `sh scripts/novelctl.sh activate-project <project-path>` 与 `doctor`；
-10. 向用户列出关键假设、当前阶段、下一步自然语言请求和需要确认的重大选择。
+7. `MEMORY_INDEX.md` 能路由到人物、知识、关系、线程、时间线、爽点/成长、连载节奏、批次、连续性和摘要文件；
+8. `craft/INDEX.md` 存在，项目 writer 会加载网文核心模块，但不会默认加载全部无关技法；
+9. `REWARD_LEDGER.md`、`SERIAL_RHYTHM.md`、`BATCH_INDEX.md` 和 `schemas/chapter-changes.schema.json` 存在且不含占位符；
+10. 在仓库工作台中运行 `sh scripts/novelctl.sh activate-project <project-path>` 与 `doctor`；
+11. 向用户列出关键假设、当前阶段、下一步自然语言请求和需要确认的重大选择。

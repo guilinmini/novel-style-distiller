@@ -6,7 +6,10 @@
 - Status: `{{PLANNING|DRAFTING|REVISING|COMPLETE}}`
 - Language: {{...}}
 - Genre / audience: {{...}}
+- Product form: Chinese serialized web fiction / 网文爽文
+- Target platform / reader segment: {{...}}
 - Target length: {{...}}
+- Typical chapter length / release unit: {{...}}
 - POV / tense: {{...}}
 - Created at: {{ISO_8601}}
 - Updated at: {{ISO_8601}}
@@ -18,6 +21,10 @@
 - Central dramatic question: {{...}}
 - Thematic tension: {{...}}
 - Reader promise: {{...}}
+- Core reader fantasy / 爽点 engine: {{...}}
+- Protagonist advantage and earned-use constraint: {{...}}
+- Visible progression dimensions: {{...}}
+- Opening-three-chapter promise and first payoff: {{...}}
 - Ending direction: {{...}}
 - Explicit user constraints: {{...}}
 
@@ -42,6 +49,7 @@
 - Accepted through: {{chapter ID or `none`}}
 - Active draft: {{chapter ID or `none`}}
 - Next planned chapter: {{chapter ID}}
+- Active batch: {{state/ACTIVE_BATCH.md or `none`}}
 - Canon state: [state/CURRENT_STATE.md](state/CURRENT_STATE.md)
 - Memory index: [state/MEMORY_INDEX.md](state/MEMORY_INDEX.md)
 
@@ -57,6 +65,11 @@
 - Timeline: [state/TIMELINE.md](state/TIMELINE.md)
 - Continuity ledger: [state/CONTINUITY_LEDGER.md](state/CONTINUITY_LEDGER.md)
 - Decision log: [state/DECISION_LOG.md](state/DECISION_LOG.md)
+- Reward/progression ledger: [state/REWARD_LEDGER.md](state/REWARD_LEDGER.md)
+- Serial rhythm ledger: [state/SERIAL_RHYTHM.md](state/SERIAL_RHYTHM.md)
+- Batch index/jobs: [state/BATCH_INDEX.md](state/BATCH_INDEX.md), `state/batches/`
+- Structured chapter changes: `state/chapter-records/<chapter-id>.changes.json`
+- Chapter changes schema: [schemas/chapter-changes.schema.json](schemas/chapter-changes.schema.json)
 - Arc/volume summaries: `state/summaries/`
 - Temporary context packs: `state/context/`
 - Revision impacts: `state/revisions/`
@@ -72,7 +85,7 @@
 
 ## Acceptance policy
 
-A delivered chapter remains a draft until the user accepts it. Asking for the next chapter without requesting revisions counts as implicit acceptance of the immediately preceding draft. Revisions do not advance the chapter number.
+A single delivered chapter remains a draft until the user accepts it. Asking for the next chapter without requesting revisions counts as implicit acceptance of the immediately preceding draft. An explicit bounded batch-writing request authorizes per-chapter canon commits in `AUTO_COMMIT` mode after every chapter independently passes review and state writeback; `REVIEW_CHECKPOINTS` pauses at configured intervals. Revisions do not advance the chapter number.
 
 ## Change log
 

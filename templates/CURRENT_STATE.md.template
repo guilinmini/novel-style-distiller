@@ -19,6 +19,9 @@
 - Irreversible latest result: {{...}}
 - Next likely decision/obstacle: {{...}}
 - Resources gained/lost: {{...}}
+- Active suppression/payoff debt: {{reward IDs and due windows}}
+- Next credible reward or progression move: {{...}}
+- Reader-emotion handoff: {{current residue → intended movement}}
 
 ## Active characters
 
@@ -49,6 +52,12 @@
 | Thread ID | Current pressure | Due window | Next permitted move |
 |---|---|---|---|
 | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Serial obligations
+
+- Due hook/payoff IDs: {{...}}
+- Recent reward/hook repetition to avoid: {{...}}
+- Active batch and position: {{batch ID, completed/requested, or none}}
 
 ## Previous chapter handoff
 

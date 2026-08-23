@@ -69,7 +69,7 @@
 
 ## 原创长篇项目交付
 
-一个可独立继续写作的原创项目应包含锁定 `style/`、通用 `craft/` 快照、Bible、outline、完整分层 state、已验收 chapters、项目 writer Skill 和项目 `AGENTS.md`。它不得依赖 `.novel/` 活动指针或来源 `audit/`；活动指针只负责在当前工作台中选择项目。
+一个可独立继续写作的原创项目应包含锁定 `style/`、网文 `craft/` 快照、Bible、outline、完整分层 state、爽点/连载节奏账本、章节 `.changes.json` schema、批次恢复状态、已验收 chapters、项目 writer Skill 和项目 `AGENTS.md`。它不得依赖 `.novel/` 活动指针或来源 `audit/`；活动指针只负责在当前工作台中选择项目。
 
 交付或迁移前运行项目配置检查，并确认：
 

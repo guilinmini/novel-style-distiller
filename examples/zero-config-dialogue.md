@@ -31,3 +31,19 @@ The chapter remains a draft. After review:
 ```
 
 Expected behavior: commit the first chapter to story canon, update every affected memory layer, rebuild the next context pack, and draft chapter two with the same locked style contract.
+
+## 4. Batch-write and resume
+
+```text
+批量写接下来 20 章，每 5 章做一次爽点、钩子、情绪曲线和文风重复检查，不用逐章问我。
+```
+
+Expected behavior: create an `AUTO_COMMIT` batch job, plan its function schedule, then write strictly in order. Each chapter must pass review, produce its Markdown record and structured changes JSON, update every memory layer, and checkpoint before the next chapter begins.
+
+After an interruption:
+
+```text
+继续上次批量写作。
+```
+
+Expected behavior: read the durable batch state, report the recorded progress, and resume from its exact `Next chapter` rather than reconstructing progress from chat.

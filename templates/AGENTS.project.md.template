@@ -7,6 +7,8 @@ For every request to plan, write, continue, revise, accept, or review a chapter 
 - Treat `NOVEL_PROJECT.md`, accepted chapters, and files under `bible/`, `outline/`, and `state/` as the project's durable memory.
 - Load `style/WRITING_STYLE_CONTRACT.md` for every chapter task.
 - Read `state/MEMORY_INDEX.md` before selecting extended context, and load only relevant modules through `craft/INDEX.md`.
+- Treat this as a Chinese serialized web-fiction project: apply the reward, hook, emotion-wave, and natural-prose modules on every applicable chapter.
+- For a batch request, use the project writer's sequential batch loop and `state/batches/`; never draft dependent chapters in parallel or skip per-chapter writeback.
 - Do not load source novels or distillation audit files while writing this project.
 - Do not update canon until a chapter is accepted according to the project policy.
 - Preserve all instructions outside this marked block when updating it.

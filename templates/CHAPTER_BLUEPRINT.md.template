@@ -28,6 +28,10 @@
 - Required facts/threads: {{...}}
 - Forbidden reveals/actions: {{...}}
 - Exit hook or closure: {{...}}
+- Present reader reward: {{family, intensity, concrete result}}
+- Suppression/payoff debt changed: {{reward IDs}}
+- Reader-emotion movement: {{entry → turn → exit residue}}
+- Hook family and promised payoff window: {{hook type, promise, due chapter/range}}
 
 ## Scene cards
 
@@ -62,5 +66,8 @@ Do not load unrelated craft modules, and do not let general craft guidance overr
 - [ ] The chapter creates the planned state change.
 - [ ] Character knowledge, POV, timeline, objects, injuries, and relationships remain consistent.
 - [ ] Required threads move without premature payoff of forbidden threads.
+- [ ] The chapter delivers present reader value and records any new reward/hook obligation.
+- [ ] Reward family, hook family, emotion curve, opening, and ending do not mechanically repeat the recent rolling window.
 - [ ] Always-on style rules and selected scene modes are observable without mechanical repetition.
+- [ ] Natural-prose diagnostics find no unresolved generic or synthetic pattern.
 - [ ] No source identity, language, setting, character, or plot sequence leaks into the chapter.

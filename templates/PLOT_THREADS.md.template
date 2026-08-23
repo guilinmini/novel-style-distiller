@@ -8,9 +8,9 @@
 
 ## Reader promises
 
-| Promise ID | Created by | Expected kind of reward | Latest acceptable window | Status |
-|---|---|---|---|---|
-| promise-001 | {{thread/chapter}} | {{answer/choice/reversal/emotional payoff}} | {{...}} | {{...}} |
+| Promise ID | Created by | Hook family | Expected kind of reward | Latest acceptable window | Reward ID | Status |
+|---|---|---|---|---|---|---|
+| promise-001 | {{thread/chapter}} | {{...}} | {{answer/choice/reversal/emotional payoff}} | {{...}} | {{reward ID/none}} | {{...}} |
 
 ## Overdue or collision risks
 

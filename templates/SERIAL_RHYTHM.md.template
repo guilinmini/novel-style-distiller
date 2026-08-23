@@ -1,0 +1,40 @@
+# {{PROJECT_TITLE}} — Serial Rhythm Ledger
+
+> Rolling window for retention, hook payoff, emotional contrast, and anti-repetition checks. Keep recent detail; summarize older windows.
+
+## Serialization contract
+
+- Target platform/audience: {{...}}
+- Typical chapter length: {{...}}
+- Release unit: {{single chapter/group}}
+- Opening-three-chapter promise: {{...}}
+- Expected small/medium/major reward cadence: {{...}}
+- Human-review checkpoint policy: {{...}}
+
+## Current reader-emotion wave
+
+- Entry emotion: {{...}}
+- Current dominant emotion: {{...}}
+- Desired next movement: {{...}}
+- Pending emotional payoff: {{...}}
+- Recovery space due: {{...}}
+
+## Rolling chapter window
+
+| Chapter | Entry pressure | Main change | Reward type/intensity | Emotion movement | Exit hook type | Hook paid by | Repetition note |
+|---|---|---|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Hook obligations
+
+| Hook ID | Created | Functional type | Promised answer/event | Due window | Status |
+|---|---|---|---|---|---|
+| hook-001 | {{chapter}} | {{...}} | {{...}} | {{...}} | {{open/part-paid/paid/reframed/failed}} |
+
+## Pattern alarms
+
+- Same opening pattern in recent chapters: {{none/details}}
+- Same exit-hook family overused: {{none/details}}
+- Uniform reward intensity: {{none/details}}
+- Continuous high tension without processing: {{none/details}}
+- Expository or synthetic-prose symptoms: {{none/details}}

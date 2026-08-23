@@ -1,0 +1,6 @@
+# Batch Writing Index
+
+> Append-only routing log for batch-writing jobs. The latest event for a batch is authoritative together with that batch's `BATCH_JOB.md`.
+
+| Timestamp | Batch ID | Event | Status | Chapter | Note |
+|---|---|---|---|---|---|

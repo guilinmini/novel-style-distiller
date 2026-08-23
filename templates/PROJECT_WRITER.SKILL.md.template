@@ -1,12 +1,12 @@
 ---
 name: {{PROJECT_SLUG}}-writer
 description: >-
-  Write, continue, or revise chapters of {{PROJECT_TITLE}} using its locked style contract, outline, and persistent canon state. Use when the user asks to 写本项目第N章、下一章、续写、改写章节、定稿或检查本书文风连续性. Do not use for another novel, source-book analysis, general summaries, or imitation of a named author.
+  Write, batch-write, continue, or revise Chinese serialized web-fiction chapters of {{PROJECT_TITLE}} using its locked style contract, reward/hook system, outline, and persistent canon state. Use when the user asks to 写本项目第N章、下一章、批量写N章、续写、改写、定稿或检查文风和长篇连续性. Do not use for another novel, source-book analysis, general summaries, or imitation of a named author.
 ---
 
 # {{PROJECT_TITLE}} Writer
 
-This is the runtime writing Skill for project `{{PROJECT_SLUG}}`. Resolve the project root as three directories above this `SKILL.md` and verify that its `NOVEL_PROJECT.md` has project ID `{{PROJECT_SLUG}}`. If the host relocates loaded Skills, search from the current working directory upward for that exact project ID. Do not operate on a different project with the same title.
+This is the runtime writing Skill for Chinese serialized web-fiction project `{{PROJECT_SLUG}}`. Resolve the project root as three directories above this `SKILL.md` and verify that its `NOVEL_PROJECT.md` has project ID `{{PROJECT_SLUG}}`. If the host relocates loaded Skills, search from the current working directory upward for that exact project ID. Do not operate on a different project with the same title.
 
 ## Required loading order
 
@@ -16,12 +16,13 @@ Before every chapter draft, continuation, or revision, read:
 2. `style/PACK_MANIFEST.md`
 3. `style/WRITING_STYLE_CONTRACT.md`
 4. the target chapter blueprint, or its row in `outline/MASTER_OUTLINE.md`
-5. `state/MEMORY_INDEX.md` and `state/CURRENT_STATE.md`
+5. `state/MEMORY_INDEX.md`, `state/CURRENT_STATE.md`, `state/REWARD_LEDGER.md`, and `state/SERIAL_RHYTHM.md`
 6. relevant character, entity, relationship, and knowledge records selected through the memory index
-7. relevant stable facts from `bible/STORY_BIBLE.md`
-8. relevant and due entries from plot threads, timeline, and continuity ledger
-9. the previous chapter record, necessary tail, and any relevant older arc summary
-10. only the task-relevant craft modules selected through `craft/INDEX.md`
+7. relevant stable facts and progression rules from `bible/STORY_BIBLE.md`
+8. relevant and due entries from plot threads, timeline, continuity, reward, and hook ledgers
+9. the previous chapter record and `.changes.json`, necessary tail, and any relevant older arc summary
+10. the web-fiction core and task-relevant craft modules selected through `craft/INDEX.md`
+11. for batch work, `state/ACTIVE_BATCH.md`, the selected `BATCH_JOB.md`, and its completed `BATCH_PLAN.md`
 
 The style contract is mandatory. Stop and report the exact missing or mismatched file if its pack ID/version differs from `NOVEL_PROJECT.md`.
 
@@ -37,11 +38,11 @@ PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 
 ### PREPARE
 
-Build `state/context/<chapter-id>.md` as a temporary, non-canon context pack. Confirm start time, location, POV, present characters, entity state, knowledge boundaries, relationship pressure, previous irreversible results, continuity locks, due threads, chapter goal, selected style modes, and craft modules. Rebuild the pack if an input changed. Report contradictions instead of silently choosing a fact.
+Build `state/context/<chapter-id>.md` as a temporary, non-canon context pack. Confirm start time, location, POV, present characters, entity state, knowledge boundaries, relationship pressure, previous irreversible results, continuity locks, due threads, due rewards/hooks, recent rhythm repetition, intended reader-emotion movement, chapter goal, selected style modes, and craft modules. Rebuild the pack if an input changed. Report contradictions instead of silently choosing a fact.
 
 ### PLAN
 
-Create or update `outline/chapters/<chapter-id>.md` as a draft blueprint. Define the chapter's observable state change and scene cards. A planning file is not canon.
+Create or update `outline/chapters/<chapter-id>.md` as a draft blueprint. Define the chapter's observable state change, present reader reward, hook/payoff obligation, emotion movement, and scene cards. Chapters 1–3 must satisfy `craft/web-fiction-opening.md`; every chapter must use `craft/hooks-and-retention.md` and `craft/gratification-and-escalation.md`. A planning file is not canon.
 
 ### DRAFT
 
@@ -49,30 +50,48 @@ Apply all always-on style invariants. Modulate only scene-level controls with th
 
 ### REVIEW
 
-Check task completion, continuity, knowledge, POV, timeline, style drift, mechanical repetition, and source leakage. Fix every hard failure before delivery.
+Check task completion, continuity, knowledge, POV, timeline, style drift, present reward, hook debt, emotional contrast, rolling-window repetition, natural-prose symptoms, and source leakage. Apply `craft/natural-prose-diagnostics.md`. Fix every hard failure before delivery or batch commit.
 
 ### DELIVER
 
-Deliver a readable chapter and a brief note naming the main scene modes and advanced threads. Mark it `DRAFT / NOT COMMITTED`. Do not update canon state yet.
+For a single-chapter request, deliver a readable chapter and a brief note naming the main scene modes, reward, hook obligation, and advanced threads. Mark it `DRAFT / NOT COMMITTED`; do not update canon state yet. In an authorized batch, save the reviewed chapter and continue through the batch commit protocol below rather than pausing merely to display each draft.
 
 ### ACCEPT / COMMIT
 
 `COMMIT` here means writing accepted story canon and state, not running Git commit or push. Perform version-control operations only when the user separately requests them.
 
-Commit canon only after explicit user acceptance, or when the user asks for the next chapter without revising the delivered draft. Then, in order:
+For a single chapter, commit canon only after explicit user acceptance or when the user asks for the next chapter without revising the delivered draft. For a bounded batch, the user's explicit batch request authorizes per-chapter commits only inside that batch's plan and mode. Then, in order:
 
 1. save/mark the chapter as accepted;
 2. write `state/chapter-records/<chapter-id>.md`;
-3. update `state/TIMELINE.md`;
-4. update affected character, entity, relationship, and knowledge records;
-5. update `state/PLOT_THREADS.md`;
-6. update `state/CONTINUITY_LEDGER.md`;
-7. update `state/CURRENT_STATE.md`;
-8. update chapter status in the outline;
-9. refresh `state/MEMORY_INDEX.md`;
-10. update progress in `NOVEL_PROJECT.md` and invalidate the old context pack.
+3. write `state/chapter-records/<chapter-id>.changes.json` against `schemas/chapter-changes.schema.json`, including the 15-field post-chapter fact snapshot and only the applicable members of the 12-type change vocabulary;
+4. update `state/TIMELINE.md`;
+5. update affected character, entity, relationship, and knowledge records;
+6. update `state/PLOT_THREADS.md` and `state/REWARD_LEDGER.md`;
+7. update `state/CONTINUITY_LEDGER.md` and the rolling window in `state/SERIAL_RHYTHM.md`;
+8. update `state/CURRENT_STATE.md`;
+9. update chapter status in the outline;
+10. refresh `state/MEMORY_INDEX.md`;
+11. update progress in `NOVEL_PROJECT.md` and invalidate the old context pack;
+12. verify that the chapter record, structured changes, and all refreshed checkpoints agree before another chapter starts.
 
 Keep stable IDs and record only the accepted deltas. Verify the files agree before starting another chapter.
+
+## Sequential batch mode
+
+When the user asks to batch-write multiple chapters, read the workbench's `references/12-batch-writing.md` when available and follow these invariants:
+
+1. Create one durable batch job with `novelctl.sh batch-create`; fill `BATCH_PLAN.md` before resuming.
+2. Treat the explicit bounded request as authorization for `AUTO_COMMIT`, unless the user asks for review checkpoints.
+3. Plan the whole batch by function and maintain only a rolling 3–8 chapter detailed horizon.
+4. Draft chapters strictly in canon order. Never parallelize dependent chapter prose.
+5. Run the complete chapter loop and canon writeback for one chapter before preparing the next.
+6. After writeback, call `batch-checkpoint`; its next chapter is the only valid resume point.
+7. At each configured checkpoint, review hook/reward/emotion/style repetition and replan uncommitted chapters if needed.
+8. Pause on a hard contradiction, style-pack mismatch, failed quality gate after one focused rewrite, structural scope change, or incomplete atomic writeback.
+9. If interrupted, read the batch job and resume from its `Next chapter`; never reconstruct progress from chat.
+
+`AUTO_COMMIT` continues without asking between chapters. `REVIEW_CHECKPOINTS` pauses after each configured group. Completion delivers the requested chapters plus a compact batch report; it does not run Git commit or push.
 
 ## Revision rule
 
@@ -83,5 +102,8 @@ Revising an unaccepted draft does not advance the chapter or change canon. Befor
 - Use entirely original characters, setting, relationships, events, language, and imagery.
 - Never continue, rename, or reconstruct the source novel behind the style pack.
 - Stable style means contract consistency across varied scenes, not the same cadence in every paragraph.
+- Every web-fiction chapter must create present value as well as future pressure; a cliffhanger cannot replace a missing reward.
+- Vary reward family/intensity, hook family, emotional movement, openings, endings, and scene modes across a batch.
+- Diagnose “AI flavor” through observable prose patterns, not a vague score or indiscriminate rewriting.
 - Do not let style override clarity, character specificity, story movement, or established truth.
 - General craft modules advise planning and diagnosis; they never override the locked style contract or accepted canon.

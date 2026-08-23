@@ -1,8 +1,8 @@
 # Novel Style Distiller
 
-An agent-native long-form fiction workbench that can be cloned and used directly. It distills a complete user-provided novel into a source-isolated style contract, creates an original long-form project from a theme, and makes every later chapter load the same locked style plus current layered memory.
+An agent-native Chinese serial web-fiction workbench that can be cloned and used directly. It distills a complete user-provided novel into a source-isolated style contract, creates an original high-retention project from a theme, and supports both single-chapter and resumable multi-chapter writing against the same locked style and current layered memory.
 
-It is not an author-imitation prompt, and the user does not manually maintain dozens of files. The repository ships the distillation workflow, long-form craft library, memory system, project templates, chapter state machine, and configuration checks.
+It is not an author-imitation prompt, and the user does not manually maintain dozens of files. The repository ships the distillation workflow, opening/reward/hook/emotion/natural-prose craft, layered memory, structured chapter changes, a recoverable batch state machine, and configuration checks.
 
 ## Fastest workflow
 
@@ -34,6 +34,7 @@ I want to write a novel about a city that forgets one street every day and a map
 With one eligible style pack, the Agent selects it automatically and creates:
 
 - an original premise, characters, world rules, ending direction, and long-range outline;
+- web-fiction positioning, protagonist engine, opening-three-chapter promise, and reward/progression schedule;
 - a locked style-pack snapshot;
 - a Story Bible, chapter plans, and layered durable memory;
 - a project-local long-form craft library;
@@ -47,19 +48,33 @@ Write chapter one.
 Accept it and continue with the next chapter.
 Rewrite chapter two so the conflict begins earlier without changing its ending fact.
 Review the last five chapters for style drift and overdue promises.
+Batch-write the next 20 chapters, checking rhythm and style every five chapters without asking me between chapters.
+Batch-write ten chapters and pause for my review every five.
 ```
 
 The project writer always loads its locked `WRITING_STYLE_CONTRACT.md`; the user does not repeatedly name the source or style.
 
+## Recoverable batch writing
+
+A batch never drafts dependent chapters in parallel from stale context. It runs a sequential transaction for each chapter:
+
+```text
+latest canon → prepare → plan → draft → review
+→ accepted chapter + structured changes + full memory writeback
+→ durable checkpoint → next chapter
+```
+
+`AUTO_COMMIT` treats the explicit bounded batch request as authorization for per-chapter story-canon commits. `REVIEW_CHECKPOINTS` pauses at the requested group boundary. An interrupted run resumes from `BATCH_JOB.md`, not conversation history.
+
 ## Layered long-form memory
 
-Durable state is separated into stable Bible facts, future plans, compact current state, character/entity state, relationships, knowledge, timeline, continuity constraints, plot threads, accepted chapter deltas, arc/volume summaries, decisions, and revision impacts.
+Durable state is separated into stable Bible facts, future plans, compact current state, character/entity state, relationships, knowledge, timeline, continuity constraints, plot threads, reward/progression debt, serial rhythm, accepted chapter records, structured 15-field snapshots and typed changes, batch checkpoints, arc/volume summaries, decisions, and revision impacts.
 
 Before drafting, the writer builds a temporary chapter context pack containing only relevant memory and craft modules. It does not stuff the entire manuscript, every entity, or all previous chapters into context.
 
 ## Built-in craft
 
-[`knowledge/INDEX.md`](knowledge/INDEX.md) routes to practical modules for story architecture, characters and relationships, worldbuilding and exposition, scene/chapter design, pacing and tension, POV and information, dialogue and subtext, foreshadowing and payoff, genre/serialization promises, continuity and revision, and distilled-style integration.
+[`knowledge/INDEX.md`](knowledge/INDEX.md) routes to practical modules for opening-three-chapter retention, thirteen functional hook families, gratification/progression, reader-emotion waves, natural-prose diagnostics, story architecture, characters, worldbuilding, scenes, pacing, POV, dialogue, foreshadowing, serialization, continuity, and distilled-style integration.
 
 General craft never outranks the user's request, accepted canon, POV, current chapter contract, or locked distilled style.
 
@@ -69,7 +84,7 @@ General craft never outranks the user's request, accepted canon, POV, current ch
 PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 ```
 
-The draft does not change canon. After acceptance, the writer updates chapter records, timeline, characters/entities, knowledge, relationships, threads, continuity, current state, and the memory index. `COMMIT` here means committing story canon, not running Git commit.
+A single draft does not change canon. After acceptance—or inside an explicitly authorized batch—the writer saves a chapter record and schema-governed `.changes.json`, then updates timeline, entities, knowledge, relationships, threads, rewards, serial rhythm, continuity, current state, and the memory index. `COMMIT` here means committing story canon, not running Git commit.
 
 ## Repository layout
 
@@ -82,6 +97,7 @@ novel-style-distiller/
 ├── references/
 ├── extractors/
 ├── templates/
+├── schemas/
 ├── tests/
 ├── distillations/          # generated and ignored
 ├── novel-projects/         # generated and ignored
@@ -97,9 +113,13 @@ sh scripts/novelctl.sh register-source "/path/to/novel.txt"
 sh scripts/novelctl.sh activate-pack "distillations/my-source/runtime-style-pack"
 sh scripts/novelctl.sh scaffold-project "my-project" "distillations/my-source/runtime-style-pack"
 sh scripts/novelctl.sh activate-project "novel-projects/my-project"
+sh scripts/novelctl.sh batch-create "novel-projects/my-project" 20 5 auto
+sh scripts/novelctl.sh batch-status "novel-projects/my-project"
+sh scripts/novelctl.sh batch-resume "novel-projects/my-project"
 sh scripts/novelctl.sh status
 sh scripts/novelctl.sh doctor
 sh tests/smoke.sh
+sh tests/longform-regression.sh
 ```
 
 `novelctl.sh` uses POSIX Shell and has no Python, database, RAG, graph-store, or third-party package dependency. An Agent without Shell can instantiate the same templates directly.

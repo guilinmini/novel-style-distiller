@@ -1,10 +1,11 @@
 # Novel Workbench State
 
-- Schema version: `1.0`
+- Schema version: `2.0`
 - Status: `READY`
 - Active source pointer: `.novel/ACTIVE_SOURCE.md`
 - Active runtime pack pointer: `.novel/ACTIVE_PACK.md`
 - Active project pointer: `.novel/ACTIVE_PROJECT.md`
+- Active batch pointer: stored inside the active project at `state/ACTIVE_BATCH.md`
 - Distillations root: `distillations/`
 - Original projects root: `novel-projects/`
 

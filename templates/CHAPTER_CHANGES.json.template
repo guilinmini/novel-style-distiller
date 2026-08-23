@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "project_id": "{{PROJECT_ID}}",
+  "chapter_id": "{{CHAPTER_ID}}",
+  "status": "ACCEPTED",
+  "accepted_at": "{{ISO_8601}}",
+  "source": {
+    "chapter_file": "chapters/{{CHAPTER_ID}}.md",
+    "chapter_record": "state/chapter-records/{{CHAPTER_ID}}.md"
+  },
+  "style": {
+    "pack_id": "{{PACK_ID}}",
+    "version": "{{SEMVER}}",
+    "contract_hash": "{{SHA256_OR_NOT_RECORDED}}"
+  },
+  "fact_snapshot": {
+    "story_time": "{{...}}",
+    "locations": [{"id": "{{LOCATION_ID}}", "state": "{{...}}", "evidence": "{{SCENE_OR_EVENT_ID}}"}],
+    "pov": {"id": "{{CHARACTER_ID}}", "state": "{{tense, distance, permissions}}", "evidence": "{{chapter}}"},
+    "characters": [{"id": "{{CHARACTER_ID}}", "state": "{{goal, position, capability}}", "evidence": "{{...}}"}],
+    "relationships": [{"id": "{{RELATION_ID}}", "state": "{{trust, leverage, debt}}", "evidence": "{{...}}"}],
+    "knowledge": [{"id": "{{FACT_ID}}", "state": "{{who knows/believes and how}}", "evidence": "{{...}}"}],
+    "reader_knowledge": [{"id": "{{FACT_ID}}", "state": "{{known/hinted/hidden/misread}}", "evidence": "{{...}}"}],
+    "objects": [{"id": "{{OBJECT_ID}}", "state": "{{owner, location, condition}}", "evidence": "{{...}}"}],
+    "resources": [{"id": "{{RESOURCE_ID}}", "state": "{{amount/access/cost}}", "evidence": "{{...}}"}],
+    "conditions": [{"id": "{{CONDITION_ID}}", "state": "{{injury, status, cooldown, obligation}}", "evidence": "{{...}}"}],
+    "world_rules": [{"id": "{{RULE_ID}}", "state": "{{active rule and consequence}}", "evidence": "{{...}}"}],
+    "factions": [{"id": "{{FACTION_ID}}", "state": "{{goal, authority, disposition}}", "evidence": "{{...}}"}],
+    "threads": [{"id": "{{THREAD_ID}}", "state": "{{status and next obligation}}", "evidence": "{{...}}"}],
+    "deadlines": [{"id": "{{DEADLINE_ID}}", "state": "{{time/window and consequence}}", "evidence": "{{...}}"}],
+    "immediate_pressure": "{{next chapter pressure}}"
+  },
+  "changes": [
+    {
+      "change_id": "{{CHANGE_ID}}",
+      "type": "{{plot|character|relationship|knowledge|location|object|resource|condition|timeline|thread|world-rule|reader-promise}}",
+      "subject_id": "{{STABLE_ID}}",
+      "before": "{{...}}",
+      "after": "{{...}}",
+      "cause": "{{choice/event ID}}",
+      "evidence": "{{scene/section}}",
+      "updates": ["{{durable file path}}"]
+    }
+  ],
+  "quality_gates": {
+    "task": true,
+    "continuity": true,
+    "pov_and_knowledge": true,
+    "style": true,
+    "serial_reward": true,
+    "natural_prose": true,
+    "source_isolation": true
+  },
+  "handoff": {
+    "next_chapter": "{{CHAPTER_ID_OR_NONE}}",
+    "immediate_pressure": "{{...}}",
+    "open_obligations": ["{{thread, hook, reward or deadline ID}}"]
+  }
+}

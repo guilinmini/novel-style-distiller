@@ -1,0 +1,56 @@
+# Batch Writing Plan
+
+> Planning and authorization scope for one sequential batch. This file is not story canon; accepted chapters and their state writebacks are canon.
+
+## Batch objective
+
+- Story interval: {{start chapter through intended final chapter}}
+- Batch-level dramatic movement: {{entry pressure to exit pressure}}
+- Main progression/reward cycle: {{suppression, anticipation, payoff, consequence}}
+- Reader-emotion wave: {{tension and valence progression}}
+- Required arc/volume boundary: {{none or boundary and summary action}}
+- Explicit user constraints: {{...}}
+
+## Authorization and delivery
+
+- Mode: `{{AUTO_COMMIT|REVIEW_CHECKPOINTS}}`
+- Checkpoint interval: {{chapter count}}
+- Delivery preference: {{one combined delivery / checkpoint groups / chapter files plus summary}}
+- Batch request that authorized canon commits: {{user request or durable decision ID}}
+
+`AUTO_COMMIT` means the explicit batch request authorizes each chapter in this bounded plan to become canon after its own review gates pass. `REVIEW_CHECKPOINTS` pauses after each configured group. Neither mode permits skipping per-chapter state writeback.
+
+## Functional schedule
+
+| Chapter ID/range | Function | Pressure/escalation | Planned reward | Emotion movement | Hook/payoff obligation | Threads | Status |
+|---|---|---|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{IDs}} | {{planned/writing/committed/replan}} |
+
+## Active detailed horizon
+
+Keep the next 3–8 chapters detailed. Later chapters may remain functional until they enter the horizon.
+
+| Chapter ID | Observable state change | POV | Core obstacle | Reward type/intensity | Exit hook | Blueprint status |
+|---|---|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{missing/ready}} |
+
+## Variety budget
+
+- Recent hook types that must not be repeated mechanically: {{...}}
+- Recent reward types/intensities that need contrast: {{...}}
+- Emotional texture or scene mode needing recovery: {{...}}
+- Character/faction/world threads due inside this batch: {{...}}
+
+## Hard stop conditions
+
+- A style-pack identity/version mismatch.
+- A contradiction that cannot be resolved from durable canon.
+- A required chapter, record, changes JSON, or memory writeback cannot be completed atomically.
+- The next chapter would require changing the approved central arc, ending, or explicit user constraint.
+- Repeated quality-gate failure after one focused rewrite.
+
+## Checkpoint notes
+
+| Through chapter | Batch result | Drift/repetition review | Replan required | Resume chapter |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{yes/no and why}} | {{...}} |

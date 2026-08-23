@@ -1,4 +1,4 @@
 interface:
   display_name: "Novel Style Distiller"
-  short_description: "Distill a novel and run a long-form writing workspace"
-  default_prompt: "Use $novel-style-distiller to register and distill the novel at this path, configure the writing workspace, and then ask me for my original theme."
+  short_description: "Distill style and write serialized web fiction in batches"
+  default_prompt: "Use $novel-style-distiller to distill the novel at this path, create an original Chinese web-fiction project from my theme, and support both single-chapter and resumable batch writing."

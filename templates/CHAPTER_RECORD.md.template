@@ -9,6 +9,8 @@
 - Accepted at: {{ISO_8601_OR_NONE}}
 - Style pack: `{{PACK_ID}}@{{SEMVER}}`
 - Contract hash: `{{SHA256_OR_NOT_RECORDED}}`
+- Batch job / position: {{batch ID and sequence, or none}}
+- Structured changes: `state/chapter-records/{{CHAPTER_ID}}.changes.json`
 
 ## Causal summary
 
@@ -61,6 +63,15 @@
 - Source leakage check: {{PASS/FAIL and note}}
 - Craft modules used: {{paths and purpose}}
 
+## Serial reward and retention review
+
+- Present reward delivered: {{reward ID, family, intensity, concrete result}}
+- Suppression/payoff debt changed: {{...}}
+- Reader-emotion movement and aftermath: {{...}}
+- Entry/exit hook family and payoff obligation: {{...}}
+- Rolling-window repetition check: {{PASS/FAIL and note}}
+- Natural-prose diagnostics: {{PASS/FAIL and repaired symptoms}}
+
 ## Continuity review
 
 - POV and knowledge: {{PASS/FAIL and note}}
@@ -75,6 +86,7 @@
 - Tail reference: `{{chapter path and optional marker}}`
 - Memory index refreshed: {{yes/no and checkpoint}}
 - Context pack invalidated/rebuild required: {{yes/no}}
+- Batch checkpoint recorded: {{batch ID/status or none}}
 
 ## Revision history
 
