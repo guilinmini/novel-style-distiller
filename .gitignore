@@ -8,6 +8,7 @@ books/
 *.pdf
 
 # Per-book build artifacts
+.novel/
 distillations/
 novel-projects/
 runs/

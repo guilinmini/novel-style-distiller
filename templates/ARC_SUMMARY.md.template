@@ -1,0 +1,42 @@
+# {{PROJECT_TITLE}} — {{SCOPE_ID}} Summary
+
+- Scope: {{act/volume/chapter range}}
+- Accepted chapters: {{...}}
+- Entry state: {{...}}
+- Exit state: {{...}}
+- Summary built at: {{ISO_8601}}
+
+## Causal spine
+
+| Turn | Choice/cause | Cost | New constraint | Chapter/event IDs |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Character and relationship movement
+
+| ID | Entry → exit | Key evidence/choices | Unresolved pressure |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Information movement
+
+- Reader learned/reframed: {{fact IDs}}
+- Characters learned or misunderstood: {{...}}
+- Still protected: {{fact IDs}}
+
+## Thread movement
+
+- Opened: {{thread IDs}}
+- Advanced/reframed: {{thread IDs}}
+- Paid/closed: {{thread IDs}}
+- Deferred with reason: {{thread IDs}}
+
+## Durable consequences
+
+- {{Facts from this scope that future distant chapters must retain.}}
+
+## Style and rhythm review
+
+- Modes represented: {{...}}
+- Drift or repetition repaired: {{...}}
+- Contract version: `{{PACK_ID}}@{{SEMVER}}`

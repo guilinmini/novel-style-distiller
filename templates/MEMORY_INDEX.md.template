@@ -1,0 +1,53 @@
+# {{PROJECT_TITLE}} — Memory Index
+
+> Routing index for durable long-form memory. Do not duplicate full records here.
+
+## Checkpoint
+
+- Accepted through: {{chapter ID or `none`}}
+- Active draft: {{chapter ID or `none`}}
+- Current arc/volume: {{scope ID}}
+- Current context pack: `{{state/context/<chapter-id>.md or none}}`
+- Last full continuity review: {{chapter ID/date or `not run`}}
+- Updated at: {{ISO_8601}}
+
+## Authority order
+
+```text
+explicit user decisions
+→ accepted chapter + chapter record
+→ timeline and entity state
+→ Story Bible hard rules
+→ outline and future plans
+→ drafts and temporary context packs
+```
+
+## Memory routes
+
+| Question | Primary file | Supporting files | Last refreshed |
+|---|---|---|---|
+| What is happening now? | `CURRENT_STATE.md` | latest chapter record | {{...}} |
+| Where is a character and what do they want? | `characters/<character-id>.md` | Story Bible, relationships | {{...}} |
+| Who knows a fact? | `KNOWLEDGE_LEDGER.md` | timeline, chapter records | {{...}} |
+| What promises remain open? | `PLOT_THREADS.md` | outline, arc summaries | {{...}} |
+| When did an event occur? | `TIMELINE.md` | chapter record | {{...}} |
+| What continuity constraints are active? | `CONTINUITY_LEDGER.md` | Bible, entity files | {{...}} |
+| Why was a project-level choice made? | `DECISION_LOG.md` | project and outline logs | {{...}} |
+| What happened in an older arc/volume? | `summaries/<scope-id>.md` | chapter records | {{...}} |
+
+## Entity files
+
+| Entity ID | Kind | Path | Current relevance | Last changed |
+|---|---|---|---|---|
+| {{character-id}} | character | `characters/{{character-id}}.md` | {{active/background/archived}} | {{chapter ID}} |
+| {{entity-id}} | {{location/object/faction}} | `entities/{{entity-id}}.md` | {{...}} | {{chapter ID}} |
+
+## Active context selection
+
+For the next chapter, always load the style contract, chapter blueprint, this index, `CURRENT_STATE.md`, and the previous chapter record. Then follow this index to load only relevant character, entity, knowledge, thread, timeline, and summary entries.
+
+## Compaction log
+
+| Date/chapter | Material compacted | Destination | Facts preserved/check |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |

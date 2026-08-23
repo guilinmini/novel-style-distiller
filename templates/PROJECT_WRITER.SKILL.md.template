@@ -16,10 +16,12 @@ Before every chapter draft, continuation, or revision, read:
 2. `style/PACK_MANIFEST.md`
 3. `style/WRITING_STYLE_CONTRACT.md`
 4. the target chapter blueprint, or its row in `outline/MASTER_OUTLINE.md`
-5. `state/CURRENT_STATE.md`
-6. relevant entries from `bible/STORY_BIBLE.md`
-7. relevant and due entries from `state/PLOT_THREADS.md` and `state/TIMELINE.md`
-8. the previous chapter record, summary, and only the tail needed for continuity
+5. `state/MEMORY_INDEX.md` and `state/CURRENT_STATE.md`
+6. relevant character, entity, relationship, and knowledge records selected through the memory index
+7. relevant stable facts from `bible/STORY_BIBLE.md`
+8. relevant and due entries from plot threads, timeline, and continuity ledger
+9. the previous chapter record, necessary tail, and any relevant older arc summary
+10. only the task-relevant craft modules selected through `craft/INDEX.md`
 
 The style contract is mandatory. Stop and report the exact missing or mismatched file if its pack ID/version differs from `NOVEL_PROJECT.md`.
 
@@ -35,7 +37,7 @@ PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 
 ### PREPARE
 
-Confirm start time, location, POV, present characters, knowledge boundaries, previous irreversible results, due threads, chapter goal, and selected style modes. Report contradictions instead of silently choosing a fact.
+Build `state/context/<chapter-id>.md` as a temporary, non-canon context pack. Confirm start time, location, POV, present characters, entity state, knowledge boundaries, relationship pressure, previous irreversible results, continuity locks, due threads, chapter goal, selected style modes, and craft modules. Rebuild the pack if an input changed. Report contradictions instead of silently choosing a fact.
 
 ### PLAN
 
@@ -62,16 +64,19 @@ Commit canon only after explicit user acceptance, or when the user asks for the 
 1. save/mark the chapter as accepted;
 2. write `state/chapter-records/<chapter-id>.md`;
 3. update `state/TIMELINE.md`;
-4. update `state/PLOT_THREADS.md`;
-5. update `state/CURRENT_STATE.md`;
-6. update chapter status in the outline;
-7. update progress in `NOVEL_PROJECT.md`.
+4. update affected character, entity, relationship, and knowledge records;
+5. update `state/PLOT_THREADS.md`;
+6. update `state/CONTINUITY_LEDGER.md`;
+7. update `state/CURRENT_STATE.md`;
+8. update chapter status in the outline;
+9. refresh `state/MEMORY_INDEX.md`;
+10. update progress in `NOVEL_PROJECT.md` and invalidate the old context pack.
 
 Keep stable IDs and record only the accepted deltas. Verify the files agree before starting another chapter.
 
 ## Revision rule
 
-Revising an unaccepted draft does not advance the chapter or change canon. Before changing an accepted chapter, classify the edit as prose-only or canon-changing. For canon changes, show affected later chapters and state files, obtain confirmation, then propagate the revision in chapter order and preserve a supersession record.
+Revising an unaccepted draft does not advance the chapter or change canon. Before changing an accepted chapter, create `state/revisions/<revision-id>.md` from the revision-impact template and classify the edit as prose-only, local-canon, causal-canon, or structural. For canon changes, show affected later chapters and state files, obtain confirmation, then propagate the revision in chapter order and preserve a supersession record.
 
 ## Quality boundary
 
@@ -79,3 +84,4 @@ Revising an unaccepted draft does not advance the chapter or change canon. Befor
 - Never continue, rename, or reconstruct the source novel behind the style pack.
 - Stable style means contract consistency across varied scenes, not the same cadence in every paragraph.
 - Do not let style override clarity, character specificity, story movement, or established truth.
+- General craft modules advise planning and diagnosis; they never override the locked style contract or accepted canon.

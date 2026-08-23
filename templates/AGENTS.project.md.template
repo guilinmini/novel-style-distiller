@@ -6,6 +6,7 @@ For every request to plan, write, continue, revise, accept, or review a chapter 
 
 - Treat `NOVEL_PROJECT.md`, accepted chapters, and files under `bible/`, `outline/`, and `state/` as the project's durable memory.
 - Load `style/WRITING_STYLE_CONTRACT.md` for every chapter task.
+- Read `state/MEMORY_INDEX.md` before selecting extended context, and load only relevant modules through `craft/INDEX.md`.
 - Do not load source novels or distillation audit files while writing this project.
 - Do not update canon until a chapter is accepted according to the project policy.
 - Preserve all instructions outside this marked block when updating it.

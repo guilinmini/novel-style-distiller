@@ -1,6 +1,6 @@
 # {{PROJECT_TITLE}} — Story Bible
 
-> Stable project truth. Plans belong in the outline; chapter-specific deltas belong in chapter records.
+> Stable project truth. Plans belong in the outline; changing character/entity state belongs under `state/`; chapter-specific deltas belong in chapter records.
 
 ## Premise and promise
 

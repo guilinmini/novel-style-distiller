@@ -7,3 +7,5 @@
 3. `example-chapter-request.txt`：验证草稿、接受、状态回写和下一章文风继承。
 
 `novel.txt` 太短，不能证明稳定的作品级风格。示例的目的只是验证路由、目录、模板、来源隔离和章节状态机，不用于发布生产风格包。
+
+完整仓库模式的自然语言流程见 [`../zero-config-dialogue.md`](../zero-config-dialogue.md)。

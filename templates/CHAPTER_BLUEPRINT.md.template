@@ -15,6 +15,8 @@
 - Other present characters: {{...}}
 - Previous irreversible result: {{...}}
 - Due/high-priority threads: {{IDs}}
+- Required memory files: {{character/entity/knowledge/relationship/summary paths}}
+- Continuity locks: {{constraint IDs}}
 
 ## Chapter contract
 
@@ -46,6 +48,14 @@
 | Risk | Files/facts to check | Prevention |
 |---|---|---|
 | {{...}} | {{...}} | {{...}} |
+
+## Craft modules
+
+| Module | Why this chapter needs it | Decision it should improve |
+|---|---|---|
+| `craft/{{module}}.md` | {{...}} | {{...}} |
+
+Do not load unrelated craft modules, and do not let general craft guidance override canon or the locked style contract.
 
 ## Acceptance criteria
 

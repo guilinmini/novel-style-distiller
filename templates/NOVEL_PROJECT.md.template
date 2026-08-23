@@ -30,6 +30,12 @@
 - Local contract: [style/WRITING_STYLE_CONTRACT.md](style/WRITING_STYLE_CONTRACT.md)
 - Upgrade policy: explicit review and regression only; never silently follow upstream changes
 
+## Built-in craft snapshot
+
+- Craft index: [craft/INDEX.md](craft/INDEX.md)
+- Library version: `{{CRAFT_LIBRARY_VERSION}}`
+- Upgrade policy: explicit comparison and regression only
+
 ## Progress
 
 - Current stage: {{...}}
@@ -37,14 +43,23 @@
 - Active draft: {{chapter ID or `none`}}
 - Next planned chapter: {{chapter ID}}
 - Canon state: [state/CURRENT_STATE.md](state/CURRENT_STATE.md)
+- Memory index: [state/MEMORY_INDEX.md](state/MEMORY_INDEX.md)
 
 ## Project files
 
 - Story Bible: [bible/STORY_BIBLE.md](bible/STORY_BIBLE.md)
 - Master outline: [outline/MASTER_OUTLINE.md](outline/MASTER_OUTLINE.md)
 - Chapter blueprints: `outline/chapters/`
+- Character/entity state: `state/characters/`, `state/entities/`
+- Relationship ledger: [state/RELATIONSHIP_LEDGER.md](state/RELATIONSHIP_LEDGER.md)
+- Knowledge ledger: [state/KNOWLEDGE_LEDGER.md](state/KNOWLEDGE_LEDGER.md)
 - Plot threads: [state/PLOT_THREADS.md](state/PLOT_THREADS.md)
 - Timeline: [state/TIMELINE.md](state/TIMELINE.md)
+- Continuity ledger: [state/CONTINUITY_LEDGER.md](state/CONTINUITY_LEDGER.md)
+- Decision log: [state/DECISION_LOG.md](state/DECISION_LOG.md)
+- Arc/volume summaries: `state/summaries/`
+- Temporary context packs: `state/context/`
+- Revision impacts: `state/revisions/`
 - Accepted chapters: `chapters/`
 - Chapter records: `state/chapter-records/`
 - Runtime writer: [project writer Skill](.agents/skills/{{PROJECT_SLUG}}-writer/SKILL.md)

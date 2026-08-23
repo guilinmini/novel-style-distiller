@@ -9,6 +9,8 @@
 - Story date/time: {{...}}
 - Active location(s): {{...}}
 - State updated from: {{chapter record or initialization}}
+- Memory index: [MEMORY_INDEX.md](MEMORY_INDEX.md)
+- Current context pack: `{{context path or none}}` — temporary, non-canon
 - Updated at: {{ISO_8601}}
 
 ## Immediate situation

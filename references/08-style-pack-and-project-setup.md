@@ -101,18 +101,36 @@ runtime-style-pack/
 
 ### 建立持久状态
 
-按模板创建：
+按 [11-long-form-memory-system.md](11-long-form-memory-system.md) 和对应模板创建：
 
 - `NOVEL_PROJECT.md`：项目身份、创作目标、锁定风格与当前阶段；
 - `bible/STORY_BIBLE.md`：稳定设定、人物、关系、知识权限和硬规则；
 - `outline/MASTER_OUTLINE.md`：计划中的主线、分幕、角色弧和线程窗口；
 - `outline/chapters/`：逐章蓝图；
+- `state/MEMORY_INDEX.md`：记忆路由、实体文件和刷新点；
 - `state/CURRENT_STATE.md`：写下一章必需的紧凑事实；
+- `state/characters/` 与 `state/entities/`：人物及地点、物件、组织等当前状态；
+- `state/RELATIONSHIP_LEDGER.md`：信任、权力、债务和关系变化；
+- `state/KNOWLEDGE_LEDGER.md`：作者真相、人物知识与读者知识；
 - `state/PLOT_THREADS.md`：承诺、伏笔、悬念和待兑现线索；
 - `state/TIMELINE.md`：已发生事件及其因果；
+- `state/CONTINUITY_LEDGER.md`：时间、地点、身体、物件、规则和 POV 约束；
+- `state/DECISION_LOG.md`：用户决定、重要假设和范围变更；
 - `state/chapter-records/`：每章验收后的增量变更。
+- `state/summaries/`：分幕、分卷或远期历史的因果压缩；
+- `state/context/`：每章临时 context pack，不构成 canon；
+- `state/revisions/`：已验收章节的修订影响记录。
 
 使用稳定 ID，例如 `char-lin`、`thread-missing-map`、`evt-0031`。同一实体不要在不同文件创建不同 ID。
+
+### 部署通用长篇技法
+
+把仓库 `knowledge/` 复制为项目 `craft/` 快照。它提供结构、人物、场景、节奏、POV、对白、伏笔、连续性和风格集成方法，但不含来源小说信息。
+
+- 项目 writer 先读 `craft/INDEX.md`，只加载与当前问题有关的模块；
+- 通用技法的优先级低于用户要求、canon、POV、章节任务和锁定风格契约；
+- 工作台技法库升级不得静默覆盖已开始写作的项目；
+- 需要升级时记录版本/差异并回归检查近期章节。
 
 ### 生成项目专属 writer Skill
 
@@ -157,4 +175,7 @@ runtime-style-pack/
 4. 第一章蓝图能够从主题与主线推出；
 5. 项目 writer Skill 的正例能触发，摘要/来源分析等诱饵不触发；
 6. 项目目录不含来源小说或审计证据；
-7. 向用户列出关键假设、当前阶段、下一步命令和需要确认的重大选择。
+7. `MEMORY_INDEX.md` 能路由到人物、知识、关系、线程、时间线、连续性和摘要文件；
+8. `craft/INDEX.md` 存在，项目 writer 不会默认加载全部技法；
+9. 在仓库工作台中运行 `sh scripts/novelctl.sh activate-project <project-path>` 与 `doctor`；
+10. 向用户列出关键假设、当前阶段、下一步自然语言请求和需要确认的重大选择。

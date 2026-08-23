@@ -1,0 +1,48 @@
+# {{CHARACTER_NAME}} — Current State
+
+- Character ID: `{{CHARACTER_ID}}`
+- Stable profile: `{{bible/STORY_BIBLE.md anchor or section}}`
+- State valid after: {{accepted chapter ID}}
+- Location: {{location ID}}
+- Present/available: {{yes/no/unknown}}
+- Updated from: {{chapter record}}
+
+## Current drives
+
+- Immediate goal: {{...}}
+- Current tactic: {{...}}
+- Pressure/fear: {{...}}
+- Decision currently avoided: {{...}}
+- Next likely action if unopposed: {{...}}
+
+## Condition and resources
+
+- Physical condition: {{...}}
+- Emotional posture: {{observable behavior, not diagnosis}}
+- Resources/leverage: {{entity/resource IDs}}
+- Injuries, limitations, deadlines: {{...}}
+
+## Knowledge
+
+- Knows: {{fact IDs}}
+- Suspects: {{fact IDs and confidence}}
+- Believes incorrectly: {{fact IDs}}
+- Does not know but may affect next action: {{fact IDs}}
+- Secrets currently protecting: {{fact IDs}}
+
+## Relationships in motion
+
+| Relation ID | Current stance | Latest change | Unresolved test |
+|---|---|---|---|
+| {{...}} | {{...}} | {{chapter ID / event ID}} | {{...}} |
+
+## Arc position
+
+- Baseline strategy currently used: {{...}}
+- Evidence challenging it: {{...}}
+- Latest costly choice: {{...}}
+- Next planned pressure, not yet canon: {{outline reference}}
+
+## Continuity locks
+
+- {{Fact that must remain consistent in the next relevant scene.}}

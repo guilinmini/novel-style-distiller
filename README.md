@@ -1,144 +1,169 @@
 # Novel Style Distiller
 
-把一部完整小说蒸馏成与来源隔离、可持续执行的写作风格契约；再根据你的主题建立一部原创长篇，并让以后每次写章、续写和修订都自动加载同一份风格契约与最新故事状态。
+一个可以直接克隆使用的 AI 长篇小说工作台：先从你提供的完整小说中蒸馏写作风格，再根据你的主题建立原创长篇；以后每次写章都会自动加载同一份风格契约和最新的分层记忆。
 
-它不是摘要器，也不是“模仿某作者”的 Prompt。它提炼可观察、可调节、可测试的写作机制，同时把来源证据和实际写作环境分开。
+它不是“模仿某作者”的 Prompt，也不要求你手工维护几十个文件。仓库内已经部署了蒸馏流程、长篇技法库、记忆系统、项目模板、章节状态机和配置检查工具。
 
-## 现在能做什么
+## 最短使用流程
 
-### 1. 蒸馏完整小说
+### 1. 克隆并打开仓库
 
-- 建立剧情、人物、时间线、伏笔、信息控制和场景节奏模型；
-- 提取文风、叙述声音、语气、对白、句法、节奏、意象与情绪呈现机制；
-- 使用跨章节证据、反例和 holdout 验证结论；
-- 生成私有审计区和不含来源身份的 `runtime-style-pack`。
-
-### 2. 从主题建立原创长篇
-
-- 创建原创 premise、世界规则、人物、主线、结局方向和章节大纲；
-- 把选定的风格包复制并锁定到项目；
-- 建立 Story Bible、当前状态、剧情线程、时间线和章节记录；
-- 自动生成项目专属 `.agents/skills/<project>-writer/SKILL.md`。
-
-### 3. 持续写章
-
-每章都执行：
-
-```text
-加载风格与状态 → 章节蓝图 → 起草 → 连续性/文风/原创性检查
-→ 交付草稿 → 用户接受 → 回写长期状态
+```bash
+git clone https://github.com/guilinmini/novel-style-distiller.git
+cd novel-style-distiller
 ```
 
-风格契约每次必载，但会根据动作、对白、内省、过渡、高潮等场景切换强度，因此不会把所有章节写成同一种表面节奏。
+使用能够读取项目 `AGENTS.md` 和本地文件的 Agent 打开这个目录。无需把本仓库另外复制到 Skills 目录。
 
-## 为什么分成两个区
+### 2. 在对话中给出原著路径
 
 ```text
-distillations/<source>/
-├── audit/                 # 来源身份、证据、画像、失败项，只用于审计
-└── runtime-style-pack/    # 中性写作契约，供原创项目复制
-
-novel-projects/<project>/
-├── style/                 # 锁定的 runtime pack 快照
-├── bible/                 # 稳定设定与人物事实
-├── outline/               # 总纲与章节蓝图
-├── state/                 # 当前状态、线程、时间线、章节记录
-├── chapters/              # 小说正文
-└── .agents/skills/<project>-writer/
+蒸馏这本小说：/path/to/novel.txt
 ```
 
-写章时只读取原创项目，不读取原著或蒸馏证据。这既减少上下文噪声，也降低人物、专名、情节和独特表达泄漏到新书的风险。
+Agent 会自动：
 
-## 安装
+1. 登记路径、格式、大小和文件哈希，不复制原著；
+2. 建立整书剧情、人物、信息、场景、文风与声音模型；
+3. 用跨章节证据、反例和 holdout 验证规律；
+4. 生成私有 `audit/`；
+5. 编译并检查不含作者名、书名、原作人物、引文和情节映射的 `runtime-style-pack/`。
 
-用户级安装：
+TXT/Markdown 可以直接处理。PDF/EPUB 需要当前 Agent 环境具备文本提取能力；提取结果仍是本地忽略文件，不进入 Git。
+
+### 3. 直接告诉它原创主题
+
+```text
+我要写一部小说：一座每天遗忘一条街道的城市里，地图修复师寻找失踪的姐姐。
+```
+
+如果只有一个合格风格包，Agent 会自动使用它，然后完成：
+
+- 原创 premise、人物、世界规则、结局方向和全书/分卷规划；
+- 锁定的风格包快照；
+- Story Bible、章节蓝图和长期记忆；
+- 项目内置长篇技法库；
+- 项目专属 `.agents/skills/<project>-writer/SKILL.md`；
+- 项目激活和配置体检。
+
+### 4. 开始自然对话写作
+
+```text
+写第一章。
+接受这一章，继续下一章。
+重写第二章，让冲突更早发生，但不要改变结尾事实。
+检查最近五章的文风漂移和伏笔欠账。
+```
+
+不需要反复指定原著或风格。项目 writer 每次都会读取锁定的 `WRITING_STYLE_CONTRACT.md`。
+
+## 长篇为什么不会只靠聊天记忆
+
+项目采用分层文件记忆：
+
+| 记忆层 | 保存内容 |
+|---|---|
+| Story Bible | 稳定世界规则、人物身份、秘密和术语 |
+| Master Outline | 结局方向、分幕/分卷、未来章节功能 |
+| Current State | 写下一章必需的紧凑现状 |
+| Character / Entity State | 人物、地点、物件、组织的当前状态 |
+| Relationship Ledger | 信任、权力、债务、关系变化 |
+| Knowledge Ledger | 作者真相、人物知识、读者知识 |
+| Timeline / Continuity | 已发生事件与时间、身体、物件、规则约束 |
+| Plot Threads | 主线、支线、伏笔、承诺与兑现窗口 |
+| Chapter Records | 每章验收后产生的事实增量 |
+| Arc/Volume Summaries | 远期历史的因果压缩，而不是流水账 |
+| Decision / Revision Logs | 用户决定、重要假设和修订影响 |
+
+写章前只组装与本章相关的临时 context pack，不把整部小说、全部设定和所有旧章节塞进上下文。
+
+## 内置长篇技法
+
+[`knowledge/INDEX.md`](knowledge/INDEX.md) 按当前问题选择加载以下模块：
+
+- 故事发动机、因果主线、分幕/分卷与升级；
+- 人物弧、能动性、关系变化和角色声音；
+- 世界规则、系统后果、机构、术语和说明信息；
+- 场景转折、章节边界与 scene/sequel；
+- 节奏、张力、压缩和延展；
+- POV、人物知识、读者信息和公平揭示；
+- 对白目标、策略、潜台词和说明信息；
+- 伏笔、读者承诺、线程老化与兑现；
+- 类型承诺、连载章节回报和分卷更新；
+- 连续性、已验收章节修订和影响传播；
+- 蒸馏风格在不同场景中的稳定应用。
+
+通用技法不会覆盖用户要求、已验收事实、POV、章节任务或蒸馏风格契约。
+
+## 每章工作流
+
+```text
+PREPARE
+  读取风格契约 + 记忆索引，构建本章 context pack
+→ PLAN
+  明确本章变化、场景卡、线程和技法模块
+→ DRAFT
+  用稳定风格常量和场景模式写作
+→ REVIEW
+  检查任务、连续性、知识、POV、文风和来源泄漏
+→ DELIVER
+  交付草稿，不修改 canon
+→ ACCEPT / COMMIT
+  用户接受后才回写全部记忆层
+```
+
+这里的 `COMMIT` 指提交小说 canon，不是执行 Git commit。
+
+## 仓库与生成目录
+
+```text
+novel-style-distiller/
+├── AGENTS.md                # 克隆后自然语言入口
+├── SKILL.md                 # 蒸馏、建书、写章核心协议
+├── scripts/novelctl.sh      # 工作区登记、激活、状态与体检
+├── knowledge/               # 内置长篇写作技法
+├── references/              # 蒸馏、项目编排和记忆规范
+├── extractors/              # 六路小说提取器
+├── templates/               # 审计、风格、项目与记忆模板
+├── tests/                   # 无外部依赖的隔离冒烟测试
+├── distillations/           # 本地生成，Git 忽略
+├── novel-projects/          # 本地生成，Git 忽略
+└── .novel/                  # 活动来源/项目指针，Git 忽略
+```
+
+## 可选维护命令
+
+普通用户不需要手动运行；Agent 会调用它们。
+
+```bash
+sh scripts/novelctl.sh register-source "/path/to/novel.txt"
+sh scripts/novelctl.sh activate-pack "distillations/my-source/runtime-style-pack"
+sh scripts/novelctl.sh scaffold-project "my-project" "distillations/my-source/runtime-style-pack"
+sh scripts/novelctl.sh activate-project "novel-projects/my-project"
+sh scripts/novelctl.sh status
+sh scripts/novelctl.sh doctor
+sh tests/smoke.sh
+```
+
+`novelctl.sh` 使用 POSIX Shell，不需要 Python、数据库、RAG、图数据库或第三方包。没有 Shell 的 Agent 也可以按照模板完成同样配置。
+
+## 作为独立 Skill 安装
+
+如果不想使用完整工作台，也可以安装到用户级 Skills 目录：
 
 ```bash
 git clone https://github.com/guilinmini/novel-style-distiller ~/.agents/skills/novel-style-distiller
 ```
 
-项目级安装：
+此时仍可显式使用 `$novel-style-distiller`，但工作区活动指针和根 `AGENTS.md` 路由只在完整仓库模式下生效。
 
-```text
-<workspace>/.agents/skills/novel-style-distiller/
-```
+## 边界
 
-其他支持 Agent Skills 的宿主，将整个仓库复制到其 Skill 发现目录即可。必须保留 `SKILL.md`、`references/`、`extractors/` 与 `templates/` 的相对结构。
+- 只处理小说，并且只基于用户实际提供的文本；
+- 一部小说只能支持对该作品、版本和译本的判断；
+- 不续写原著，不复用人物、世界、专名、独特表达或情节骨架；
+- 原著、OCR 文件、审计证据和生成项目默认不进入 Git；
+- 写原创章节时不会重新打开原著或 `audit/`；
+- 节选只能生成实验结果，不能冒充完整小说的稳定风格包。
 
-本项目是纯 Markdown Skill，不需要 Python、数据库、RAG、图数据库或第三方运行时。
-
-## 使用方法
-
-### 第一步：蒸馏
-
-准备你有权在本地分析的完整小说，推荐 UTF-8 TXT 或 Markdown。PDF/EPUB 应先完整提取并检查章节顺序、缺页和乱码。
-
-```text
-使用 $novel-style-distiller，把 /path/to/novel.txt 蒸馏成一个
-可用于原创长篇的 runtime style pack，输出到 distillations/my-source/。
-```
-
-默认输出为 `distillations/<source-slug>/`。节选或短样本只能生成实验性结果，不能冒充正式整书风格包。
-
-### 第二步：给主题建书
-
-```text
-使用 $novel-style-distiller，采用
-distillations/my-source/runtime-style-pack/，根据这个主题创建原创长篇：
-“一座每天遗忘一条街道的城市里，地图修复师寻找失踪的姐姐。”
-项目名暂定《失街图》，输出到 novel-projects/lost-streets/。
-```
-
-Skill 会生成项目专属 writer Skill，并把风格包版本锁定在项目中。上游风格包以后改变，不会静默改变这本小说。
-
-### 第三步：写章、续写、修订
-
-在原创项目目录内直接说：
-
-```text
-写第一章。
-```
-
-或显式调用：
-
-```text
-使用 $lost-streets-writer，写第一章。
-```
-
-以后可以说：
-
-```text
-下一章。
-重写第二章，让冲突更早发生，但不要改变结尾事实。
-检查最近三章有没有文风漂移。
-```
-
-章节交付时仍是草稿。你说“接受/定稿”，或在没有提出修订时直接要求“下一章”，才会把上一章写入 canon，并更新状态、时间线和剧情线程。
-
-## 仓库结构
-
-```text
-novel-style-distiller/
-├── SKILL.md                 # 三种模式与总入口
-├── agents/openai.yaml       # UI 元数据
-├── references/              # 蒸馏、建书与逐章状态规范
-├── extractors/              # 六个独立小说提取器
-├── templates/               # 审计、风格包与原创项目模板
-└── examples/                # 可公开的合成示例
-```
-
-## 重要边界
-
-- 只处理小说，不处理散文、非虚构、剧本或方法论书；
-- 只基于用户提供的文本，不凭模型记忆补写原著；
-- 一部小说只能支持当前作品和版本的结论，不能代表作者全部作品；
-- 译本的具体语言特征不能直接归因于原作者；
-- 不续写原著，不复用人物、世界观、专名、独特表达或情节骨架；
-- 原著正文、OCR 文件和审计证据不进入项目 writer Skill，也不应提交到 Git；
-- “风格”必须展开成可观察行为，不能只写“像某作者”。
-
-## 贡献与许可
-
-参见 [CONTRIBUTING.md](./CONTRIBUTING.md)。只提交合成文本或明确可再分发的测试材料，不要提交未经授权的小说原文。
-
-本项目采用 GNU Affero General Public License v3.0，参见 [LICENSE](./LICENSE)。项目由 `cangjie-skill` 大幅重构而来，来源说明见 [NOTICE](./NOTICE)。
+贡献规范见 [CONTRIBUTING.md](CONTRIBUTING.md)。本项目采用 GNU AGPL v3.0，参见 [LICENSE](LICENSE)；来源说明见 [NOTICE](NOTICE)。

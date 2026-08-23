@@ -1,0 +1,52 @@
+# {{PROJECT_TITLE}} — {{CHAPTER_ID}} Context Pack
+
+> Temporary preparation artifact, not canon. Rebuild when any source file below changes.
+
+## Build identity
+
+- Target chapter: {{chapter ID}}
+- Built at: {{ISO_8601}}
+- Style pack: `{{PACK_ID}}@{{SEMVER}}`
+- Canon accepted through: {{chapter ID or none}}
+- Source files loaded: {{paths and update checkpoints}}
+
+## Hard constraints
+
+- POV / tense / narrative permissions: {{...}}
+- Story time and location: {{...}}
+- World and continuity locks: {{constraint IDs}}
+- Forbidden reveals/actions: {{...}}
+
+## Chapter task
+
+- Planned state change: {{...}}
+- Immediate goal, opposition, cost: {{...}}
+- Required and due threads: {{thread IDs}}
+- Exit function: {{...}}
+
+## Active character memory
+
+| Character ID | Goal/tactic | Condition | Knows/believes | Relationship pressure |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{fact IDs}} | {{...}} |
+
+## Relevant entities and recent causality
+
+- Entities: {{IDs and current states}}
+- Previous irreversible result: {{...}}
+- Relevant older arc summary: {{path/none}}
+- Previous chapter tail reference: {{path and section marker}}
+
+## Style execution
+
+- Always-on invariants: {{contract section references}}
+- Scene modes and strength: {{...}}
+- Chapter-specific drift risks: {{...}}
+
+## Craft modules loaded
+
+- {{knowledge path}} — {{why it is relevant}}
+
+## Consistency questions to resolve before drafting
+
+- {{None, or explicit conflict that blocks drafting.}}

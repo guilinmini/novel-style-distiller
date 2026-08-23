@@ -1,142 +1,124 @@
 # Novel Style Distiller
 
-Distill a complete novel into a source-isolated, executable writing-style contract; create an original long-form novel from a theme; and make every later chapter, continuation, or revision load the same locked style contract and current story state.
+An agent-native long-form fiction workbench that can be cloned and used directly. It distills a complete user-provided novel into a source-isolated style contract, creates an original long-form project from a theme, and makes every later chapter load the same locked style plus current layered memory.
 
-This is neither a summarizer nor a “write like this author” prompt. It extracts observable, adjustable, testable mechanisms while separating source evidence from the runtime writing environment.
+It is not an author-imitation prompt, and the user does not manually maintain dozens of files. The repository ships the distillation workflow, long-form craft library, memory system, project templates, chapter state machine, and configuration checks.
 
-## What it does
+## Fastest workflow
 
-### 1. Distill a complete novel
-
-- Model plot causality, character arcs, timeline, setups/payoffs, information control, and scene pacing.
-- Extract prose, voice, tone, dialogue, syntax, rhythm, imagery, and emotion-delivery mechanisms.
-- Validate claims with cross-section evidence, counterexamples, and holdout text.
-- Produce a private audit area and a source-neutral `runtime-style-pack`.
-
-### 2. Start an original long-form project
-
-- Create an original premise, world rules, characters, central arc, ending direction, and outline from the user's theme.
-- Copy and lock a selected runtime style pack into the project.
-- Create a Story Bible, current state, plot-thread ledger, timeline, and chapter records.
-- Generate `.agents/skills/<project>-writer/SKILL.md`, a project-specific runtime writer.
-
-### 3. Write continuously
-
-Every chapter follows:
-
-```text
-load style and state → chapter blueprint → draft → continuity/style/originality review
-→ deliver draft → user accepts → write back durable state
-```
-
-The contract is mandatory for every chapter, while action, dialogue, introspection, transition, and climax modes adjust its surface intensity to avoid mechanical sameness.
-
-## Source/runtime isolation
-
-```text
-distillations/<source>/
-├── audit/                 # source identity, evidence, profiles, rejected claims
-└── runtime-style-pack/    # neutral writing contract copied into original projects
-
-novel-projects/<project>/
-├── style/                 # locked runtime-pack snapshot
-├── bible/                 # stable setting and character truth
-├── outline/               # master outline and chapter blueprints
-├── state/                 # current state, threads, timeline, chapter records
-├── chapters/              # manuscript
-└── .agents/skills/<project>-writer/
-```
-
-Chapter writing reads only the original project, never the source novel or audit evidence. This reduces context noise and the risk of leaking source names, characters, plot, or distinctive expression.
-
-## Install
-
-User-level installation:
+### 1. Clone and open
 
 ```bash
-git clone https://github.com/guilinmini/novel-style-distiller ~/.agents/skills/novel-style-distiller
+git clone https://github.com/guilinmini/novel-style-distiller.git
+cd novel-style-distiller
 ```
 
-Project-level installation:
+Open the directory in an Agent-capable environment that reads project `AGENTS.md` and local files. The repository does not need to be copied to a Skills directory.
+
+### 2. Give the source path in chat
 
 ```text
-<workspace>/.agents/skills/novel-style-distiller/
+Distill this novel: /path/to/novel.txt
 ```
 
-Other Agent Skills hosts can place the complete repository in their skill-discovery directory. Preserve the relative layout of `SKILL.md`, `references/`, `extractors/`, and `templates/`.
+The Agent registers the path and hash without copying the book, models the whole novel, validates extracted mechanisms, builds the private audit, and compiles a source-neutral `runtime-style-pack`.
 
-This is a Markdown-only skill. It requires no Python, database, RAG system, graph store, or third-party runtime.
+TXT/Markdown can be processed directly. PDF/EPUB requires extraction support in the active Agent environment; extracted text remains a local ignored artifact.
 
-## Use
-
-### 1. Distill
-
-Provide a complete novel you may analyze locally, preferably as UTF-8 TXT or Markdown. Extract and inspect PDF/EPUB sources first.
+### 3. State the original theme
 
 ```text
-Use $novel-style-distiller to distill /path/to/novel.txt into a runtime
-style pack for original long-form fiction. Write it to distillations/my-source/.
+I want to write a novel about a city that forgets one street every day and a map restorer searching for her missing sister.
 ```
 
-The default output is `distillations/<source-slug>/`. Excerpts and short fixtures may produce experimental results only.
+With one eligible style pack, the Agent selects it automatically and creates:
 
-### 2. Create a project from a theme
+- an original premise, characters, world rules, ending direction, and long-range outline;
+- a locked style-pack snapshot;
+- a Story Bible, chapter plans, and layered durable memory;
+- a project-local long-form craft library;
+- `.agents/skills/<project>-writer/SKILL.md`;
+- active-project routing and a configuration health check.
 
-```text
-Use $novel-style-distiller with distillations/my-source/runtime-style-pack/
-to create an original novel from this theme: “In a city that forgets one street
-each day, a map restorer searches for her missing sister.”
-Create novel-projects/lost-streets/.
-```
-
-The skill generates a project writer and locks the style-pack version. Later upstream changes do not silently alter the novel.
-
-### 3. Write, continue, or revise
-
-Inside the original project, ask naturally:
+### 4. Write through normal conversation
 
 ```text
 Write chapter one.
+Accept it and continue with the next chapter.
+Rewrite chapter two so the conflict begins earlier without changing its ending fact.
+Review the last five chapters for style drift and overdue promises.
 ```
 
-Or invoke the generated skill explicitly:
+The project writer always loads its locked `WRITING_STYLE_CONTRACT.md`; the user does not repeatedly name the source or style.
+
+## Layered long-form memory
+
+Durable state is separated into stable Bible facts, future plans, compact current state, character/entity state, relationships, knowledge, timeline, continuity constraints, plot threads, accepted chapter deltas, arc/volume summaries, decisions, and revision impacts.
+
+Before drafting, the writer builds a temporary chapter context pack containing only relevant memory and craft modules. It does not stuff the entire manuscript, every entity, or all previous chapters into context.
+
+## Built-in craft
+
+[`knowledge/INDEX.md`](knowledge/INDEX.md) routes to practical modules for story architecture, characters and relationships, worldbuilding and exposition, scene/chapter design, pacing and tension, POV and information, dialogue and subtext, foreshadowing and payoff, genre/serialization promises, continuity and revision, and distilled-style integration.
+
+General craft never outranks the user's request, accepted canon, POV, current chapter contract, or locked distilled style.
+
+## Chapter lifecycle
 
 ```text
-Use $lost-streets-writer to write chapter one.
+PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 ```
 
-Later requests can be:
-
-```text
-Next chapter.
-Rewrite chapter two so the conflict starts earlier without changing its final fact.
-Check the last three chapters for style drift.
-```
-
-A delivered chapter remains a draft. Saying “accept/finalize,” or asking for the next chapter without requesting revisions, commits the previous draft and updates current state, timeline, and plot threads.
+The draft does not change canon. After acceptance, the writer updates chapter records, timeline, characters/entities, knowledge, relationships, threads, continuity, current state, and the memory index. `COMMIT` here means committing story canon, not running Git commit.
 
 ## Repository layout
 
 ```text
 novel-style-distiller/
+├── AGENTS.md
 ├── SKILL.md
-├── agents/openai.yaml
+├── scripts/novelctl.sh
+├── knowledge/
 ├── references/
 ├── extractors/
 ├── templates/
-└── examples/
+├── tests/
+├── distillations/          # generated and ignored
+├── novel-projects/         # generated and ignored
+└── .novel/                 # active pointers, generated and ignored
 ```
+
+## Optional maintenance commands
+
+The Agent normally runs these for the user:
+
+```bash
+sh scripts/novelctl.sh register-source "/path/to/novel.txt"
+sh scripts/novelctl.sh activate-pack "distillations/my-source/runtime-style-pack"
+sh scripts/novelctl.sh scaffold-project "my-project" "distillations/my-source/runtime-style-pack"
+sh scripts/novelctl.sh activate-project "novel-projects/my-project"
+sh scripts/novelctl.sh status
+sh scripts/novelctl.sh doctor
+sh tests/smoke.sh
+```
+
+`novelctl.sh` uses POSIX Shell and has no Python, database, RAG, graph-store, or third-party package dependency. An Agent without Shell can instantiate the same templates directly.
+
+## Optional standalone Skill installation
+
+```bash
+git clone https://github.com/guilinmini/novel-style-distiller ~/.agents/skills/novel-style-distiller
+```
+
+The `$novel-style-distiller` Skill remains usable in this mode, while root `AGENTS.md` routing and active workspace pointers belong to the complete-repository workflow.
 
 ## Boundaries
 
-- Novels only; not essays, nonfiction, screenplays, or methodology books.
-- Use the supplied source text rather than model memory.
-- One novel supports claims about that work and edition, not an author's entire body of work.
-- Sentence-level traits in a translation must not be attributed directly to the original author.
-- Do not continue the source novel or reuse its characters, world, proper nouns, distinctive expression, or plot skeleton.
-- Source text, OCR files, and audit evidence never enter the project writer and should not be committed to Git.
-- Style must be expressed as observable behavior rather than “write like this author.”
+- Novels only, using text actually supplied by the user.
+- One novel supports conclusions about that work, edition, and translation—not an author's full body of work.
+- Do not continue the source or reuse its characters, world, proper nouns, distinctive expression, or plot skeleton.
+- Source books, OCR files, audit evidence, and generated projects are ignored local artifacts.
+- Original chapter writing never reopens the source novel or audit.
+- Excerpts may produce experimental output only, not a validated whole-novel style pack.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) before contributing. Commit only synthetic or clearly redistributable fixtures.
-
-Licensed under GNU AGPL v3.0; see [LICENSE](./LICENSE). This project is a substantial rewrite of `cangjie-skill`; see [NOTICE](./NOTICE).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Licensed under GNU AGPL v3.0; see [LICENSE](LICENSE) and [NOTICE](NOTICE).

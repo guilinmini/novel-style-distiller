@@ -1,0 +1,13 @@
+# {{PROJECT_TITLE}} — Decision Log
+
+> Record user decisions, material assumptions, scope changes, style-pack upgrades, and accepted exceptions. Do not log routine prose choices.
+
+| Decision ID | Date/chapter | Decision or assumption | Alternatives | Reason / user instruction | Files affected | Status |
+|---|---|---|---|---|---|---|
+| decision-001 | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{active/superseded/rejected}} |
+
+## Pending decisions
+
+| ID | Question | Safe temporary assumption | Latest decision point | Impact |
+|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |

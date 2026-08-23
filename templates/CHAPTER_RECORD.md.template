@@ -28,6 +28,12 @@
 |---|---|---|
 | {{...}} | {{fact/change}} | {{...}} |
 
+### Entity and continuity state
+
+| Entity/constraint ID | Before | After | Files updated |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
 ### Objects, resources, and constraints
 
 | ID | Change | New owner/location/state |
@@ -53,6 +59,7 @@
 - Drift symptoms found/fixed: {{...}}
 - Mechanical repetition check: {{PASS/FAIL and note}}
 - Source leakage check: {{PASS/FAIL and note}}
+- Craft modules used: {{paths and purpose}}
 
 ## Continuity review
 
@@ -66,6 +73,8 @@
 - Open decision: {{...}}
 - Required context: {{IDs and paths}}
 - Tail reference: `{{chapter path and optional marker}}`
+- Memory index refreshed: {{yes/no and checkpoint}}
+- Context pack invalidated/rebuild required: {{yes/no}}
 
 ## Revision history
 

@@ -1,0 +1,19 @@
+# {{PROJECT_TITLE}} — Knowledge Ledger
+
+> Separate author truth, character knowledge, and reader knowledge.
+
+| Fact ID | Author truth / Bible ref | Character states | Reader state | Acquisition/reveal event | Reliability | Next permitted change |
+|---|---|---|---|---|---|---|
+| fact-001 | {{...}} | {{char-a: knows; char-b: suspects; char-c: false belief}} | {{hidden/hinted/known/misunderstood}} | {{event/chapter or none}} | {{confirmed/claim/interpretation}} | {{...}} |
+
+## Knowledge changes by chapter
+
+| Chapter | Fact ID | Character/reader | Before → after | Acquisition path | Consequence |
+|---|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{saw/heard/inferred/was told/found}} | {{...}} |
+
+## Hard checks
+
+- A character may act on a fact only after a recorded acquisition or justified inference.
+- Reader knowledge changes only when accepted prose exposes it.
+- Lies and unreliable claims remain separate from author truth.

@@ -1,0 +1,22 @@
+# {{PROJECT_TITLE}} — Continuity Ledger
+
+## Active constraints
+
+| Constraint ID | Dimension | Statement | Valid from | Valid until/change condition | Related IDs | Source of truth | Severity |
+|---|---|---|---|---|---|---|---|
+| continuity-001 | {{time/location/body/object/world/terminology/POV}} | {{...}} | {{chapter/event}} | {{...}} | {{...}} | {{Bible/chapter record}} | {{critical/major/minor}} |
+
+## Detected conflicts
+
+| Conflict ID | Detected in | Conflicting records | Impact | Status | Resolution |
+|---|---|---|---|---|---|
+| conflict-001 | {{...}} | {{paths/IDs}} | {{...}} | {{open/resolved/accepted-retcon}} | {{...}} |
+
+## Recurrent checks
+
+- Travel, duration, deadlines, age and season
+- Character location, injury, ability and inventory
+- Knowledge acquisition and secret exposure
+- Relationship, debt, promise and authority changes
+- World-rule, terminology and institutional consistency
+- POV, tense, naming and identity continuity

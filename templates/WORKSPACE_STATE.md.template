@@ -1,0 +1,11 @@
+# Novel Workbench State
+
+- Schema version: `1.0`
+- Status: `READY`
+- Active source pointer: `.novel/ACTIVE_SOURCE.md`
+- Active runtime pack pointer: `.novel/ACTIVE_PACK.md`
+- Active project pointer: `.novel/ACTIVE_PROJECT.md`
+- Distillations root: `distillations/`
+- Original projects root: `novel-projects/`
+
+This file is managed by `scripts/novelctl.sh`. Source novels remain at their user-provided paths and are never copied into the workbench.

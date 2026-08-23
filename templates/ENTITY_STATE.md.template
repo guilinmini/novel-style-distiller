@@ -1,0 +1,26 @@
+# {{ENTITY_NAME}} — State
+
+- Entity ID: `{{ENTITY_ID}}`
+- Kind: `{{location|object|faction|institution|resource}}`
+- Stable definition: {{Story Bible reference}}
+- State valid after: {{accepted chapter ID}}
+- Updated from: {{chapter record}}
+
+## Current state
+
+- Location/ownership/control: {{...}}
+- Condition/availability: {{...}}
+- Capability: {{...}}
+- Active limitation: {{...}}
+- Characters aware of current state: {{character IDs}}
+- Reader awareness: {{known/hidden/misunderstood}}
+
+## Recent changes
+
+| Chapter/event | Change | Cause | Consequence |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Continuity locks
+
+- {{Constraint that must remain true until explicitly changed.}}

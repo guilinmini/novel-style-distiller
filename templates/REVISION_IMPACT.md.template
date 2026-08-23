@@ -1,0 +1,34 @@
+# {{PROJECT_TITLE}} — Revision Impact {{REVISION_ID}}
+
+- Requested change: {{...}}
+- Target chapter(s): {{...}}
+- Classification: `{{prose-only|local-canon|causal-canon|structural}}`
+- Status: `{{PROPOSED|APPROVED|APPLIED|REJECTED}}`
+- User confirmation: {{message/date or pending}}
+
+## Changed facts/events
+
+| ID | Before | Proposed after | Reason |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Dependency impact
+
+| Affected file/chapter | Dependency | Required change | Risk |
+|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Propagation order
+
+1. {{earliest affected accepted chapter or record}}
+2. {{timeline, knowledge, entity, relationship, and thread ledgers}}
+3. {{later chapters and current state}}
+4. {{outline and future blueprints}}
+
+## Validation after application
+
+- [ ] Superseded facts remain traceable.
+- [ ] Timeline, knowledge, entities, relationships, and threads agree.
+- [ ] Later chapters no longer depend on the old fact.
+- [ ] Style contract and POV still pass.
+- [ ] `MEMORY_INDEX.md` checkpoints are refreshed.

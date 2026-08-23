@@ -1,4 +1,4 @@
 interface:
   display_name: "Novel Style Distiller"
-  short_description: "Distill a style, start a novel, and keep chapters consistent"
-  default_prompt: "Use $novel-style-distiller to distill this complete novel into a reusable style contract, then start an original novel from my theme."
+  short_description: "Distill a novel and run a long-form writing workspace"
+  default_prompt: "Use $novel-style-distiller to register and distill the novel at this path, configure the writing workspace, and then ask me for my original theme."

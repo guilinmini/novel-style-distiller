@@ -1,0 +1,15 @@
+# {{PROJECT_TITLE}} — Relationship Ledger
+
+| Relation ID | Parties | Public state | Private stance | Trust basis | Power/leverage | Debt/obligation | Last change | Next unresolved test |
+|---|---|---|---|---|---|---|---|---|
+| rel-001 | {{character IDs}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} | {{chapter/event ID}} | {{...}} |
+
+## Change log
+
+| Chapter | Relation ID | Action/change | Before → after | Knowledge involved | Consequence |
+|---|---|---|---|---|---|
+| {{...}} | {{...}} | {{...}} | {{...}} | {{fact IDs}} | {{...}} |
+
+## Collision risks
+
+- {{Relation ID}}: {{contradiction, unearned turn, forgotten debt, or duplicated dynamic}}
