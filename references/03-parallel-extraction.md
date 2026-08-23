@@ -28,7 +28,7 @@
 
 ## 候选格式
 
-每行 JSON 必须符合 `schemas/candidate.schema.json`，核心字段是：
+每行 JSON 使用 `templates/candidate-record.json.template`，核心字段是：
 
 ```text
 可观察模式 → 使用条件 → 产生效果 → 运作机制

@@ -41,7 +41,7 @@
 
 ## 输出
 
-逐行写入 `candidates/plot-architecture.jsonl`，每行符合 `schemas/candidate.schema.json`。使用 `category: "plot-architecture"`，`candidate_kind` 选 `pattern` 或 `technique`。
+逐行写入 `candidates/plot-architecture.jsonl`，格式参考 `templates/candidate-record.json.template`。使用 `category: "plot-architecture"`，`candidate_kind` 选 `pattern` 或 `technique`。
 
 证据角色建议使用：`setup`、`escalation`、`turn`、`payoff`、`counterexample`。短核验片段只保留确认结论所需内容。
 

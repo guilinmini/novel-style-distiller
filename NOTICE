@@ -4,7 +4,7 @@ https://github.com/kangarooking/cangjie-skill
 Modified and renamed on 2026-08-13. The rewrite changes the domain from
 long-form methodology distillation to novel-only plot, craft, prose-style,
 tone, and narrative-voice distillation; it also replaces the extractors,
-templates, validation workflow, evaluation rules, and repository packaging.
+templates, evidence workflow, evaluation rules, and repository packaging.
 The imported source snapshot did not include upstream Git history, so an exact
 upstream commit identifier is not available in this repository.
 

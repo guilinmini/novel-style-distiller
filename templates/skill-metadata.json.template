@@ -26,7 +26,7 @@
     "forbid_source_characters": true,
     "forbid_source_worldbuilding": true,
     "forbid_plot_beat_mapping": true,
-    "overlap_check_required": true
+    "originality_review_required": true
   },
   "test_status": "pending",
   "created_at": "{{ISO_8601}}"
