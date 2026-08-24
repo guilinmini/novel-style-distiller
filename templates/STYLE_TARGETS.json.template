@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "pack_id": "{{PACK_ID}}",
+  "pack_version": "{{SEMVER}}",
+  "measurement_scope": "chapter body; markdown headings excluded; Unicode characters; whitespace excluded from character counts",
+  "calibration_policy": {
+    "mode": "sample-1-then-3",
+    "bulk_unlock_requires": "explicit acceptance of one sample chapter and a three-chapter stability review",
+    "user_may_waive": true
+  },
+  "metrics": {
+    "mean_paragraph_chars": {"target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "median_paragraph_chars": {"target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "p90_paragraph_chars": {"target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "short_paragraph_ratio": {"threshold_chars": {{INTEGER}}, "target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "long_paragraph_ratio": {"threshold_chars": {{INTEGER}}, "target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "mean_sentence_chars": {"target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "dialogue_paragraph_ratio": {"target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "ellipsis_per_1000_chars": {"target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]},
+    "question_per_1000_chars": {"target": [{{NUMBER}}, {{NUMBER}}], "hard": [{{NUMBER}}, {{NUMBER}}]}
+  },
+  "lexical_signals": {
+    "{{NEUTRAL_SIGNAL_ID}}": {
+      "purpose": "{{reader-attention dimension; omit this signal if neutral terms cannot measure it}}",
+      "terms": ["{{GENERIC_TERM}}"],
+      "target_per_10000_chars": [{{NUMBER}}, {{NUMBER}}],
+      "hard_per_10000_chars": [{{NUMBER}}, {{NUMBER}}]
+    }
+  },
+  "human_only_targets": {
+    "reader_attention_priority": ["{{...}}"],
+    "pov_voice_checks": ["{{...}}"],
+    "title_promise_checks": ["{{...}}"],
+    "exposition_checks": ["{{...}}"]
+  }
+}

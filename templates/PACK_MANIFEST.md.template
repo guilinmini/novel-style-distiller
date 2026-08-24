@@ -3,6 +3,7 @@
 ## Identity
 
 - Pack ID: `{{PACK_ID}}`
+- Pack schema: `2.0`
 - Version: `{{SEMVER}}`
 - Status: `{{EXPERIMENTAL|VALIDATED|BLOCKED}}`
 - Built at: `{{ISO_8601}}`
@@ -23,6 +24,8 @@ Only these paths belong to this pack:
 
 - `PACK_MANIFEST.md`
 - `WRITING_STYLE_CONTRACT.md`
+- `READER_EXPERIENCE_CONTRACT.md`
+- `STYLE_TARGETS.json`
 - `techniques/{{skill-slug}}/SKILL.md` {{or `none`}}
 
 ## Validation
@@ -33,6 +36,9 @@ Only these paths belong to this pack:
 | Cross-genre transfer | {{PASS/FAIL/NOT_RUN}} | {{...}} |
 | Scene-mode variation | {{PASS/FAIL/NOT_RUN}} | {{...}} |
 | Three-chapter drift | {{PASS/FAIL/NOT_RUN}} | {{...}} |
+| Reader-experience affinity | {{PASS/FAIL/NOT_RUN}} | {{dominant attention, POV voice, title/exposition checks}} |
+| Quantitative target regression | {{PASS/FAIL/NOT_RUN}} | {{single chapter and three-chapter aggregate}} |
+| Calibration-gate behavior | {{PASS/FAIL/NOT_RUN}} | {{sample acceptance and bulk unlock}} |
 | Source-isolation scan | {{PASS/FAIL/NOT_RUN}} | {{...}} |
 | Human review | {{PASS/FAIL/NOT_RUN}} | {{...}} |
 
@@ -43,5 +49,5 @@ This runtime pack contains no source text, evidence excerpts, source locators, a
 ## Portability and change control
 
 - Projects must copy and lock this pack rather than link to a mutable upstream directory.
-- Any contract change requires a version increment and a drift/source-isolation regression check.
+- Any contract, reader-experience, or target change requires a version increment and a three-file drift/source-isolation regression check.
 - `BLOCKED` packs must not be used to create or write a production novel project.

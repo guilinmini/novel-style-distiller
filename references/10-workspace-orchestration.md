@@ -28,7 +28,7 @@ When a source path is supplied:
 
 3. Read `.novel/ACTIVE_SOURCE.md` and the generated `audit/SOURCE_REQUEST.md`.
 4. Fill `SOURCE_MANIFEST.json`, `PIPELINE_STATE.json`, and `CHUNK_MANIFEST.json`; the registration script deliberately does not invent bibliographic metadata.
-5. Execute Mode A completely, including source isolation, evaluation, runtime-pack manifest, and contract.
+5. Execute Mode A completely, including source isolation, evaluation, `STYLE_FINGERPRINT.json`, and the three-file runtime interface: writing contract, reader-experience contract, and quantitative targets.
 6. Update pipeline state to `complete` only after the runtime pack passes its required gates.
 7. Run `sh scripts/novelctl.sh activate-pack <runtime-style-pack-path>`.
 8. Report the active pack ID/version and invite the user's original theme.
@@ -52,7 +52,7 @@ When the user supplies a theme:
 
 1. Read `.novel/ACTIVE_PACK.md`. If it is absent and exactly one validated pack exists, activate that pack automatically. If multiple packs exist without an active selection, present their neutral pack IDs, versions, and suitability without exposing source text.
 2. Derive a project slug and working title. Record conservative assumptions instead of forcing a setup interview.
-3. Run `sh scripts/novelctl.sh scaffold-project <project-slug> <runtime-style-pack-path>` to copy the pack, craft snapshot, project writer, and full memory skeleton without overwriting an existing project.
+3. Run `sh scripts/novelctl.sh scaffold-project <project-slug> <runtime-style-pack-path>` to copy the full three-file style interface, craft snapshot, project writer, calibration state, and memory skeleton without overwriting an existing project.
 4. Execute Mode B and replace every scaffold placeholder with real project content.
 5. Instantiate relevant initial character/entity files and the first planning horizon. Empty optional directories may remain, but all required ledgers must be valid.
 6. Validate the project and run:
@@ -72,7 +72,7 @@ If no project is active and exactly one complete project exists, it may be activ
 
 ## Batch request
 
-When the user asks for multiple chapters in one request, read [12-batch-writing.md](12-batch-writing.md). Create the durable batch job through `novelctl.sh`, fill its plan, and run the project writer's sequential loop. The user's bounded batch request authorizes automatic per-chapter canon commits unless they explicitly request review checkpoints. Never run dependent chapter drafts in parallel.
+When the user asks for multiple chapters in one request, read [12-batch-writing.md](12-batch-writing.md). Before creating the durable job, require `state/STYLE_CALIBRATION.md` to show an accepted sample and successful three-chapter stability review, or record an explicit user waiver. The multi-chapter request itself is not a waiver. Then create the job through `novelctl.sh`, fill its plan, and run the project writer's sequential loop. Never run dependent chapter drafts in parallel.
 
 ## Status and recovery
 
@@ -98,7 +98,7 @@ Recovery order:
 ## Completion boundaries
 
 - Source registration is not distillation completion.
-- A generated contract without isolation and evaluation is not a validated runtime pack.
+- A writing contract without a reader-experience contract, quantitative targets, isolation, and evaluation is not a validated v2 runtime pack.
 - A directory with an outline but no memory index, knowledge ledger, continuity ledger, and writer Skill is not a configured long-form project.
 - A delivered chapter is not canon until accepted.
 - Canon commit does not mean Git commit.

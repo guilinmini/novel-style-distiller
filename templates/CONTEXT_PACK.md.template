@@ -7,6 +7,7 @@
 - Target chapter: {{chapter ID}}
 - Built at: {{ISO_8601}}
 - Style pack: `{{PACK_ID}}@{{SEMVER}}`
+- Style calibration: {{status, sample/three-chapter state, bulk unlocked/waiver}}
 - Canon accepted through: {{chapter ID or none}}
 - Source files loaded: {{paths and update checkpoints}}
 
@@ -42,6 +43,10 @@
 ## Style execution
 
 - Always-on invariants: {{contract section references}}
+- Dominant/supporting reader attention: {{...}}
+- POV voice coordinates: {{...}}
+- Title promise and exposition ceiling: {{...}}
+- Quantitative target/hard ranges: {{relevant STYLE_TARGETS keys}}
 - Scene modes and strength: {{...}}
 - Chapter-specific drift risks: {{...}}
 

@@ -32,6 +32,12 @@
 - Suppression/payoff debt changed: {{reward IDs}}
 - Reader-emotion movement: {{entry → turn → exit residue}}
 - Hook family and promised payoff window: {{hook type, promise, due chapter/range}}
+- Dominant reader attention: {{...}}
+- Supporting attention that must not take over: {{...}}
+- POV voice behavior: {{syntax/register, inference or misreading, body/object attention, pressure release}}
+- Title promise: {{reader desire promised by this title}}
+- Exposition ceiling: {{maximum uninterrupted explanation and required human beat}}
+- Quantitative targets / justified exceptions: {{STYLE_TARGETS keys or none}}
 
 ## Scene cards
 
@@ -69,5 +75,6 @@ Do not load unrelated craft modules, and do not let general craft guidance overr
 - [ ] The chapter delivers present reader value and records any new reward/hook obligation.
 - [ ] Reward family, hook family, emotion curve, opening, and ending do not mechanically repeat the recent rolling window.
 - [ ] Always-on style rules and selected scene modes are observable without mechanical repetition.
+- [ ] Reader attention, POV voice, title promise, exposition ceiling, and quantitative targets pass their runtime contracts.
 - [ ] Natural-prose diagnostics find no unresolved generic or synthetic pattern.
 - [ ] No source identity, language, setting, character, or plot sequence leaks into the chapter.

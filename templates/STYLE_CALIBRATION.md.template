@@ -1,0 +1,30 @@
+# {{PROJECT_TITLE}} — Style Calibration
+
+- Style pack: `{{PACK_ID}}@{{SEMVER}}`
+- Policy: `sample-1-then-3`
+- Status: `UNTESTED`
+- Sample chapter: `none`
+- Sample accepted by user: `no`
+- Three-chapter stability review: `not-run`
+- Bulk writing unlocked: `no`
+- Explicit waiver: `none`
+- Updated at: `{{ISO_8601}}`
+
+## Calibration evidence
+
+| Scope | Draft/chapters | Machine target result | Human reader-experience review | User decision |
+|---|---|---|---|---|
+| one-chapter sample | none | not-run | not-run | pending |
+| three-chapter stability | none | not-run | not-run | pending |
+
+## Required human checks
+
+- Dominant reader attention matches `style/READER_EXPERIENCE_CONTRACT.md`.
+- POV voice matches its neutral role coordinates rather than a generic competent narrator.
+- Paragraph and sentence distribution are within `style/STYLE_TARGETS.json`, or exceptions are scene-justified.
+- Titles promise the intended reader reward rather than a displaced support genre.
+- No source language, proper nouns, character mapping, or recoverable event sequence appears.
+
+## Unlock rule
+
+Set `Bulk writing unlocked` to `yes` only after the user accepts the sample chapter and the first three accepted chapters pass a stability review. The user may explicitly waive this gate; record the exact request and risk here rather than treating a generic batch request as a waiver.

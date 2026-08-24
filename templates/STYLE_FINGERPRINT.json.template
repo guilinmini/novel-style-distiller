@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "source_scope": "{{WORK_TITLE_AND_VERSION_SCOPE}}",
+  "measurement_scope": "chapter body; headings and front matter excluded",
+  "sample": {
+    "chapters": {{INTEGER}},
+    "characters_no_whitespace": {{INTEGER}},
+    "paragraphs": {{INTEGER}},
+    "sentences": {{INTEGER}}
+  },
+  "surface_metrics": {
+    "mean_paragraph_chars": {{NUMBER}},
+    "median_paragraph_chars": {{NUMBER}},
+    "p75_paragraph_chars": {{NUMBER}},
+    "p90_paragraph_chars": {{NUMBER}},
+    "short_paragraph_ratio": {"threshold_chars": {{INTEGER}}, "value": {{NUMBER}}},
+    "long_paragraph_ratio": {"threshold_chars": {{INTEGER}}, "value": {{NUMBER}}},
+    "mean_sentence_chars": {{NUMBER}},
+    "dialogue_paragraph_ratio": {{NUMBER}},
+    "ellipsis_per_1000_chars": {{NUMBER}},
+    "question_per_1000_chars": {{NUMBER}}
+  },
+  "reader_experience_axes": [
+    {
+      "id": "{{AXIS_ID}}",
+      "observable_behavior": "{{WHAT_REPEATEDLY_OCCUPIES_READER_ATTENTION}}",
+      "conditions": "{{WHEN_IT_APPLIES}}",
+      "countermode": "{{WHEN_IT_RECEDES}}",
+      "confidence": "{{high|medium|low}}"
+    }
+  ],
+  "attention_budgets": [
+    {
+      "scope": "{{opening|relationship-scene|investigation-scene|whole-chapter}}",
+      "dominant_attention": "{{...}}",
+      "secondary_attention": "{{...}}",
+      "exposition_ceiling": "{{observable ceiling or not-established}}"
+    }
+  ],
+  "pov_voice_coordinates": [
+    {
+      "role": "{{neutral role, not source character name}}",
+      "syntax_register": "{{...}}",
+      "misreading_or_inference_pattern": "{{...}}",
+      "body_object_attention": "{{...}}",
+      "humor_or_pressure_release": "{{...}}"
+    }
+  ],
+  "title_and_retention": {
+    "dominant_promise_families": ["{{...}}"],
+    "title_length_distribution": "{{...}}",
+    "chapter_exit_distribution": "{{...}}"
+  },
+  "limits": ["{{platform formatting, OCR, sample, translation, or genre caveat}}"]
+}

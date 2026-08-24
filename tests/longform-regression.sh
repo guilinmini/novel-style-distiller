@@ -15,6 +15,7 @@ mkdir -p \
     "$workbench/schemas"
 
 cp "$repo_root/scripts/novelctl.sh" "$workbench/scripts/novelctl.sh"
+cp "$repo_root/scripts/style_metrics.py" "$workbench/scripts/style_metrics.py"
 cp "$repo_root/templates/"*.template "$workbench/templates/"
 cp "$repo_root/knowledge/"*.md "$workbench/knowledge/"
 cp "$repo_root/schemas/"*.json "$workbench/schemas/"
@@ -23,6 +24,7 @@ cp "$repo_root/schemas/"*.json "$workbench/schemas/"
 : > "$workbench/references/10-workspace-orchestration.md"
 : > "$workbench/references/11-long-form-memory-system.md"
 : > "$workbench/references/12-batch-writing.md"
+: > "$workbench/references/13-style-affinity-calibration.md"
 
 pack="$test_root/runtime-style-pack"
 mkdir -p "$pack"

@@ -57,6 +57,10 @@
 ## Style review
 
 - Scene modes used: {{...}}
+- Reader-experience focus: {{dominant/supporting attention and title promise}}
+- POV voice check: {{PASS/FAIL and note}}
+- Quantitative target result: {{PASS/WARN/FAIL, command/output path, justified exceptions}}
+- Exposition ceiling check: {{PASS/FAIL and note}}
 - Always-on invariant check: {{PASS/FAIL and note}}
 - Drift symptoms found/fixed: {{...}}
 - Mechanical repetition check: {{PASS/FAIL and note}}
@@ -87,6 +91,7 @@
 - Memory index refreshed: {{yes/no and checkpoint}}
 - Context pack invalidated/rebuild required: {{yes/no}}
 - Batch checkpoint recorded: {{batch ID/status or none}}
+- Style calibration refreshed: {{status or not applicable}}
 
 ## Revision history
 

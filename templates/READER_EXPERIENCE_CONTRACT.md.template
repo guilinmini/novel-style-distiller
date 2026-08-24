@@ -1,0 +1,69 @@
+# Reader Experience Contract
+
+> Pack: `{{PACK_ID}}` · Version: `{{SEMVER}}` · Runtime only
+
+This file preserves the source-neutral reading experience that must survive compilation. It contains no source identity, quotations, locators, proper nouns, character mapping, or recoverable plot sequence.
+
+## Primary reading promise
+
+- Dominant page-level experience: {{...}}
+- What repeatedly occupies reader attention: {{...}}
+- What may support but must not displace it: {{...}}
+- Incompatible tonal drift: {{...}}
+
+## Attention budgets
+
+| Scope / scene family | Dominant attention | Secondary attention | Exposition ceiling | Required exit value |
+|---|---|---|---|---|
+| Opening chapters | {{...}} | {{...}} | {{...}} | {{...}} |
+| Relationship scene | {{...}} | {{...}} | {{...}} | {{...}} |
+| Investigation / rule scene | {{...}} | {{...}} | {{...}} | {{...}} |
+| Transition / aftermath | {{...}} | {{...}} | {{...}} | {{...}} |
+
+Budgets are scene-shape constraints, not mandatory word percentages. If a support layer repeatedly receives more beats than the dominant promise, replan the scene before polishing sentences.
+
+## POV voice coordinates
+
+| Neutral role | Default syntax/register | Safe or mistaken inference pattern | Body/object attention | Pressure release | Drift symptom |
+|---|---|---|---|---|---|
+| {{role}} | {{...}} | {{...}} | {{...}} | {{...}} | {{...}} |
+
+## Relationship and embodiment
+
+- Distance/contact progression: {{...}}
+- Body reaction chain: {{...}}
+- Misreading and reader information advantage: {{...}}
+- Boundary between meaningful tension and generic reaction: {{...}}
+
+## Humor and register movement
+
+- Baseline register: {{...}}
+- Pressure-release trigger: {{...}}
+- Frequency/ceiling: {{...}}
+- Situations where humor must stop: {{...}}
+
+## Titles and retention promise
+
+- Dominant title families: {{...}}
+- Title should promise: {{...}}
+- Avoid titles dominated by: {{...}}
+- Chapter exits should rotate among: {{...}}
+
+## Exposition and technical-material ceiling
+
+- Maximum uninterrupted explanatory span: {{...}}
+- Required human beat before/after explanation: {{...}}
+- Terms or semantic fields that signal drift when clustered: {{neutral generic categories}}
+- Repair: {{...}}
+
+## Quantitative targets
+
+Machine-readable ranges are in `STYLE_TARGETS.json`. A metric outside its target range requires inspection; a metric outside a hard bound blocks delivery unless the scene function justifies the exception and the chapter record names it.
+
+## Conflict resolution
+
+User intent, canon, causality, character knowledge, POV, and clarity remain hard constraints. Within those constraints, this reader-experience contract outranks generic craft preferences and optional ornament. Do not solve a plot problem by silently replacing the promised reading experience with another genre center.
+
+## Source-isolation declaration
+
+Do not infer missing behavior from a source title, author, source text, audit file, or model memory. Preserve the neutral experience coordinates above without reproducing source language, characters, worldbuilding, relationships, or event order.

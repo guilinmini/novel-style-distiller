@@ -8,8 +8,8 @@ Read [`SKILL.md`](SKILL.md) when the request concerns novel distillation, projec
 
 - **A source-novel path is supplied**: validate the path, run `sh scripts/novelctl.sh register-source <path>`, then execute Mode A in `SKILL.md` through runtime-pack validation. Registration alone is not completion.
 - **An original-fiction theme is supplied**: use the single active validated runtime pack. If several packs are eligible and none is active, ask the user to choose. Derive a slug, run `scaffold-project`, execute Mode B by replacing every scaffold placeholder with real project content, then activate it with `activate-project`.
-- **A chapter, continuation, or revision is requested**: use the active project's generated writer Skill and Mode C. Load the locked style contract, reward/hook ledgers, and durable memory before drafting.
-- **A batch such as “批量写接下来 20 章” is requested**: read `references/12-batch-writing.md`, create a durable batch job, and run chapters sequentially with per-chapter review, canon writeback, and checkpointing. Never generate dependent chapters in parallel.
+- **A chapter, continuation, or revision is requested**: use the active project's generated writer Skill and Mode C. Load the writing contract, reader-experience contract, quantitative targets, style-calibration state, reward/hook ledgers, and durable memory before drafting.
+- **A batch such as “批量写接下来 20 章” is requested**: read `references/12-batch-writing.md`. First require the style-calibration gate (`sample-1-then-3`) or an explicit user waiver; a generic multi-chapter request is not a waiver. Then create a durable batch job and run chapters sequentially with per-chapter review, canon writeback, and checkpointing. Never generate dependent chapters in parallel.
 - **Status or recovery is requested**: run `sh scripts/novelctl.sh status` or `doctor`, then resume from recorded files rather than chat memory.
 
 When the user supplies both a source path and a theme, complete distillation first, initialize the original project second, and write only if the request also asks for prose.
@@ -21,7 +21,7 @@ Do not ask the user to create directories, copy templates, install Python, or in
 The definition of configured is:
 
 1. the source is registered without copying it into the repository;
-2. the private audit and source-isolated runtime pack are complete, validated, and recorded in `.novel/ACTIVE_PACK.md`;
+2. the private audit, measurable style fingerprint, and source-isolated three-file runtime style interface are complete, validated, and recorded in `.novel/ACTIVE_PACK.md`;
 3. the original project has a locked style snapshot, Story Bible, outline, layered memory, and project-specific writer Skill;
 4. `.novel/ACTIVE_PROJECT.md` points to that project;
 5. `sh scripts/novelctl.sh doctor` passes.

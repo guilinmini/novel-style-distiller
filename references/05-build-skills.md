@@ -2,7 +2,7 @@
 
 ## 先画像，后原子化
 
-先用全部验证项生成 `STYLE_PROFILE.md` 和 `VOICE_PROFILE.md`，检查各维度是否互相矛盾，再决定哪些机制值得成为独立 Skill。画像描述来源作品；Skill 承担明确任务。
+先用全部验证项生成 `STYLE_PROFILE.md` 和 `VOICE_PROFILE.md`，检查各维度是否互相矛盾，再决定哪些机制值得成为独立 Skill。随后按 [13-style-affinity-calibration.md](13-style-affinity-calibration.md) 生成`STYLE_FINGERPRINT.json`，把句段分布、读者注意力、POV声音、标题承诺和说明上限变成可重算的作品级指纹。画像描述来源作品；Skill 承担明确任务；指纹负责防止体感在runtime编译时被稀释。
 
 ## 两种 Skill
 
@@ -78,13 +78,14 @@ frontmatter 只保留 `name` 和 `description`。`description` 必须同时写�
 
 ## 编译运行时风格契约
 
-画像和原子 Skill 属于审计层，不能直接全部塞进长篇写作上下文。验证完成后，按 [08-style-pack-and-project-setup.md](08-style-pack-and-project-setup.md) 将通过项编译为 `runtime-style-pack/`：
+画像、指纹和原子 Skill 属于审计层，不能直接全部塞进长篇写作上下文。验证完成后，按 [08-style-pack-and-project-setup.md](08-style-pack-and-project-setup.md) 将通过项编译为 `runtime-style-pack/`：
 
 1. 把来源描述改写为无来源身份的可执行参数；
 2. 区分 always-on 常量、场景模式与偶发装饰；
 3. 合并重复或冲突规则，给出优先级和强度旋钮；
 4. 删除证据定位、引文、来源专名和情节映射；
 5. 生成 `WRITING_STYLE_CONTRACT.md` 与 `PACK_MANIFEST.md`；
-6. 只有确有独立路由价值的技法才复制进 `techniques/`。
+6. 从指纹编译来源隔离的`READER_EXPERIENCE_CONTRACT.md`与`STYLE_TARGETS.json`，保留主导注意力、人物声音坐标、标题承诺、说明上限和统计范围；
+7. 只有确有独立路由价值的技法才复制进 `techniques/`。
 
-运行时契约是原创小说每章必须加载的稳定接口；来源画像仍留在 `audit/`，只用于复核和重编译。
+三份运行时接口文件是原创小说每章必须加载的整体：写作合同回答“怎样写才清晰一致”，体感合同回答“读者主要在体验什么”，量化目标回答“页面分布是否已明显漂移”。来源画像和指纹仍留在`audit/`，只用于复核和重编译。

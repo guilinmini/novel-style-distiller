@@ -10,6 +10,8 @@
 - Reader-emotion wave: {{tension and valence progression}}
 - Required arc/volume boundary: {{none or boundary and summary action}}
 - Explicit user constraints: {{...}}
+- Style calibration state: {{path, status, bulk unlocked/explicit waiver}}
+- Batch reader-experience guardrail: {{dominant attention and support layers that must not take over}}
 
 ## Authorization and delivery
 
@@ -40,6 +42,7 @@ Keep the next 3–8 chapters detailed. Later chapters may remain functional unti
 - Recent reward types/intensities that need contrast: {{...}}
 - Emotional texture or scene mode needing recovery: {{...}}
 - Character/faction/world threads due inside this batch: {{...}}
+- Quantitative ranges/POV voices/title promises needing checkpoint comparison: {{...}}
 
 ## Hard stop conditions
 
@@ -48,6 +51,7 @@ Keep the next 3–8 chapters detailed. Later chapters may remain functional unti
 - A required chapter, record, changes JSON, or memory writeback cannot be completed atomically.
 - The next chapter would require changing the approved central arc, ending, or explicit user constraint.
 - Repeated quality-gate failure after one focused rewrite.
+- Reader-experience center drift or a hard quantitative bound failure after one focused rewrite/replan.
 
 ## Checkpoint notes
 

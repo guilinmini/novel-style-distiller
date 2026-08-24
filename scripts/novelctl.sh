@@ -290,6 +290,14 @@ activate_pack() {
 
     pack_status=$(sed -n 's/^- Status: `\([^`]*\)`.*/\1/p' "$manifest" | sed -n '1p')
     [ "$pack_status" = VALIDATED ] || die "runtime pack is not VALIDATED: ${pack_status:-unknown}"
+    pack_schema=$(sed -n 's/^- Pack schema: `\([^`]*\)`.*/\1/p' "$manifest" | sed -n '1p')
+    if [ "$pack_schema" = 2.0 ]; then
+        [ -s "$pack_path/READER_EXPERIENCE_CONTRACT.md" ] || die "v2 runtime pack is missing reader-experience contract"
+        [ -s "$pack_path/STYLE_TARGETS.json" ] || die "v2 runtime pack is missing quantitative style targets"
+        if grep -F '{{' "$pack_path/READER_EXPERIENCE_CONTRACT.md" "$pack_path/STYLE_TARGETS.json" >/dev/null 2>&1; then
+            die "v2 runtime pack contains unresolved style placeholders"
+        fi
+    fi
     pack_id=$(sed -n 's/^- Pack ID: `\([^`]*\)`.*/\1/p' "$manifest" | sed -n '1p')
     pack_version=$(sed -n 's/^- Version: `\([^`]*\)`.*/\1/p' "$manifest" | sed -n '1p')
     [ -n "$pack_id" ] || die "pack manifest has no Pack ID"
@@ -326,6 +334,14 @@ scaffold_project() {
     [ -f "$pack_path/WRITING_STYLE_CONTRACT.md" ] || die "missing style contract"
     pack_status=$(sed -n 's/^- Status: `\([^`]*\)`.*/\1/p' "$pack_manifest" | sed -n '1p')
     [ "$pack_status" = VALIDATED ] || die "runtime pack is not VALIDATED: ${pack_status:-unknown}"
+    pack_schema=$(sed -n 's/^- Pack schema: `\([^`]*\)`.*/\1/p' "$pack_manifest" | sed -n '1p')
+    if [ "$pack_schema" = 2.0 ]; then
+        [ -s "$pack_path/READER_EXPERIENCE_CONTRACT.md" ] || die "v2 runtime pack is missing reader-experience contract"
+        [ -s "$pack_path/STYLE_TARGETS.json" ] || die "v2 runtime pack is missing quantitative style targets"
+        if grep -F '{{' "$pack_path/READER_EXPERIENCE_CONTRACT.md" "$pack_path/STYLE_TARGETS.json" >/dev/null 2>&1; then
+            die "v2 runtime pack contains unresolved style placeholders"
+        fi
+    fi
     [ -f "$workbench_root/knowledge/INDEX.md" ] || die "built-in craft library is missing"
 
     project_path="$workbench_root/novel-projects/$project_slug"
@@ -365,6 +381,7 @@ scaffold_project() {
         cp "$workbench_root/templates/DECISION_LOG.md.template" "$scaffold_dir/state/DECISION_LOG.md"
         cp "$workbench_root/templates/REWARD_LEDGER.md.template" "$scaffold_dir/state/REWARD_LEDGER.md"
         cp "$workbench_root/templates/SERIAL_RHYTHM.md.template" "$scaffold_dir/state/SERIAL_RHYTHM.md"
+        cp "$workbench_root/templates/STYLE_CALIBRATION.md.template" "$scaffold_dir/state/STYLE_CALIBRATION.md"
         cp "$workbench_root/templates/BATCH_INDEX.md.template" "$scaffold_dir/state/BATCH_INDEX.md"
         cp "$workbench_root/schemas/chapter-changes.schema.json" "$scaffold_dir/schemas/chapter-changes.schema.json"
         cp "$workbench_root/templates/PROJECT_WRITER.SKILL.md.template" "$scaffold_dir/.agents/skills/$project_slug-writer/SKILL.md"
@@ -414,6 +431,23 @@ check_project() {
             project_errors=$((project_errors + 1))
         fi
     done
+
+    checked_pack_schema=$(sed -n 's/^- Pack schema: `\([^`]*\)`.*/\1/p' "$project_path/style/PACK_MANIFEST.md" 2>/dev/null | sed -n '1p')
+    if [ "$checked_pack_schema" = 2.0 ]; then
+        for relative_path in \
+            style/READER_EXPERIENCE_CONTRACT.md \
+            style/STYLE_TARGETS.json \
+            state/STYLE_CALIBRATION.md
+        do
+            if [ ! -s "$project_path/$relative_path" ]; then
+                printf '%s\n' "MISSING project/$relative_path" >&2
+                project_errors=$((project_errors + 1))
+            elif grep -F '{{' "$project_path/$relative_path" >/dev/null 2>&1; then
+                printf '%s\n' "UNRESOLVED project/$relative_path" >&2
+                project_errors=$((project_errors + 1))
+            fi
+        done
+    fi
 
     checked_project_id=$(sed -n 's/^- Project ID: `\([^`]*\)`.*/\1/p' "$project_path/NOVEL_PROJECT.md" 2>/dev/null | sed -n '1p')
     if [ -z "$checked_project_id" ] || printf '%s' "$checked_project_id" | grep -F '{{' >/dev/null 2>&1; then
@@ -483,6 +517,16 @@ create_batch() {
         review) batch_mode=REVIEW_CHECKPOINTS ;;
         *) die "batch mode must be auto or review" ;;
     esac
+
+    if [ -f "$project_path/style/STYLE_TARGETS.json" ] && [ "$requested_count" -gt 1 ]; then
+        calibration_file="$project_path/state/STYLE_CALIBRATION.md"
+        [ -f "$calibration_file" ] || die "style calibration state is missing: $calibration_file"
+        bulk_unlocked=$(sed -n 's/^- Bulk writing unlocked: `\([^`]*\)`.*/\1/p' "$calibration_file" | sed -n '1p')
+        explicit_waiver=$(sed -n 's/^- Explicit waiver: `\([^`]*\)`.*/\1/p' "$calibration_file" | sed -n '1p')
+        if [ "$bulk_unlocked" != yes ] && { [ -z "$explicit_waiver" ] || [ "$explicit_waiver" = none ]; }; then
+            die "style calibration is not unlocked; deliver and accept one sample chapter, validate three-chapter stability, or record an explicit user waiver before creating a multi-chapter batch"
+        fi
+    fi
 
     if [ -f "$project_path/state/ACTIVE_BATCH.md" ]; then
         previous_job_path=$(sed -n 's/^- Batch path: //p' "$project_path/state/ACTIVE_BATCH.md" | sed -n '1p')
@@ -742,6 +786,8 @@ doctor() {
         references/10-workspace-orchestration.md \
         references/11-long-form-memory-system.md \
         references/12-batch-writing.md \
+        references/13-style-affinity-calibration.md \
+        scripts/style_metrics.py \
         scripts/novelctl.sh
     do
         if [ ! -f "$workbench_root/$relative_path" ]; then
@@ -769,6 +815,11 @@ doctor() {
                 printf '%s\n' 'INVALID active runtime pack status' >&2
                 errors=$((errors + 1))
             fi
+            active_pack_schema=$(sed -n 's/^- Pack schema: `\([^`]*\)`.*/\1/p' "$active_pack/PACK_MANIFEST.md" | sed -n '1p')
+            if [ "$active_pack_schema" = 2.0 ] && { [ ! -s "$active_pack/READER_EXPERIENCE_CONTRACT.md" ] || [ ! -s "$active_pack/STYLE_TARGETS.json" ]; }; then
+                printf '%s\n' 'INVALID active v2 runtime pack companions' >&2
+                errors=$((errors + 1))
+            fi
         fi
     fi
 
@@ -780,8 +831,10 @@ doctor() {
         elif ! check_project "$active_project"; then
             errors=$((errors + 1))
         elif [ -f "$active_project/state/ACTIVE_BATCH.md" ]; then
-            active_batch_path=$(sed -n 's/^- Batch path: //p' "$active_project/state/ACTIVE_BATCH.md" | sed -n '1p')
-            if [ -z "$active_batch_path" ] || [ ! -f "$active_batch_path" ]; then
+            active_batch_path=$(markdown_field "$active_project/state/ACTIVE_BATCH.md" 'Batch path')
+            if [ "$active_batch_path" = none ]; then
+                :
+            elif [ -z "$active_batch_path" ] || [ ! -f "$active_batch_path" ]; then
                 printf '%s\n' 'INVALID active batch pointer' >&2
                 errors=$((errors + 1))
             else

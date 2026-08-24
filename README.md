@@ -1,6 +1,6 @@
 # Novel Style Distiller
 
-一个可以直接克隆使用的 AI 中文网文爽文工作台：先从你提供的完整小说中蒸馏写作风格，再根据你的主题建立原创连载长篇；之后可以单章写，也可以批量写几十章，每章都加载同一份风格契约和最新持久记忆。
+一个可以直接克隆使用的 AI 中文网文爽文工作台：先从你提供的完整小说中蒸馏写作风格与阅读体感，再根据你的主题建立原创连载长篇；之后先用1章样稿、3章稳定性完成校准，再安全地单章或批量续写。
 
 它不是“模仿某作者”的 Prompt，也不要求你手工维护几十个文件。仓库内已经部署蒸馏流程、黄金三章/爽点/钩子/情绪曲线/自然文风知识库、分层记忆、结构化章节变更、可恢复批量写作和配置检查工具。
 
@@ -26,8 +26,8 @@ Agent 会自动：
 1. 登记路径、格式、大小和文件哈希，不复制原著；
 2. 建立整书剧情、人物、信息、场景、文风与声音模型；
 3. 用跨章节证据、反例和 holdout 验证规律；
-4. 生成私有 `audit/`；
-5. 编译并检查不含作者名、书名、原作人物、引文和情节映射的 `runtime-style-pack/`。
+4. 生成私有 `audit/` 与可重算的 `STYLE_FINGERPRINT.json`；
+5. 编译并检查不含作者名、书名、原作人物、引文和情节映射的三文件运行时接口：写作契约、读者体验契约、量化目标。
 
 TXT/Markdown 可以直接处理。PDF/EPUB 需要当前 Agent 环境具备文本提取能力；提取结果仍是本地忽略文件，不进入 Git。
 
@@ -58,7 +58,9 @@ TXT/Markdown 可以直接处理。PDF/EPUB 需要当前 Agent 环境具备文本
 批量写 10 章，每 5 章给我审阅一次。
 ```
 
-不需要反复指定原著或风格。项目 writer 每次都会读取锁定的 `WRITING_STYLE_CONTRACT.md`。
+不需要反复指定原著或风格。项目 writer 每次都会一起读取锁定的 `WRITING_STYLE_CONTRACT.md`、`READER_EXPERIENCE_CONTRACT.md`、`STYLE_TARGETS.json` 与校准状态。
+
+新项目不会把“写20章”自动当成放弃文风确认：先交付第1章样稿，用户接受后复核前3章，才解锁多章批量。用户仍可明确要求跳过，但系统会记录风险。
 
 ## 批量写是怎么运行的
 
@@ -77,6 +79,7 @@ TXT/Markdown 可以直接处理。PDF/EPUB 需要当前 Agent 环境具备文本
 - `REVIEW_CHECKPOINTS`：按你指定的间隔暂停，等你审阅后恢复；
 - 中断后从 `BATCH_JOB.md` 记录的下一章恢复，不依赖聊天记忆；
 - 章节存在因果依赖，所以不会并行起草前后章。
+- 风格未通过 `sample-1-then-3` 校准时，多章批次会被命令层直接拒绝。
 
 ## 长篇为什么不会只靠聊天记忆
 
@@ -129,13 +132,13 @@ TXT/Markdown 可以直接处理。PDF/EPUB 需要当前 Agent 环境具备文本
 
 ```text
 PREPARE
-  读取风格契约 + 记忆索引，构建本章 context pack
+  读取写作/读感/量化契约 + 校准状态 + 记忆索引，构建本章 context pack
 → PLAN
   明确本章变化、场景卡、线程和技法模块
 → DRAFT
   用稳定风格常量和场景模式写作
 → REVIEW
-  检查任务、连续性、爽点/钩子、情绪、自然度、文风和来源泄漏
+  检查任务、连续性、读感中心、句段指标、爽点/钩子、自然度和来源泄漏
 → DELIVER
   交付草稿，不修改 canon
 → ACCEPT / COMMIT
@@ -150,7 +153,8 @@ PREPARE
 novel-style-distiller/
 ├── AGENTS.md                # 克隆后自然语言入口
 ├── SKILL.md                 # 蒸馏、建书、写章核心协议
-├── scripts/novelctl.sh      # 工作区登记、激活、状态与体检
+├── scripts/novelctl.sh      # 工作区登记、激活、校准批次门、状态与体检
+├── scripts/style_metrics.py # 句段、对白、标点和中性词汇信号回归
 ├── knowledge/               # 内置长篇写作技法
 ├── references/              # 蒸馏、项目编排和记忆规范
 ├── extractors/              # 六路小说提取器
@@ -177,6 +181,7 @@ sh scripts/novelctl.sh batch-resume "novel-projects/my-project"
 sh scripts/novelctl.sh status
 sh scripts/novelctl.sh doctor
 sh tests/smoke.sh
+sh tests/style-metrics.sh
 sh tests/longform-regression.sh
 ```
 

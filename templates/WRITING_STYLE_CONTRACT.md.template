@@ -11,6 +11,13 @@ This contract describes observable writing behavior for fully original fiction. 
 - Core reader experience: {{...}}
 - Non-goals: {{...}}
 
+## Runtime companion files
+
+- Reader-experience contract: `READER_EXPERIENCE_CONTRACT.md` — dominant attention, POV voice, embodiment, humor, title promise, and exposition ceiling.
+- Quantitative targets: `STYLE_TARGETS.json` — target and hard ranges for observable page-shape metrics.
+
+These three files form one contract. Do not treat this file's cross-genre craft rules as a substitute for the companion reader-experience targets.
+
 ## Always-on invariants
 
 These rules apply to every chapter and every scene unless the user explicitly changes the project contract.
@@ -111,7 +118,7 @@ Always-on invariants remain active. A scene mode changes only the listed control
 
 ## Priority and conflict resolution
 
-Story canon, character knowledge, POV, timeline, and the user's chapter request outrank local stylistic preference. When two style rules conflict: {{priority rule and tie-breaker}}.
+Story canon, character knowledge, POV, timeline, and the user's chapter request outrank local stylistic preference. Within those constraints, the reader-experience contract outranks generic craft defaults and optional ornament. When two style rules conflict: {{priority rule and tie-breaker}}.
 
 ## Drift symptoms and repairs
 
@@ -127,6 +134,7 @@ Story canon, character knowledge, POV, timeline, and the user's chapter request 
 - [ ] Confirm POV, tense, narrative access, and narrator temperature.
 - [ ] Select scene modes and strength settings from chapter function.
 - [ ] Identify one or two style risks specific to this chapter.
+- [ ] Confirm dominant/supporting reader attention, POV voice coordinates, title promise, and quantitative target ranges.
 - [ ] Confirm no source audit or source text is loaded.
 
 ## Chapter postflight
@@ -134,6 +142,8 @@ Story canon, character knowledge, POV, timeline, and the user's chapter request 
 - [ ] Always-on invariants remain intact.
 - [ ] Scene modes vary by function without mechanical repetition.
 - [ ] Dialogue voices remain character-specific.
+- [ ] Dominant reader attention and title promise did not drift into a support genre.
+- [ ] Machine targets are PASS/WARN with justified exceptions; no unexplained hard-bound failure remains.
 - [ ] Style did not override canon, causality, POV, or clarity.
 - [ ] No source identity, proper noun, distinctive phrasing, setting, or plot sequence leaked.
 

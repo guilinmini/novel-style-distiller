@@ -17,6 +17,7 @@ mkdir -p \
     "$fixture_dir"
 
 cp "$repo_root/scripts/novelctl.sh" "$workbench/scripts/novelctl.sh"
+cp "$repo_root/scripts/style_metrics.py" "$workbench/scripts/style_metrics.py"
 cp "$repo_root/templates/"*.template "$workbench/templates/"
 cp "$repo_root/knowledge/"*.md "$workbench/knowledge/"
 cp "$repo_root/schemas/"*.json "$workbench/schemas/"
@@ -25,6 +26,7 @@ cp "$repo_root/schemas/"*.json "$workbench/schemas/"
 : > "$workbench/references/10-workspace-orchestration.md"
 : > "$workbench/references/11-long-form-memory-system.md"
 : > "$workbench/references/12-batch-writing.md"
+: > "$workbench/references/13-style-affinity-calibration.md"
 
 source_file="$fixture_dir/长篇 样本.txt"
 printf '%s\n' '第一章' '潮水退去以后，钟楼露出了门。' > "$source_file"
@@ -64,6 +66,20 @@ fi
 NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" activate-pack "$pack" > "$test_root/activate-pack.out"
 grep -F 'PACK_ID=synthetic-pack' "$test_root/activate-pack.out" >/dev/null
 test -f "$workbench/.novel/ACTIVE_PACK.md"
+
+v2_pack="$test_root/v2-pack"
+mkdir -p "$v2_pack"
+printf '%s\n' '# Runtime Style Pack Manifest' '- Pack ID: `synthetic-v2-pack`' '- Pack schema: `2.0`' '- Version: `2.0.0`' '- Status: `VALIDATED`' > "$v2_pack/PACK_MANIFEST.md"
+printf '%s\n' '# Synthetic v2 writing contract' > "$v2_pack/WRITING_STYLE_CONTRACT.md"
+if NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" activate-pack "$v2_pack" >/dev/null 2>&1; then
+    printf '%s\n' 'a v2 pack without companion contracts was incorrectly activated' >&2
+    exit 1
+fi
+printf '%s\n' '# Synthetic reader experience' > "$v2_pack/READER_EXPERIENCE_CONTRACT.md"
+printf '%s\n' '{"schema_version":"1.0","metrics":{}}' > "$v2_pack/STYLE_TARGETS.json"
+NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" activate-pack "$v2_pack" > "$test_root/activate-v2-pack.out"
+grep -F 'PACK_ID=synthetic-v2-pack' "$test_root/activate-v2-pack.out" >/dev/null
+NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" activate-pack "$pack" >/dev/null
 NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" register-source "$source_file" > "$test_root/register-3.out"
 test -f "$workbench/.novel/ACTIVE_PACK.md"
 
@@ -172,6 +188,16 @@ grep -F 'RESUME_FROM=ch-005' "$test_root/review-resume.out" >/dev/null
 write_accepted_fixture ch-005 ch-006
 NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" batch-checkpoint "$project" "$review_batch_id" ch-005 none > "$test_root/review-complete.out"
 grep -F 'STATUS=COMPLETE' "$test_root/review-complete.out" >/dev/null
+
+printf '%s\n' '{"schema_version":"1.0","metrics":{}}' > "$project/style/STYLE_TARGETS.json"
+printf '%s\n' '# Style Calibration' '- Bulk writing unlocked: `no`' '- Explicit waiver: `none`' > "$project/state/STYLE_CALIBRATION.md"
+if NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" batch-create "$project" 2 1 auto >/dev/null 2>&1; then
+    printf '%s\n' 'an uncalibrated multi-chapter batch was incorrectly created' >&2
+    exit 1
+fi
+printf '%s\n' '# Style Calibration' '- Bulk writing unlocked: `yes`' '- Explicit waiver: `none`' > "$project/state/STYLE_CALIBRATION.md"
+NOVEL_WORKSPACE_ROOT="$workbench" sh "$workbench/scripts/novelctl.sh" batch-create "$project" 2 1 auto > "$test_root/calibrated-create.out"
+grep -F 'CHAPTER_COUNT=2' "$test_root/calibrated-create.out" >/dev/null
 
 second_source="$fixture_dir/another-novel.md"
 printf '%s\n' '# Another novel' 'A different source.' > "$second_source"

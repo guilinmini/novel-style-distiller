@@ -35,6 +35,9 @@
 - Contract hash: `{{SHA256_OR_NOT_RECORDED}}`
 - Local manifest: [style/PACK_MANIFEST.md](style/PACK_MANIFEST.md)
 - Local contract: [style/WRITING_STYLE_CONTRACT.md](style/WRITING_STYLE_CONTRACT.md)
+- Local reader-experience contract: [style/READER_EXPERIENCE_CONTRACT.md](style/READER_EXPERIENCE_CONTRACT.md)
+- Local quantitative targets: [style/STYLE_TARGETS.json](style/STYLE_TARGETS.json)
+- Style calibration: [state/STYLE_CALIBRATION.md](state/STYLE_CALIBRATION.md)
 - Upgrade policy: explicit review and regression only; never silently follow upstream changes
 
 ## Built-in craft snapshot
@@ -67,6 +70,7 @@
 - Decision log: [state/DECISION_LOG.md](state/DECISION_LOG.md)
 - Reward/progression ledger: [state/REWARD_LEDGER.md](state/REWARD_LEDGER.md)
 - Serial rhythm ledger: [state/SERIAL_RHYTHM.md](state/SERIAL_RHYTHM.md)
+- Style calibration state: [state/STYLE_CALIBRATION.md](state/STYLE_CALIBRATION.md)
 - Batch index/jobs: [state/BATCH_INDEX.md](state/BATCH_INDEX.md), `state/batches/`
 - Structured chapter changes: `state/chapter-records/<chapter-id>.changes.json`
 - Chapter changes schema: [schemas/chapter-changes.schema.json](schemas/chapter-changes.schema.json)

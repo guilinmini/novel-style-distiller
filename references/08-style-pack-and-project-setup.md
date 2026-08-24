@@ -10,6 +10,7 @@
 
 - 来源是完整小说，或交付状态明确允许当前范围；
 - `STYLE_PROFILE.md` 与 `VOICE_PROFILE.md` 已形成；
+- `STYLE_FINGERPRINT.json`已形成，且统计范围、平台换行/OCR限制和场景方差已记录；
 - 核心结论有跨区段证据、反例和 holdout 结果；
 - 可迁移技法已通过原创性与跨题材测试；
 - `COPYRIGHT_REPORT.md` 不存在未解决的硬失败。
@@ -18,7 +19,7 @@
 
 ### 从画像到契约
 
-使用 `templates/WRITING_STYLE_CONTRACT.md.template`，按以下顺序编译：
+使用`templates/WRITING_STYLE_CONTRACT.md.template`、`templates/READER_EXPERIENCE_CONTRACT.md.template`和`templates/STYLE_TARGETS.json.template`，按以下顺序编译：
 
 1. 把标签改写成可观察动作。例如把“克制”改写为情绪命名频率、叙述距离、动作承载比例和修饰强度。
 2. 把规律分成 `must`、`usually`、`sometimes` 与 `avoid`，防止所有特征在每段同时出现。
@@ -27,6 +28,8 @@
 5. 为可调特征规定强度档位、适用条件、失效症状和修复动作。
 6. 加入章节前检查与章节后漂移检查，使契约可执行而不只是说明文。
 7. 删除所有来源身份、证据定位、引文、专名、独特比喻、原作事件顺序和人物关系映射。
+8. 把指纹中的主导注意力、POV声音、关系/身体关注、语域泄放、标题承诺和说明上限写入体感合同，不得只保留跨题材通用机制。
+9. 把稳定的句段/对白/标点范围编译为target与更宽的hard范围；不稳定、不可测或容易受题材污染的项列为human-only。
 
 不能安全中性化的特征只留在 `audit/`，不进入运行时包。
 
@@ -48,6 +51,8 @@
 runtime-style-pack/
 ├── PACK_MANIFEST.md
 ├── WRITING_STYLE_CONTRACT.md
+├── READER_EXPERIENCE_CONTRACT.md
+├── STYLE_TARGETS.json
 └── techniques/<skill-slug>/SKILL.md
 ```
 
@@ -62,6 +67,8 @@ runtime-style-pack/
 3. 不含逐章梗概、原作因果链或可复原剧情的事件表；
 4. 不含要求“像某作者”“精确模仿”或“无法区分”的触发描述；
 5. 所有规则都能在完全无关的原创题材上解释和执行。
+
+第5项只证明中性化成功，不证明体感保留。还必须在完全原创的人物和事件中观察到体感合同规定的注意力中心、人物声音和页面分布；若跨题材后只剩通用“好写作”，runtime包仍然失败。
 
 任一项失败，返回审计区修订，不能靠警告文字放行。
 
@@ -93,7 +100,7 @@ runtime-style-pack/
 
 ### 锁定风格包
 
-把 runtime pack 复制到项目 `style/`，并在 `NOVEL_PROJECT.md` 记录 pack ID、版本和可用时的内容哈希。项目创建后默认使用这份快照：
+把 runtime pack 复制到项目 `style/`，并在 `NOVEL_PROJECT.md` 记录 pack ID、版本和可用时的内容哈希，同时链接本地体感合同、量化目标和`state/STYLE_CALIBRATION.md`。项目创建后默认使用这份快照：
 
 - 上游包更新不得静默覆盖项目副本；
 - 升级必须显示旧版本、新版本、变化、预期影响和回归检查；
@@ -119,6 +126,7 @@ runtime-style-pack/
 - `state/DECISION_LOG.md`：用户决定、重要假设和范围变更；
 - `state/REWARD_LEDGER.md`：爽点、成长阈值、压制/兑现债务和回报后果；
 - `state/SERIAL_RHYTHM.md`：近期钩子、回报、情绪波形和重复预警；
+- `state/STYLE_CALIBRATION.md`：1章样稿接受、3章稳定性复盘、机器目标和批量解锁状态；
 - `state/BATCH_INDEX.md` 与 `state/batches/`：批量写作授权、进度、事件和恢复点；
 - `state/chapter-records/`：每章验收后的 Markdown 记录与 `.changes.json` 结构化变更；
 - `schemas/chapter-changes.schema.json`：章节事实快照和变更词表契约。
@@ -151,6 +159,7 @@ runtime-style-pack/
 - `description` 同时包含项目标题以及写章、续写、修订等触发信号；
 - Skill 只读取项目 `style/`，不能回读 `distillations/.../audit/`；
 - Skill 规定先加载风格契约、后加载故事状态；
+- Skill 把写作合同、体感合同和量化目标视为不可拆分的runtime接口，并在新项目中执行样章校准门；
 - Skill 包含验收后回写规则；
 - 所有相对项目路径能够从项目根定位。
 
@@ -183,5 +192,6 @@ runtime-style-pack/
 7. `MEMORY_INDEX.md` 能路由到人物、知识、关系、线程、时间线、爽点/成长、连载节奏、批次、连续性和摘要文件；
 8. `craft/INDEX.md` 存在，项目 writer 会加载网文核心模块，但不会默认加载全部无关技法；
 9. `REWARD_LEDGER.md`、`SERIAL_RHYTHM.md`、`BATCH_INDEX.md` 和 `schemas/chapter-changes.schema.json` 存在且不含占位符；
-10. 在仓库工作台中运行 `sh scripts/novelctl.sh activate-project <project-path>` 与 `doctor`；
-11. 向用户列出关键假设、当前阶段、下一步自然语言请求和需要确认的重大选择。
+10. `STYLE_CALIBRATION.md`存在，初始为`UNTESTED`且`Bulk writing unlocked: no`；
+11. 在仓库工作台中运行 `sh scripts/novelctl.sh activate-project <project-path>` 与 `doctor`；
+12. 向用户列出关键假设、当前阶段、下一步自然语言请求和需要确认的重大选择。

@@ -1,18 +1,18 @@
 ---
 name: novel-style-distiller
-description: Distill a complete novel from a user-provided path, configure a source-isolated Chinese serial web-fiction workspace, create an original 网文爽文 from a theme, and write or batch-write chapters with a locked style contract, reward/hook system, and layered story memory. Use for 蒸馏小说、按主题开网文、写下一章、批量写N章、续写或修订当前原创项目. Do not use for simple summaries, nonfiction, author role-play, source-novel continuation, passage imitation, or reproduction of source characters, worldbuilding, phrasing, or plot.
+description: Distill a complete novel from a user-provided path into a source-isolated craft contract plus measurable reader-experience targets, calibrate an original Chinese serial project with sample chapters, and write or batch-write with durable canon memory. Use for 蒸馏小说、按主题开网文、校准文风、写下一章、批量写N章、续写或修订当前原创项目. Do not use for simple summaries, nonfiction, author role-play, source-novel continuation, passage imitation, or reproduction of source characters, worldbuilding, phrasing, or plot.
 ---
 
 # Novel Style Distiller
 
-把完整小说中可观察的写作机制蒸馏成与来源隔离的风格契约，再用该契约建立并持续创作一部全新的中文连载网文爽文。单章和批量写作都必须使用同一份风格契约、爽点/钩子系统与持久记忆。
+把完整小说中可观察的写作机制和阅读体感蒸馏成与来源隔离的风格接口，再用该接口建立并持续创作一部全新的中文连载网文爽文。运行时接口由通用写作契约、阅读体感契约和可测风格目标共同组成；单章和批量写作还必须使用同一套爽点/钩子系统与持久记忆。
 
 本 Skill 同时负责三个连续阶段：
 
 ```text
 完整来源小说
   → A. 蒸馏与验证
-  → 可移植 runtime-style-pack
+  → 可移植 runtime-style-pack（技法+体感+量化目标）
   → B. 根据原创主题建书
   → 项目专属 writer Skill + 长篇状态文件
   → C. 单章或批量写作、验收与状态回写
@@ -50,6 +50,8 @@ description: Distill a complete novel from a user-provided path, configure a sou
 5. **机制而非复刻**：提炼视角、距离、节奏、句法分布、信息控制、情绪呈现和对白机制；不迁移原作人物、世界、专名、独特措辞或情节骨架。
 6. **作品级归因**：一部小说只支持对该作品、版本和所提供文本的判断，不能代表作者全部创作。译本的具体措辞、句法和节奏要记录译者归因。
 7. **不发布来源正文**：不得把用户提供的小说、OCR 中间文件或可替代原作的密集摘录提交到 Git、安装目录或 runtime pack。
+8. **体感不得在编译时消失**：审计层已验证的段落分布、注意力中心、POV声音、身体/物件关注、语域切换、标题承诺和说明上限，必须以来源隔离形式进入runtime；不能只留下可迁移到所有题材的通用技法。
+9. **先校准再批量**：新项目默认先交付1章样稿，再用前3章验证稳定性。未通过`state/STYLE_CALIBRATION.md`前，不得把普通“写20章”解释为跳过风格确认；用户明确豁免时记录风险。
 
 ## 模式 A：蒸馏完整小说
 
@@ -86,9 +88,9 @@ description: Distill a complete novel from a user-provided path, configure a sou
 
 读取 [references/04-evidence-validation.md](references/04-evidence-validation.md)。每条候选都必须具有可复核定位、跨区段覆盖、反例、适用条件、强度旋钮、失效边界和原创迁移测试。风格与声音候选冻结后再用 holdout 验证；失败项保留在 `rejected.jsonl`。
 
-### A5. 形成审计画像与运行时风格包
+### A5. 形成审计画像、体感指纹与运行时风格包
 
-读取 [references/05-build-skills.md](references/05-build-skills.md) 形成来源画像和原子技法，再读取 [references/08-style-pack-and-project-setup.md](references/08-style-pack-and-project-setup.md) 编译运行时风格包。
+读取 [references/05-build-skills.md](references/05-build-skills.md) 形成来源画像和原子技法，读取 [references/13-style-affinity-calibration.md](references/13-style-affinity-calibration.md) 生成可重算体感指纹，再按 [references/08-style-pack-and-project-setup.md](references/08-style-pack-and-project-setup.md) 编译运行时风格包。
 
 默认产物：
 
@@ -103,6 +105,7 @@ distillations/<source-slug>/
 │   ├── CHARACTER_ARCS.md
 │   ├── STYLE_PROFILE.md
 │   ├── VOICE_PROFILE.md
+│   ├── STYLE_FINGERPRINT.json
 │   ├── ledgers/
 │   ├── verified.jsonl
 │   ├── rejected.jsonl
@@ -113,6 +116,8 @@ distillations/<source-slug>/
 └── runtime-style-pack/
     ├── PACK_MANIFEST.md
     ├── WRITING_STYLE_CONTRACT.md
+    ├── READER_EXPERIENCE_CONTRACT.md
+    ├── STYLE_TARGETS.json
     └── techniques/<skill-slug>/SKILL.md
 ```
 
@@ -120,7 +125,7 @@ distillations/<source-slug>/
 
 ### A6. 测试与交付
 
-读取 [references/06-evaluation.md](references/06-evaluation.md) 测试证据忠实度、路由、执行质量、跨题材迁移、三章风格漂移和来源泄漏；再按 [references/07-delivery-and-copyright.md](references/07-delivery-and-copyright.md) 完成版权审计与交付。
+读取 [references/06-evaluation.md](references/06-evaluation.md) 测试证据忠实度、路由、执行质量、跨题材迁移、单章体感、三章漂移、注意力中心和来源泄漏；再按 [references/07-delivery-and-copyright.md](references/07-delivery-and-copyright.md) 完成版权审计与交付。跨题材成功不能抵消体感回归失败。
 
 只有通过硬门槛的内容可以进入 `runtime-style-pack/`。
 
@@ -135,8 +140,8 @@ distillations/<source-slug>/
 1. 优先读取 `.novel/ACTIVE_PACK.md`；不存在时，若只有一个合格 runtime pack 则自动选择，多个合格包才让用户选择。不要自动混合多个来源包。
 2. 校验 `PACK_MANIFEST.md`、风格契约、版本和来源隔离声明。
 3. 根据用户主题提出最少必要假设，创建完全原创的 premise、人物、世界规则、核心冲突、结局方向与主线大纲；同时明确目标读者、核心爽感、主角引擎、成长维度、黄金三章承诺和第一个完整回报周期。
-4. 将 runtime pack 复制到项目 `style/` 并锁定 pack ID、版本和可用时的内容哈希；之后不要让上游包的变化静默改变本书。
-5. 建立 Story Bible、总纲、章节蓝图、记忆索引、人物/实体状态、关系与知识账本、剧情线程、时间线、连续性账本、爽点/成长账本、连载节奏账本、决策日志、章节记录、结构化变更、批次状态、阶段摘要和临时 context pack 目录。
+4. 将 runtime pack 复制到项目 `style/` 并锁定 pack ID、版本和可用时的内容哈希；确认`WRITING_STYLE_CONTRACT.md`、`READER_EXPERIENCE_CONTRACT.md`和`STYLE_TARGETS.json`均存在且一致。之后不要让上游包的变化静默改变本书。
+5. 建立 Story Bible、总纲、章节蓝图、记忆索引、人物/实体状态、关系与知识账本、剧情线程、时间线、连续性账本、爽点/成长账本、连载节奏账本、风格校准状态、决策日志、章节记录、结构化变更、批次状态、阶段摘要和临时 context pack 目录。
 6. 从模板生成 `.agents/skills/<project-slug>-writer/SKILL.md`。其描述必须明确项目名和写章触发词，使后续自然语言请求能路由到本项目。
 7. 将仓库 `knowledge/` 复制为项目 `craft/` 快照；网文定位、爽点、钩子和自然文风为核心模块，其他技法按 `craft/INDEX.md` 的任务路由加载。
 8. 仅在标记边界内创建或合并项目 `AGENTS.md` 指令；保留文件中所有无关内容。
@@ -151,6 +156,8 @@ novel-projects/<project-slug>/
 ├── style/
 │   ├── PACK_MANIFEST.md
 │   ├── WRITING_STYLE_CONTRACT.md
+│   ├── READER_EXPERIENCE_CONTRACT.md
+│   ├── STYLE_TARGETS.json
 │   └── techniques/
 ├── craft/
 │   └── INDEX.md + 按需加载的长篇技法模块
@@ -161,6 +168,7 @@ novel-projects/<project-slug>/
 ├── state/
 │   ├── MEMORY_INDEX.md
 │   ├── CURRENT_STATE.md
+│   ├── STYLE_CALIBRATION.md
 │   ├── RELATIONSHIP_LEDGER.md
 │   ├── KNOWLEDGE_LEDGER.md
 │   ├── PLOT_THREADS.md
@@ -199,14 +207,16 @@ novel-projects/<project-slug>/
 PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 ```
 
-- `PREPARE`：先读风格契约，再通过记忆索引选择当前状态、人物/实体、知识、关系、线程、时间线、爽点账本、连载节奏、上一章记录与变更快照；生成非 canon 的章节 context pack，并按 `craft/INDEX.md` 选择必要技法。
-- `PLAN`：创建或收窄章节蓝图，明确本章变化、当下回报、压制/兑现债务、读者情绪运动、钩子与兑现窗口、场景转折、连续性风险和所用场景风格模式。
+- `PREPARE`：先读写作契约、阅读体感契约、量化目标和校准状态，再通过记忆索引选择当前状态、人物/实体、知识、关系、线程、时间线、爽点账本、连载节奏、上一章记录与变更快照；生成非 canon 的章节 context pack，并按 `craft/INDEX.md` 选择必要技法。
+- `PLAN`：创建或收窄章节蓝图，明确本章变化、当下回报、压制/兑现债务、读者情绪运动、钩子与兑现窗口、主导/支撑注意力、标题承诺、POV声音坐标、场景转折、连续性风险和所用场景风格模式。
 - `DRAFT`：保持 always-on 风格常量，并按 action、dialogue、introspection、transition、climax 等场景模式调节强度。
-- `REVIEW`：检查事实连续性、人物知识边界、时间线、POV、风格漂移、本章回报、钩子债务、情绪对比、近期模式重复、可观察的 AI 腔症状、来源专名和可识别情节泄漏。
+- `REVIEW`：检查事实连续性、人物知识边界、时间线、POV、风格漂移、体感目标、注意力中心、句段统计、本章回报、钩子债务、情绪对比、近期模式重复、可观察的 AI 腔症状、来源专名和可识别情节泄漏。
 - `DELIVER`：单章模式交付草稿等待验收；批次模式把通过审查的章节作为当前事务的待提交结果，不跳过之后的逐章回写。
 - `ACCEPT / COMMIT`：用户接受或批次授权生效后，保存正文、章节记录和 `.changes.json` 15 维事实快照/变更集，再按因果顺序原子化回写时间线、人物/实体、知识、关系、剧情线程、爽点/成长、连载节奏、连续性、当前状态和记忆索引。
 
 用户收到草稿后直接要求“下一章”，视为对上一章的隐式验收，先提交上一章再准备下一章。用户要求修订当前或更早章节时，不推进章节号；若修订改变既有事实，先列出受影响文件并进行一致性回写。
+
+新项目的第一章始终是校准样章。用户接受后更新`STYLE_CALIBRATION.md`；前三章完成时对照量化目标和体感合同做稳定性复盘。只有通过或用户明确豁免后，才解锁大于3章的自动批量。
 
 这里的 `COMMIT` 只表示写入小说 canon 和项目状态，不表示执行 Git commit 或 push；版本控制操作必须由用户另行要求。
 
@@ -214,13 +224,14 @@ PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 
 用户要求“批量写接下来 N 章”时：
 
-1. 创建可恢复批次，明确数量、起点、自动提交/分组审阅模式和检查点间隔；
-2. 先完成整个批次的功能级调度，只将未来 3–8 章展开为详细蓝图；
-3. 严格串行执行“读取最新 canon → 写一章 → 审查 → 回写 → 批次 checkpoint”；
-4. 不得并行起草有前后依赖的章节，不得累积多章后一次性回写状态；
-5. 每个检查点比较钩子、爽点类型/强度、情绪波形、章首章尾和文风重复，必要时只重排未提交章节；
-6. 若中断，从 `BATCH_JOB.md` 的 `Next chapter` 恢复，不从聊天猜测进度；
-7. 风格包错配、无法解决的 canon 矛盾、重试后仍未通过硬门、结构方向变更或回写不完整时立即暂停。
+1. 先读取`state/STYLE_CALIBRATION.md`；若未解锁且用户未明确豁免，先交付1章校准样稿，不直接创建大于3章的自动批次；
+2. 校准通过后创建可恢复批次，明确数量、起点、自动提交/分组审阅模式和检查点间隔；
+3. 先完成整个批次的功能级调度，只将未来 3–8 章展开为详细蓝图；
+4. 严格串行执行“读取最新 canon → 写一章 → 审查 → 体感/统计回归 → 回写 → 批次 checkpoint”；
+5. 不得并行起草有前后依赖的章节，不得累积多章后一次性回写状态；
+6. 每个检查点比较钩子、爽点类型/强度、情绪波形、主导注意力、标题承诺、句段分布、章首章尾和人物声音，必要时只重排未提交章节；
+7. 若中断，从 `BATCH_JOB.md` 的 `Next chapter` 恢复，不从聊天猜测进度；
+8. 风格包错配、体感硬界越过、无法解决的 canon 矛盾、重试后仍未通过硬门、结构方向变更或回写不完整时立即暂停。
 
 `AUTO_COMMIT` 不需要章间人工确认；`REVIEW_CHECKPOINTS` 在配置的分组边界暂停。两者都必须逐章通过质量门和持久化检查。
 
@@ -236,3 +247,5 @@ PREPARE → PLAN → DRAFT → REVIEW → DELIVER → ACCEPT / COMMIT
 - 不用同一套表面特征机械覆盖所有场景；风格稳定不等于节奏单一。
 - 不把章尾悬念当作本章回报；每章既要有当下价值，也要产生未来压力。
 - 不在批次中机械重复同一爽点、钩子、情绪曲线、章首、章尾或人物反应模式。
+- 不把“跨题材可迁移”当成“阅读体感已保留”；runtime必须保留来源隔离的注意力、声音和分布目标。
+- 不让大纲中的调查、制度或设定说明长期挤占体感合同规定的主导读者欲望。

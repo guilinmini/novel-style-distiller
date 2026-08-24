@@ -18,6 +18,16 @@ authorize bounded batch
 
 Never parallelize dependent chapter prose. Planning analyses may be independent, but chapter N+1 cannot start until chapter N's accepted files and checkpoints agree.
 
+## Style calibration gate
+
+Before creating a batch, read`state/STYLE_CALIBRATION.md` when the locked pack contains`STYLE_TARGETS.json`:
+
+- `Bulk writing unlocked: yes`：正常进入批次；
+- 未解锁且无明确豁免：不要创建大于3章的批次，先按单章流程交付第1章校准样稿；
+- 用户明确要求跳过：在校准文件记录原话、风险和日期，再继续；普通“写20章”本身不是豁免。
+
+前三章需完成一次组合统计与人工体感复盘，确认注意力中心、主要POV声音、标题承诺和支撑类型占比没有漂移，再解锁AUTO_COMMIT长批次。
+
 ## Authorization modes
 
 | Mode | Meaning | Pause behavior |
@@ -66,7 +76,7 @@ For the reported chapter:
 2. Rebuild the temporary context pack.
 3. Create or update the chapter blueprint. State the chapter's present reward, emotion movement, hook family, promised payoff, and observable canon change.
 4. Draft with the locked style contract.
-5. Run task, continuity, POV/knowledge, style, serial-reward, natural-prose, repetition, and source-isolation gates.
+5. Run task, continuity, POV/knowledge, style, reader-experience, quantitative target, serial-reward, natural-prose, repetition, and source-isolation gates.
 6. Allow one focused rewrite for a failed prose/shape gate. A canon contradiction or pack mismatch is not repaired by improvisation.
 7. Save the accepted chapter at `chapters/<chapter-id>.md`.
 8. Write both:
@@ -118,6 +128,7 @@ At the configured interval:
 - inspect suppression/payoff debt;
 - inspect reader-emotion activation and recovery;
 - compare openings, endings, paragraph cadence, metaphor domains, and dialogue voices;
+- compare measured target ranges, dominant/supporting attention, POV voice coordinates, exposition ceilings, and title promise families;
 - check style-contract drift and source isolation;
 - refresh the detailed planning horizon;
 - create an arc/volume summary when crossing a boundary.
@@ -137,6 +148,7 @@ Hard stops include:
 - missing or mismatched style contract;
 - unresolved canon contradiction;
 - failure of a hard quality gate after one focused rewrite;
+- a`STYLE_TARGETS.json`hard-bound failure or reader-experience center drift after one focused rewrite/replan;
 - required structural change outside batch authorization;
 - incomplete or conflicting state writeback;
 - unavailable host capacity that prevents the next complete chapter transaction.
